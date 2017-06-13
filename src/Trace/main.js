@@ -93,15 +93,41 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', function ($stat
         Layout.initSidebar($state); // init sidebar
     });
     vm.list = [
-      { url: "activity", title: "活动管理", icon: "fa fa-clipboard" },
-      //{
-      //    url: "", title: "方案管理", icon: "fa fa-suitcase", child: [
-      //         { url: "plan", title: "方案列表", icon: "fa fa-sticky-note" },
-      //         { url: "record", title: "领取记录", icon: "fa fa-bars" },
-      //    ]
-      //},
-      { url: "gift", title: "礼物管理", icon: "fa fa-cogs" },
-      { url: "prize", title: "奖品管理", icon: "fa fa-cogs" },
+      {
+          url: "", title: "商品", icon: "fa fa-suitcase", child: [
+               { url: "plan", title: "商品管理", icon: "fa fa-sticky-note" },
+               { url: "record", title: "商品包管理", icon: "fa fa-bars" },
+                { url: "plan", title: "商品成就管理", icon: "fa fa-sticky-note" },
+               { url: "record", title: "商品销售管理", icon: "fa fa-bars" },
+          ]
+      },
+         {
+             url: "", title: "游迹", icon: "fa fa-suitcase", child: [
+                  { url: "plan", title: "游迹管理", icon: "fa fa-sticky-note" },
+                  { url: "record", title: "游迹组合管理", icon: "fa fa-bars" },
+                   { url: "plan", title: "游迹成就管理", icon: "fa fa-sticky-note" },
+             ]
+         },
+           {
+               url: "", title: "积分", icon: "fa fa-suitcase", child: [
+                    { url: "plan", title: "积分商城", icon: "fa fa-sticky-note" },
+                    { url: "record", title: "兑换记录", icon: "fa fa-bars" },
+               ]
+           },
+           {
+               url: "", title: "报表", icon: "fa fa-suitcase", child: [
+                    { url: "plan", title: "条件筛选", icon: "fa fa-sticky-note" },
+                    { url: "record", title: "自定义组合", icon: "fa fa-bars" },
+               ]
+           },
+           {
+               url: "", title: "系统", icon: "fa fa-suitcase", child: [
+                    { url: "plan", title: "轮播图管理", icon: "fa fa-sticky-note" },
+                    { url: "record", title: "权限管理", icon: "fa fa-bars" },
+                    { url: "record", title: "人员管理", icon: "fa fa-bars" },
+                    { url: "record", title: "角色管理", icon: "fa fa-bars" }
+               ]
+           }
     ];
 
 }]);
@@ -165,7 +191,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                'assets/global/plugins/plupload/angular-local-storage.js',
                                'assets/global/plugins/plupload/qupload.js',
                            ]
-                       }, 
+                       },
                         {
                             name: 'MetronicApp',
                             insertBefore: '#ng_load_plugins_before',
@@ -293,7 +319,7 @@ MetronicApp.run(["$rootScope", "settings", "$state", function ($rootScope, setti
     };
 
 }]);
-
+//富文本编辑设置
 MetronicApp.config(function ($provide) {
     $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function (taRegisterTool, taOptions) {
         // $delegate is the taOptions we are decorating
