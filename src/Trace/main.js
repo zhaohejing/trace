@@ -13,7 +13,10 @@ var MetronicApp = angular.module("MetronicApp", [
     'angularFileUpload',//文件上传
     'abp', 'ngLocale',
     "isteven-multi-select",//下拉标签
-    , "textAngular", 'angularSpectrumColorpicker', 'ui.bootstrap.dropdownToggle'
+    , "textAngular",
+    'angularSpectrumColorpicker',
+    'ui.bootstrap.dropdownToggle',
+    'angular-baidu-map'
 ]);
 
 //懒加载
@@ -103,7 +106,7 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', function ($stat
       },
          {
              url: "", title: "游迹", icon: "fa fa-suitcase", child: [
-                  { url: "plan", title: "游迹管理", icon: "fa fa-sticky-note" },
+                  { url: "map", title: "游迹管理", icon: "fa fa-sticky-note" },
                   { url: "record", title: "游迹组合管理", icon: "fa fa-bars" },
                    { url: "plan", title: "游迹成就管理", icon: "fa fa-sticky-note" },
              ]
@@ -145,162 +148,156 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     var abp = abp;
     $stateProvider
         //活动管理
-        .state("activity", {
+        .state("activity",
+        {
             url: "/activity.html",
             templateUrl: "views/activity/index.html",
             data: { pageTitle: '活动管理' },
             resolve: {
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load(
-                        [{
-                            name: 'QiNiu',
-                            insertBefore: '#ng_load_plugins_before',
-                            files: [
-                                'assets/global/plugins/plupload/angular-local-storage.js',
-                                'assets/global/plugins/plupload/qupload.js',
+                deps: [
+                    '$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            [
+                                {
+                                    name: 'QiNiu',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'assets/global/plugins/plupload/angular-local-storage.js',
+                                        'assets/global/plugins/plupload/qupload.js',
+                                    ]
+                                },
+                                {
+                                    name: 'MetronicApp',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'views/activity/index.js'
+                                    ]
+                                }
                             ]
-                        },
-                        {
-                            name: 'MetronicApp',
-                            insertBefore: '#ng_load_plugins_before',
-                            files: [
-                                'views/activity/index.js'
-                            ]
-                        }]
-
                         );
-                }]
+                    }
+                ]
             }
         })
-         //方案管理
+        //方案管理
 
         //添加方案
-       .state("modify", {
-           url: "/modify.html",
-           params: { "id": null },
-           templateUrl: "views/activity/modify.html",
-           data: { pageTitle: '管理活动' },
-           resolve: {
-               deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                   return $ocLazyLoad.load(
-
-                       [{
-                           name: 'QiNiu',
-                           insertBefore: '#ng_load_plugins_before',
-                           files: [
-                               'assets/global/plugins/plupload/angular-local-storage.js',
-                               'assets/global/plugins/plupload/qupload.js',
-                           ]
-                       },
-                        {
-                            name: 'MetronicApp',
-                            insertBefore: '#ng_load_plugins_before',
-                            files: [
-                                'views/activity/modify.js',
+        .state("modify",
+        {
+            url: "/modify.html",
+            params: { "id": null },
+            templateUrl: "views/activity/modify.html",
+            data: { pageTitle: '管理活动' },
+            resolve: {
+                deps: [
+                    '$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            [
+                                {
+                                    name: 'QiNiu',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'assets/global/plugins/plupload/angular-local-storage.js',
+                                        'assets/global/plugins/plupload/qupload.js',
+                                    ]
+                                },
+                                {
+                                    name: 'MetronicApp',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'views/activity/modify.js',
+                                    ]
+                                }
                             ]
-                        }]
-
-                     );
-               }]
-           }
-       })
-      //礼物方案
-       .state("gift", {
-           url: "/gift.html",
-           templateUrl: "views/gift/index.html",
-           data: { pageTitle: '礼物管理' },
-           resolve: {
-               deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                   return $ocLazyLoad.load([{
-                       name: 'QiNiu',
-                       insertBefore: '#ng_load_plugins_before',
-                       files: [
-                           'assets/global/plugins/plupload/angular-local-storage.js',
-                           'assets/global/plugins/plupload/qupload.js',
-                       ]
-                   }, {
-                       name: 'Modal',
-                       insertBefore: '#ng_load_plugins_before',
-                       files: [
-                           'views/gift/modal.js'
-                       ]
-                   },
-                        {
-                            name: 'MetronicApp',
-                            insertBefore: '#ng_load_plugins_before',
-                            files: [
-                                'views/gift/index.js'
+                        );
+                    }
+                ]
+            }
+        })
+        //礼物方案
+        .state("gift",
+        {
+            url: "/gift.html",
+            templateUrl: "views/gift/index.html",
+            data: { pageTitle: '礼物管理' },
+            resolve: {
+                deps: [
+                    '$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                                {
+                                    name: 'MetronicApp',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'views/map/index.js'
+                                    ]
+                                }
                             ]
-                        }]
-);
-               }]
-           }
-       })
-       //奖品方案
-       .state("prize", {
-           url: "/prize.html",
-           templateUrl: "views/prize/index.html",
-           data: { pageTitle: '奖品管理' },
-           resolve: {
-               deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                   return $ocLazyLoad.load([{
-                       name: 'QiNiu',
-                       insertBefore: '#ng_load_plugins_before',
-                       files: [
-                           'assets/global/plugins/plupload/angular-local-storage.js',
-                           'assets/global/plugins/plupload/qupload.js',
-                       ]
-                   }, {
-                       name: 'Modal',
-                       insertBefore: '#ng_load_plugins_before',
-                       files: [
-                           'views/prize/modal.js'
-                       ]
-                   },
-                        {
-                            name: 'MetronicApp',
-                            insertBefore: '#ng_load_plugins_before',
-                            files: [
-                                'views/prize/index.js'
+                        );
+                    }
+                ]
+            }
+        })
+        //奖品方案
+        .state("prize",
+        {
+            url: "/prize.html",
+            templateUrl: "views/prize/index.html",
+            data: { pageTitle: '奖品管理' },
+            resolve: {
+                deps: [
+                    '$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                                {
+                                    name: 'QiNiu',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'assets/global/plugins/plupload/angular-local-storage.js',
+                                        'assets/global/plugins/plupload/qupload.js',
+                                    ]
+                                }, {
+                                    name: 'Modal',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'views/prize/modal.js'
+                                    ]
+                                },
+                                {
+                                    name: 'MetronicApp',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'views/prize/index.js'
+                                    ]
+                                }
                             ]
-                        }]
-);
-               }]
-           }
-       })
+                        );
+                    }
+                ]
+            }
+        })
         //参与者管理
-       .state("actor", {
-           url: "/actor.html",
-           params: { "id": null },
-           templateUrl: "views/actor/index.html",
-           data: { pageTitle: '奖品管理' },
-           resolve: {
-               deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                   return $ocLazyLoad.load([{
-                       name: 'QiNiu',
-                       insertBefore: '#ng_load_plugins_before',
-                       files: [
-                           'assets/global/plugins/plupload/angular-local-storage.js',
-                           'assets/global/plugins/plupload/qupload.js',
-                       ]
-                   }, {
-                       name: 'Modal',
-                       insertBefore: '#ng_load_plugins_before',
-                       files: [
-                           'views/actor/modal.js'
-                       ]
-                   },
-                        {
-                            name: 'MetronicApp',
-                            insertBefore: '#ng_load_plugins_before',
-                            files: [
-                                'views/actor/index.js'
+        .state("map",
+        {
+            url: "/map.html",
+            templateUrl: "views/map/index.html",
+            data: { pageTitle: '游迹管理' },
+            resolve: {
+                deps: [
+                    '$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                               
+                                {
+                                    name: 'MetronicApp',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'views/map/index.js'
+                                    ]
+                                }
                             ]
-                        }]
-);
-               }]
-           }
-       })
+                        );
+                    }
+                ]
+            }
+        });
 }]);
 
 //启动
