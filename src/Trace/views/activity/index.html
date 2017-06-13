@@ -1,0 +1,70 @@
+﻿<div ng-controller="views.activity.index as vm">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-hand-o-right"></i>
+                <a href="#">活动管理</a>
+            </li>
+        </ul>
+    </div>
+    <div class="portlet light bordered">
+        <div class="row">
+            <div class="col-xs-8 text-left">
+                <div class="col-md-12">
+                    <div class="input-icon right">
+                        <i ng-click="vm.init()" class="fa fa-search"></i>
+                        <input type="text" class="form-control input-circle" placeholder="按条件搜索" value="" ng-model="vm.filter.filter">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 text-right">
+                <button class="btn btn-primary blue" ng-click="vm.add()"><i class="fa fa-plus"></i> 添加</button>
+                <button class="btn btn-primary blue" ng-click="vm.public()"><i class="fa fa-plus"></i> 发布</button>
+                <button class="btn btn-primary blue" ng-click="vm.edit()"><i class="fa fa-plus"></i> 编辑</button>
+                <button class="btn btn-primary blue" ng-click="vm.actors()"><i class="fa fa-plus"></i> 管理参与者</button>
+                <button class="btn btn-primary blue" ng-click="vm.delete()"><i class="fa fa-times"></i> 删除</button>
+            </div>
+        </div>
+      <div class="row">
+          <table object-table
+                 data="vm.table.data"
+                 check-model="vm.table.checkModel"
+                 display="vm.table.pageConfig.itemsPerPage"
+                 headers="活动名,状态,截至时间,已报名,累计投票,访问量"
+                 fields="title,public,endTime,actorCount,totalVotes,traffic">
+              <tbody>
+                  <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
+                      <td>
+                          <input type="checkbox" ng-model="::item.checked"  
+                                 ng-click="$event.stopPropagation(); checkOne(item)" />
+                      </td>
+                 
+                      <td show-td item="item" name="title"></td>
+                      <td show-td item="item" name="public"></td>
+                      <td show-td item="item" name="endTime"></td>
+                      <td show-td item="item" name="actorCount"></td>
+
+                      <td show-td item="item" name="totalVotes"></td>
+                      <td show-td item="item" name="traffic"></td>
+                    
+                  </tr>
+              </tbody>
+          </table>
+          <!--分页-->
+          <nav class="paging">
+              <obj-pagination conf="vm.table.pageConfig"></obj-pagination>
+          </nav>
+
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
