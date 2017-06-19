@@ -19,21 +19,26 @@
                     map.centerAndZoom(point, 15);
                     var marker = new BMap.Marker(point);
                     map.addOverlay(marker);
+                  
 
-                    //实例化鼠标绘制工具
-                    var drawingManager = new BMapLib.DrawingManager(map, {
-                        isOpen: false, //是否开启绘制模式
-                        enableDrawingTool: true, //是否显示工具栏
+
+                    var myDrawingManagerObject = new BMapLib.DrawingManager(map, {isOpen: true, 
+                        drawingType: BMAP_DRAWING_MARKER, enableDrawingTool: true,
+                        enableCalculate: false,
                         drawingToolOptions: {
-                            anchor: BMAP_ANCHOR_TOP_RIGHT, //位置
-                            offset: new BMap.Size(5, 5), //偏离值
-                            scale: 0.8 //工具栏缩放比例
+                            anchor: BMAP_ANCHOR_TOP_LEFT,
+                            offset: new BMap.Size(5, 5),
+                            drawingTypes : [
+                                BMAP_DRAWING_MARKER,
+                                BMAP_DRAWING_CIRCLE,
+                                BMAP_DRAWING_POLYLINE,
+                                BMAP_DRAWING_POLYGON,
+                                BMAP_DRAWING_RECTANGLE 
+                            ]
                         },
-                        circleOptions: styleOptions, //圆的样式
-                        polylineOptions: styleOptions, //线的样式
-                        polygonOptions: styleOptions, //多边形的样式
-                        rectangleOptions: styleOptions //矩形的样式
-                    });
+                        polylineOptions: {
+                            strokeColor: "#333"
+                        }});
                 };
             }
         ]);

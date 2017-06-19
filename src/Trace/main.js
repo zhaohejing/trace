@@ -12,7 +12,7 @@ var MetronicApp = angular.module("MetronicApp", [
     'objPagination',//分页
     'angularFileUpload',//文件上传
     'abp', 'ngLocale',
-    "isteven-multi-select",//下拉标签
+ //   "isteven-multi-select",//下拉标签
     , "textAngular",
     'angularSpectrumColorpicker',
     'ui.bootstrap.dropdownToggle',

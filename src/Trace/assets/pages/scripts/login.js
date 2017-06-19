@@ -40,7 +40,7 @@
                                 });
                                 window.location.href = "layout.html";
                             } else {
-                                han
+                                o.show("登陆失败");
                             }
                         }
                     });
