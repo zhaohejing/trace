@@ -51,7 +51,8 @@
     <link href="assets/global/plugins/textangular/spectrum.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/global/plugins/textangular/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
-
+   
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.css" />
   
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
@@ -139,10 +140,12 @@
     <script src="assets/global/plugins/textangular/textAngular-rangy.min.js" type="text/javascript"></script>
     <script src="assets/global/plugins/textangular/textAngular-sanitize.min.js" type="text/javascript"></script>
     <script src="assets/global/plugins/textangular/textAngular.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
-    <script src="assets/global/plugins/baidumap/angular-baidu-map.js" type="text/javascript"></script>
-
-
+  
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=f72BmbnulkYkxmS3YGqz94CTmutP0jbL&services=&t=20170517145936"></script>
+    <!--加载鼠标绘制工具-->
+<script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+    <!--加载检索信息窗口-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"></script>
     <script src="assets/global/plugins/moment.min.js"></script>
 
 
@@ -160,7 +163,6 @@
     <script src="assets/global/plugins/abp/libs/abp.sweet-alert.js"></script>
     <script src="assets/global/plugins/abp/libs/abp.toastr.js"></script>
     <script src="assets/global/plugins/abp/libs/angularjs/abp.ng.js"></script>
-  
 
     <!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
     <script src="main.js" type="text/javascript"></script>
@@ -168,11 +170,20 @@
     <script src="js/factorys/dataFactory.js"></script>
     <script type="text/javascript">
         var abp = abp || {};
+        abp.auth.allPermissions= {
+            "Page": true,
+            "Page.a": true,
+            "Page.b": true,
+            "Page.c": true,
+            "Page.d": true
+        }
+        abp.auth.grantedPermissions= {
+            "Page": true
+        }
     </script>
     <!-- END APP LEVEL ANGULARJS SCRIPTS -->
     <!-- END APP LEVEL JQUERY SCRIPTS -->
     <!-- END JAVASCRIPTS -->
-
  
 </body>
 <!-- END BODY -->

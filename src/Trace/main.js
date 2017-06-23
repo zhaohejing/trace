@@ -11,12 +11,12 @@ var MetronicApp = angular.module("MetronicApp", [
       'objectTable',//table表格
     'objPagination',//分页
     'angularFileUpload',//文件上传
-    'abp', 'ngLocale',
+    'abp',
+    'ngLocale',
  //   "isteven-multi-select",//下拉标签
     , "textAngular",
     'angularSpectrumColorpicker',
-    'ui.bootstrap.dropdownToggle',
-    'angular-baidu-map'
+    'ui.bootstrap.dropdownToggle'
 ]);
 
 //懒加载
@@ -145,7 +145,12 @@ MetronicApp.controller('FooterController', ['$scope', function ($scope) {
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
     $urlRouterProvider.otherwise("/activity.html");
-    var abp = abp;
+
+//    if (abp.auth.hasPermission('Page')) {
+//alert(1);
+//    }
+
+
     $stateProvider
         //活动管理
         .state("activity",
@@ -198,7 +203,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                     insertBefore: '#ng_load_plugins_before',
                                     files: [
                                         'assets/global/plugins/plupload/angular-local-storage.js',
-                                        'assets/global/plugins/plupload/qupload.js',
+                                        'assets/global/plugins/plupload/qupload.js'
                                     ]
                                 },
                                 {

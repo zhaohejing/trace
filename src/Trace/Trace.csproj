@@ -157,7 +157,6 @@
     <Content Include="assets\global\plugins\angularjs\plugins\ui-bootstrap-tpls.min.js" />
     <Content Include="assets\global\plugins\angularjs\plugins\ui-select\select.min.css" />
     <Content Include="assets\global\plugins\angularjs\plugins\ui-select\select.min.js" />
-    <Content Include="assets\global\plugins\baidumap\angular-baidu-map.js" />
     <Content Include="assets\global\plugins\bootstrap-hover-dropdown\bootstrap-hover-dropdown.js" />
     <Content Include="assets\global\plugins\bootstrap-hover-dropdown\bootstrap-hover-dropdown.min.js" />
     <Content Include="assets\global\plugins\bootstrap-switch\css\bootstrap-switch.css" />
