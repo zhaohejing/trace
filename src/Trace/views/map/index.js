@@ -1,5 +1,4 @@
 ﻿(function () {
-
     angular.module("MetronicApp")
         .controller("views.map.index",
         ["$scope", "$state", "settings", "dataFactory",
