@@ -34,16 +34,16 @@ MetronicApp.config(['$controllerProvider', function ($controllerProvider) {
 }]);
 MetronicApp.factory('appSession', [
           function () {
-              var _session = null;
-              var cookie = $.cookie("eggsResult");
+              var session = null;
+              var cookie = $.cookie("traceResult");
               if (cookie != "" && cookie != undefined) {
                   var temp = $.parseJSON(cookie);
-                  _session = temp;
+                  session = temp;
               }
               else {
                   window.location.href = "/index.html";
               }
-              return _session;
+              return session;
           }
 ]);
 //全局工厂设置
@@ -58,10 +58,9 @@ MetronicApp.factory('settings', ['$rootScope', function ($rootScope) {
         },
         assetsPath: 'assets',
         globalPath: 'assets/global',
-        layoutPath: 'assets/layouts/layout',
+        layoutPath: 'assets/layouts/layout'
     };
     $rootScope.settings = settings;
-
     return settings;
 }]);
 
@@ -80,10 +79,10 @@ MetronicApp.controller('HeaderController', ['$scope', "appSession", function ($s
     $scope.$on('$includeContentLoaded', function () {
         Layout.initHeader(); // init header
     });
-    vm = this;
+    var vm = this;
     vm.user = appSession;
     vm.out = function () {
-        $.cookie("eggsResult", null, { path: "/" });
+        $.cookie("traceResult", null, { path: "/" });
         location.href = "index.html";
     }
 }]);

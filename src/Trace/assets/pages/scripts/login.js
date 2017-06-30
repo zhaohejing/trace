@@ -1,53 +1,4 @@
-﻿var a = function () {
-    var o = {
-        show: function (text) {
-            $("#text").text(text);
-            $("#show").show();
-        },
-        hide: function () {
-            $("#show").hide();
-        }
-    };
-
-
-    var handleLogin = function () {
-        $('.form-horizontal input').keypress(function (e) {
-            if (e.which == 13) {
-                if ($('.form-horizontal').validate().form()) {
-                   
-                }
-                return false;
-            }
-        });
-       
-    }
-
-
-
-    return {
-        //main function to initiate the module
-        init: function () {
-            var cookie = $.cookie("eggsResult");
-            if (cookie != "" && cookie != undefined) {
-                try {
-                    var cook = $.parseJSON(cookie);
-                    if (cook.username) {
-                        window.location.href = "layout.html";
-
-                    }
-
-                } catch (e) {
-                    handleLogin();
-                }
-            }
-            handleLogin();
-        }
-    };
-}();
-
-
-
-var Login = function () {
+﻿var Login = function () {
     var url = "http://118.89.225.78:8080/api/efan/login";
     var handleLogin = function () {
         $('.login-form').validate({
@@ -220,7 +171,6 @@ var Login = function () {
     };
 
 }();
-
 jQuery(document).ready(function () {
     Login.init();
 });
