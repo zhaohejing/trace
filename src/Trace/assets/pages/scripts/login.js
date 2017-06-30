@@ -14,74 +14,12 @@
         $('.form-horizontal input').keypress(function (e) {
             if (e.which == 13) {
                 if ($('.form-horizontal').validate().form()) {
-                    var url = "http://118.89.225.78:8080/api/efan/login";
-                    var username = $("#userName").val();
-                    var password = $("#pw").val();
-                    if (!username || !password) {
-                        o.show("请输入用户名或密码");
-                        return;
-                    }
-                    var md5pw = md5(password);
-                    var data = { "user_name": username, "pw": md5pw };
-                    $.ajax({
-                        type: "Post",
-                        url: url,
-                        data: data,
-                        async: false,
-                        dataType: "json",
-                        success: function (res) {
-                            if (res.code == 200) {
-                                var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
-                                var temp = JSON.stringify(val);
-                                $.cookie("eggsResult", temp, {
-                                    expires: 1,//有效日期
-                                    path: "/",//cookie的路 径
-                                    secure: false //true,cookie的传输会要求一个安全协议,否则反之
-                                });
-                                window.location.href = "layout.html";
-                            } else {
-                                o.show("登陆失败");
-                            }
-                        }
-                    });
+                   
                 }
                 return false;
             }
         });
-        $("#loginSubmit").click(function () {
-            if ($('.form-horizontal').validate().form()) {
-                var url = "http://101.201.53.25:10001/api/efan/login";
-                var username = $("#userName").val();
-                var password = $("#pw").val();
-                var md5pw = md5(password);
-                var data = { "userName": username, "pw": md5pw };
-                if (!username||!password) {
-                    o.show("请输入用户名或密码");
-                    return;
-                }
-                $.ajax({
-                    type: "Post",
-                    url: url,
-                    data: data,
-                    async: false,
-                    dataType: "json",
-                    success: function (res) {
-                        if (res.code == 200) {
-                            var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
-                            var temp = JSON.stringify(val);
-                            $.cookie("eggsResult", temp, {
-                                expires: 1,//有效日期
-                                path: "/",//cookie的路 径
-                                secure: false //true,cookie的传输会要求一个安全协议,否则反之
-                            });
-                            window.location.href = "layout.html";
-                        } else {
-                            o.show(res.message);
-                        }
-                    }
-                });
-            }
-        })
+       
     }
 
 
@@ -110,9 +48,8 @@
 
 
 var Login = function () {
-
+    var url = "http://118.89.225.78:8080/api/efan/login";
     var handleLogin = function () {
-
         $('.login-form').validate({
             errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
@@ -162,23 +99,79 @@ var Login = function () {
         });
 
         $('.login-form input').keypress(function (e) {
-            if (e.which == 13) {
+            if (e.which === 13) {
                 if ($('.login-form').validate().form()) {
-                    $('.login-form').submit(); //form validation success, call ajax form submit
+                 
+                    var username = $("#userName").val();
+                    var password = $("#pw").val();
+                    if (!username || !password) {
+                        $('.alert-danger', $('.login-form')).show();
+                        return false;
+                    }
+                    var md5Pw = window.md5(password);
+                    var data = { "user_name": username, "pw": md5Pw };
+                    $.ajax({
+                        type: "Post",
+                        url: url,
+                        data: data,
+                        async: false,
+                        dataType: "json",
+                        success: function (res) {
+                            if (res.code == 200) {
+                                var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
+                                var temp = JSON.stringify(val);
+                                $.cookie("traceResult", temp, {
+                                    expires: 1,//有效日期
+                                    path: "/",//cookie的路 径
+                                    secure: false //true,cookie的传输会要求一个安全协议,否则反之
+                                });
+                                window.location.href = "layout.html";
+                            } else {
+                                $('.alert-danger', $('.login-form')).show();
+                            }
+                        }
+                    });
                 }
-                return false;
             }
+            return false;
         });
 
-        $('.forget-form input').keypress(function (e) {
-            if (e.which == 13) {
-                if ($('.forget-form').validate().form()) {
-                    $('.forget-form').submit();
-                }
-                return false;
-            }
-        });
-
+        $("#btn")
+             .click(function () {
+                 if ($('.login-form').validate().form()) {
+                     var username = $("#userName").val();
+                     var password = $("#pw").val();
+                     var md5Pw = md5(password);
+                     var data = { "userName": username, "pw": md5Pw };
+                     if (!username || !password) {
+                         o.show("请输入用户名或密码");
+                         return;
+                     }
+                     $.ajax({
+                         type: "Post",
+                         url: url,
+                         data: data,
+                         async: false,
+                         dataType: "json",
+                         success: function (res) {
+                             if (res.code == 200) {
+                                 var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
+                                 var temp = JSON.stringify(val);
+                                 $.cookie("traceResult",
+                                     temp,
+                                     {
+                                         expires: 1, //有效日期
+                                         path: "/", //cookie的路 径
+                                         secure: false //true,cookie的传输会要求一个安全协议,否则反之
+                                     });
+                                 window.location.href = "layout.html";
+                             } else {
+                                 $('.alert-danger', $('.login-form')).show();
+                             }
+                         }
+                     });
+                 }
+             });
         $('#forget-password').click(function () {
             $('.login-form').hide();
             $('.forget-form').show();
@@ -196,7 +189,17 @@ var Login = function () {
     return {
         //main function to initiate the module
         init: function () {
-
+            var cookie = $.cookie("eggsResult");
+            if (cookie != "" && cookie != undefined) {
+                try {
+                    var cook = $.parseJSON(cookie);
+                    if (cook.username) {
+                        window.location.href = "layout.html";
+                    }
+                } catch (e) {
+                    handleLogin();
+                }
+            }
             handleLogin();
 
             // init background slide images

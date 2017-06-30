@@ -20,11 +20,11 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8" />
-    <title>Metronic Admin Theme #1 | User Login 5</title>
+    <title>铁墩儿  | 首页 </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="Preview page of Metronic Admin Theme #1 for " name="description" />
-    <meta content="" name="author" />
+    <meta content="铁墩儿" name="description" />
+    <meta content="猿人科技" name="author" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
     <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -68,10 +68,10 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                         <div class="row">
                             <div class="col-xs-6">
-                                <input class="form-control form-control-solid placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="用户名" name="username" required />
+                                <input class="form-control form-control-solid placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="用户名" name="username" id="userName" required />
                             </div>
                             <div class="col-xs-6">
-                                <input class="form-control form-control-solid placeholder-no-fix form-group" type="password" autocomplete="off" placeholder="密码" name="password" required />
+                                <input class="form-control form-control-solid placeholder-no-fix form-group" type="password" autocomplete="off" placeholder="密码" name="password" id="pw" required />
                             </div>
                         </div>
                         <div class="row">
@@ -87,7 +87,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="forgot-password">
                                     <a href="javascript:;" id="forget-password" class="forget-password">忘记密码?</a>
                                 </div>
-                                <button class="btn green" type="submit">Sign In</button>
+                                <button id="btn" class="btn green" type="button">Sign In</button>
                             </div>
                         </div>
                     </form>
@@ -109,7 +109,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="login-footer">
                     <div class="row bs-reset">
                         <div class="col-xs-5 bs-reset">
-                          
                     </div>
                     <div class="col-xs-7 bs-reset">
                         <div class="login-copyright text-right">
@@ -127,7 +126,6 @@ License: You must have a valid license purchased only from themeforest(the above
 <script type="text/javascript" src="assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/global/plugins/jquery.cookie.js"></script>
  
-<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js" type="text/javascript"></script> 
 
 <script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
     <script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
@@ -140,7 +138,9 @@ License: You must have a valid license purchased only from themeforest(the above
     <script src="assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL SCRIPTS -->
-    <script src="assets/global/scripts/app.min.js" type="text/javascript"></script>
+<script src="assets/global/scripts/app.min.js" type="text/javascript"></script>
+    <script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js" type="text/javascript"></script>
+
     <!-- END THEME GLOBAL SCRIPTS -->
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="assets/pages/scripts/login.js" type="text/javascript"></script>
