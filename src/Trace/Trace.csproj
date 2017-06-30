@@ -157,6 +157,8 @@
     <Content Include="assets\global\plugins\angularjs\plugins\ui-bootstrap-tpls.min.js" />
     <Content Include="assets\global\plugins\angularjs\plugins\ui-select\select.min.css" />
     <Content Include="assets\global\plugins\angularjs\plugins\ui-select\select.min.js" />
+    <Content Include="assets\global\plugins\backstretch\jquery.backstretch.js" />
+    <Content Include="assets\global\plugins\backstretch\jquery.backstretch.min.js" />
     <Content Include="assets\global\plugins\bootstrap-hover-dropdown\bootstrap-hover-dropdown.js" />
     <Content Include="assets\global\plugins\bootstrap-hover-dropdown\bootstrap-hover-dropdown.min.js" />
     <Content Include="assets\global\plugins\bootstrap-switch\css\bootstrap-switch.css" />
@@ -370,7 +372,12 @@
     <Content Include="assets\layouts\layout\scripts\layout.js" />
     <Content Include="assets\layouts\layout\scripts\layout.min.js" />
     <Content Include="assets\pages\css\login-2.min.css" />
+    <Content Include="assets\pages\css\login-5.min.css" />
+    <Content Include="assets\pages\img\bg1.jpg" />
+    <Content Include="assets\pages\img\bg2.jpg" />
+    <Content Include="assets\pages\img\bg3.jpg" />
     <Content Include="assets\pages\img\logo-big-white.png" />
+    <Content Include="assets\pages\img\logo.png" />
     <Content Include="assets\pages\media\users\avatar1.jpg" />
     <Content Include="assets\pages\media\users\avatar10.jpg" />
     <Content Include="assets\pages\media\users\avatar11.jpg" />

@@ -9,7 +9,6 @@
     <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
  
         <li ng-repeat="a in vm.list" class="{{a.start==1?'start':''}} nav-item">
-            
 
             <a ng-if="a.url"  ui-sref="{{a.url}}">
                 <i class="{{a.icon}}"></i>
@@ -23,7 +22,6 @@
 
             <ul ng-if="a.child" class="sub-menu">
                 <li ng-repeat="b in a.child">
-
                     <a ng-if="b.url" ui-sref="{{b.url}}">
                         <i class="{{b.icon}}"></i>
                         <span class="title">{{b.title}}</span>

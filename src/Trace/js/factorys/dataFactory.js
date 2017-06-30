@@ -6,7 +6,7 @@
                 method = "POST";
             }
           
-            var u = "http://103.45.10.241:22222/";
+            var u = "http://118.89.225.78:8080/";
             url = u + url;
          
             var defer = $q.defer();
