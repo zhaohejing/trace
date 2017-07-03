@@ -85,18 +85,8 @@
 
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group form-md-line-input">
-                            <label class="col-md-2 control-label">活动内容</label>
-                            <div class="col-md-10">
-                                <div text-angular ng-model="vm.activity.content"></div>
-                            </div>
-                        </div>
-                    </div>
-                 
-                </div>
-                <div class="ueditor" ng-model="content"></div>
+              
+                <div ueditor id="Container" config="{{config}}"></div>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="form-group form-md-line-input">

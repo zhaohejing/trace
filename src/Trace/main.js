@@ -8,16 +8,11 @@ var MetronicApp = angular.module("MetronicApp", [
     "ui.bootstrap",//样式
     "oc.lazyLoad",//懒加载
     "ngSanitize",//初始化
-   //   'objectTable',//table表格
-   // 'objPagination',//分页
     'angularFileUpload',//文件上传
     'abp',
     'ngLocale',
- //   "isteven-multi-select",//下拉标签
-    , "textAngular",
-    'angularSpectrumColorpicker',
-    'ui.bootstrap.dropdownToggle',
-    'smart-table'
+    'smart-table',
+  //  'ueditor'
 ]);
 
 //懒加载
@@ -228,79 +223,3 @@ MetronicApp.run(["$rootScope", "settings", "$state", function ($rootScope, setti
     };
 
 }]);
-//富文本编辑设置
-MetronicApp.config(function ($provide) {
-    $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function (taRegisterTool, taOptions) {
-        // $delegate is the taOptions we are decorating
-        // register the tool with textAngular
-
-        taRegisterTool('backgroundColor', {
-            display: "<div spectrum-colorpicker ng-model='color' on-change='!!color && action(color)' format='\"hex\"' options='options'></div>",
-            action: function (color) {
-                var me = this;
-                if (!this.$editor().wrapSelection) {
-                    setTimeout(function () {
-                        me.action(color);
-                    }, 100)
-                } else {
-                    return this.$editor().wrapSelection('backColor', color);
-                }
-            },
-            options: {
-                replacerClassName: 'fa fa-paint-brush', showButtons: false
-            },
-            color: "#fff"
-        });
-        taRegisterTool('fontColor', {
-            display: "<spectrum-colorpicker trigger-id='{{trigger}}' ng-model='color' on-change='!!color && action(color)' format='\"hex\"' options='options'></spectrum-colorpicker>",
-            action: function (color) {
-                var me = this;
-                if (!this.$editor().wrapSelection) {
-                    setTimeout(function () {
-                        me.action(color);
-                    }, 100)
-                } else {
-                    return this.$editor().wrapSelection('foreColor', color);
-                }
-            },
-            options: {
-                replacerClassName: 'fa fa-font', showButtons: false
-            },
-            color: "#000"
-        });
-
-
-
-
-
-        taRegisterTool('fontSize', {
-            display: "<span class='bar-btn-dropdown dropdown'>" +
-            "<button class='btn btn-blue dropdown-toggle' type='button' ng-disabled='showHtml()' style='padding-top: 4px'><i class='fa fa-text-height'></i><i class='fa fa-caret-down'></i></button>" +
-            "<ul class='dropdown-menu'><li ng-repeat='o in options'><button class='btn btn-blue checked-dropdown' style='font-size: {{o.css}}; width: 100%' type='button' ng-click='action($event, o.value)'><i ng-if='o.active' class='fa fa-check'></i> {{o.name}}</button></li></ul>" +
-            "</span>",
-            action: function (event, size) {
-                //Ask if event is really an event.
-                if (!!event.stopPropagation) {
-                    //With this, you stop the event of textAngular.
-                    event.stopPropagation();
-                    //Then click in the body to close the dropdown.
-                    $("body").trigger("click");
-                }
-                return this.$editor().wrapSelection('fontSize', parseInt(size));
-            },
-            options: [
-                { name: '极小', css: 'xx-small', value: 1 },
-                { name: '微小', css: 'x-small', value: 2 },
-                { name: '小', css: 'small', value: 3 },
-                { name: '中', css: 'medium', value: 4 },
-                { name: '大', css: 'large', value: 5 },
-                { name: '很大', css: 'x-large', value: 6 },
-                { name: '极大', css: 'xx-large', value: 7 }
-
-            ]
-        });
-        // add the button to the default toolbar definition
-        taOptions.toolbar[1].push('backgroundColor', 'fontColor', 'fontName', 'fontSize');
-        return taOptions;
-    }]);
-});
