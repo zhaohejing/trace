@@ -6,6 +6,13 @@
 
             });
             var vm = this;
+            vm.dateOptions = {
+                locale: moment.locale(),
+                format: 'yyyy/mm/dd HH:mm:ss',
+                showClose: true,
+                keepOpen: false, sideBySide: true, toolbarPlacement: 'default', showTodayButton: true, showClear: true
+            };
+
             vm.level = [{ id: 1, name: "一等奖" }, { id: 2, name: "二等奖" }, { id: 3, name: "三等奖" }, { id: 4, name: "参与奖" }];
             vm.gift = {};
             vm.activitys = [];

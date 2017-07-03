@@ -145,6 +145,16 @@
     <Content Include="assets\global\plugins\abp\libs\angularjs\abp.ng.js" />
     <Content Include="assets\global\plugins\abp\libs\requirejs\plugins\service.js" />
     <Content Include="assets\global\plugins\abp\utils\ie10fix.js" />
+    <Content Include="assets\global\plugins\bootstrap-datetimepicker\css\bootstrap-datetimepicker.css" />
+    <Content Include="assets\global\plugins\bootstrap-datetimepicker\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="assets\global\plugins\bootstrap-datetimepicker\css\datetimepicker.css" />
+    <Content Include="assets\global\plugins\bootstrap-datetimepicker\js\dateTimeInput.js" />
+    <Content Include="assets\global\plugins\bootstrap-datetimepicker\js\datetimepicker.html" />
+    <Content Include="assets\global\plugins\bootstrap-datetimepicker\js\datetimepicker.js" />
+    <Content Include="assets\global\plugins\bootstrap-datetimepicker\js\datetimepicker.templates.js" />
+    <Content Include="assets\global\plugins\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="assets\global\plugins\eonasdan\angular-eonasdan-datetimepicker.js" />
+    <Content Include="assets\global\plugins\eonasdan\angular-eonasdan-datetimepicker.min.js" />
     <Content Include="assets\global\plugins\angular-file-upload\angular-file-upload.min.js" />
     <Content Include="assets\global\plugins\angular-locale_zh-cn.js" />
     <Content Include="assets\global\plugins\angularjs\angular-cookies.min.js" />
@@ -480,6 +490,7 @@
     <Content Include="assets\global\plugins\ueditor\ueditor.all.min.js" />
     <Content Include="assets\global\plugins\ueditor\ueditor.config.js" />
     <Content Include="assets\global\plugins\underscore.min.js" />
+    <Content Include="assets\global\plugins\zh-cn.js" />
     <Content Include="assets\global\scripts\app.js" />
     <Content Include="assets\global\scripts\app.min.js" />
     <Content Include="assets\global\scripts\datatable.js" />
