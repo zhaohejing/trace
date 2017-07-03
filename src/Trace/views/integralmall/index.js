@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('MetronicApp')
-        .controller('views.activity.index',
+        .controller('views.integralmall.index',
         [
             '$scope', "$state", 'settings', "dataFactory", 'appSession',
             function ($scope, $state, settings, dataFactory, appSession) {
@@ -45,7 +45,7 @@
                 };
                 // vm.init();
                 vm.add = function () {
-                    $state.go("modify");
+                    $state.go("integralmodify");
                 }
 
                 vm.edit = function () {

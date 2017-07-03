@@ -1,5 +1,5 @@
 ﻿(function () {
-    angular.module('MetronicApp').controller('views.activity.modify',
+    angular.module('MetronicApp').controller('views.integralmall.modify',
         ['$scope', 'settings', '$uibModal', '$state', '$stateParams', 'dataFactory', 'appSession', '$qupload',
         function ($scope, settings, $uibModal, $state, $stateParams, dataFactory, appSession, $qupload) {
             $scope.$on('$viewContentLoaded', function () {
@@ -31,7 +31,7 @@
                 }
             }
             vm.activity = {};
-            if (aid) {
+            if (!aid) {
                 dataFactory.action("api/activity/detail", "", null, { id: aid })
                   .then(function (res) {
                       if (res.success) {
@@ -41,7 +41,10 @@
                       }
                   });
             }
-
+            vm.filter = {
+                states: [{ id: 1, name: "上架" }, { id: 0, name: "下架" }],
+                cates: [{ id: 1, name: "纪念章" }, { id: 2, name: "名片" }, { id: 3, name: "明信片" }, { id: 4, name: "周边" }]
+            }
             vm.cancel = function () {
                 $state.go("activity");
             }

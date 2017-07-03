@@ -98,7 +98,7 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', function ($stat
     vm.list = [
       {
           url: "", title: "积分商城", icon: "fa fa-suitcase", child: [
-               { url: "plan", title: "积分商城管理", icon: "fa fa-sticky-note" },
+               { url: "integral", title: "积分商城管理", icon: "fa fa-sticky-note" },
                 { url: "plan", title: "积分详情订单", icon: "fa fa-sticky-note" }
           ]
       },

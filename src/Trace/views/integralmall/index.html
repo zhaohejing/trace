@@ -1,19 +1,28 @@
-﻿<div ng-controller="views.activity.index as vm">
+﻿<div ng-controller="views.integralmall.index as vm">
     <div class="page-bar">
-        <ul class="page-breadcrumb">
+        <div class="col-xs-9">
+            <ul class="page-breadcrumb">
+
+                <li>
+                    <i class="fa fa-hand-o-right"></i>
+                    <a href="#">积分商城管理</a>
+                </li>
+                <li>
+                    <button ng-click="vm.add()"> 添加</button>
+                </li>
             
-            <li>
-                <i class="fa fa-hand-o-right"></i>
-                <a href="#">积分商城管理</a>
-            </li>
-            <li>
-                <button ng-click="vm.add()"> 添加</button>
-            </li>
-            <li>
-                
-                <button ng-click="vm.export()"> 导出</button>
-            </li>
-        </ul>
+            </ul>
+        </div>
+        <div class="col-xs-3 right">
+            <ul class="page-breadcrumb" style="float:right">
+                <li>
+
+                    <button ng-click="vm.export()"> 导出</button>
+                </li>
+            </ul>
+        </div>
+
+     
     </div>
     <div class="portlet light bordered">
         <div class="row">
