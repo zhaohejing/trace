@@ -52,7 +52,6 @@
         $('.login-form input').keypress(function (e) {
             if (e.which === 13) {
                 if ($('.login-form').validate().form()) {
-                 
                     var username = $("#userName").val();
                     var password = $("#pw").val();
                     if (!username || !password) {
@@ -95,9 +94,21 @@
                      var md5Pw = md5(password);
                      var data = { "userName": username, "pw": md5Pw };
                      if (!username || !password) {
-                         o.show("请输入用户名或密码");
-                         return;
+                         $('.alert-danger', $('.login-form')).show();
+                         return false;
                      }
+                     var val = { username: 'admin', orgid: '1', orgName: '系统',token:'abcdefg' };
+                     var temp = JSON.stringify(val);
+                     $.cookie("traceResult",
+                         temp,
+                         {
+                             expires: 1, //有效日期
+                             path: "/", //cookie的路 径
+                             secure: false //true,cookie的传输会要求一个安全协议,否则反之
+                         });
+                     window.location.href = "layout.html";
+                     return false;
+
                      $.ajax({
                          type: "Post",
                          url: url,

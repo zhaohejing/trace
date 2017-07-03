@@ -96,38 +96,41 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', function ($stat
     });
     vm.list = [
       {
-          url: "", title: "商品", icon: "fa fa-suitcase", child: [
-               { url: "plan", title: "商品管理", icon: "fa fa-sticky-note" },
-               { url: "record", title: "商品包管理", icon: "fa fa-bars" },
-                { url: "plan", title: "商品成就管理", icon: "fa fa-sticky-note" },
-               { url: "record", title: "商品销售管理", icon: "fa fa-bars" },
+          url: "", title: "积分商城", icon: "fa fa-suitcase", child: [
+               { url: "plan", title: "积分商城管理", icon: "fa fa-sticky-note" },
+               { url: "record", title: "添加新商品", icon: "fa fa-bars" },
+                { url: "plan", title: "积分详情订单", icon: "fa fa-sticky-note" }
           ]
       },
          {
-             url: "", title: "游迹", icon: "fa fa-suitcase", child: [
-                  { url: "map", title: "游迹管理", icon: "fa fa-sticky-note" },
-                  { url: "record", title: "游迹组合管理", icon: "fa fa-bars" },
-                   { url: "plan", title: "游迹成就管理", icon: "fa fa-sticky-note" },
+             url: "", title: "在线商城", icon: "fa fa-suitcase", child: [
+                  { url: "map", title: "首页管理", icon: "fa fa-sticky-note" },
+                  { url: "record", title: "Banner图", icon: "fa fa-bars" },
+                   { url: "plan", title: "商品管理", icon: "fa fa-sticky-note" },
+                   { url: "plan", title: "订单页", icon: "fa fa-sticky-note" }
              ]
          },
            {
-               url: "", title: "积分", icon: "fa fa-suitcase", child: [
-                    { url: "plan", title: "积分商城", icon: "fa fa-sticky-note" },
-                    { url: "record", title: "兑换记录", icon: "fa fa-bars" },
+               url: "", title: "用户管理", icon: "fa fa-suitcase", child: [
+                    { url: "plan", title: "用户管理", icon: "fa fa-sticky-note" }
                ]
            },
            {
-               url: "", title: "报表", icon: "fa fa-suitcase", child: [
-                    { url: "plan", title: "条件筛选", icon: "fa fa-sticky-note" },
-                    { url: "record", title: "自定义组合", icon: "fa fa-bars" },
+               url: "", title: "成就系统", icon: "fa fa-suitcase", child: [
+                    { url: "plan", title: "游迹成就", icon: "fa fa-sticky-note" },
+                    { url: "record", title: "纪念章成就", icon: "fa fa-bars" },
                ]
            },
            {
-               url: "", title: "系统", icon: "fa fa-suitcase", child: [
-                    { url: "plan", title: "轮播图管理", icon: "fa fa-sticky-note" },
-                    { url: "record", title: "权限管理", icon: "fa fa-bars" },
-                    { url: "record", title: "人员管理", icon: "fa fa-bars" },
-                    { url: "record", title: "角色管理", icon: "fa fa-bars" }
+               url: "", title: "系列管理", icon: "fa fa-suitcase", child: [
+                    { url: "plan", title: "系列管理", icon: "fa fa-sticky-note" }
+                 
+               ]
+           },
+           {
+               url: "", title: "统计管理", icon: "fa fa-suitcase", child: [
+                    { url: "plan", title: "概览", icon: "fa fa-sticky-note" }
+
                ]
            }
     ];
