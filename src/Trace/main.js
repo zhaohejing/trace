@@ -296,7 +296,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     });
 
 
-    //bannar图管理
+    //商品管理
     $stateProvider.state("product",
     {
         url: "/onlinemall/product/index.html",
@@ -312,6 +312,36 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/onlinemall/product/index.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    })
+        .state("productmodify",
+    {
+        url: "/onlinemall/product/modify.html",
+        templateUrl: "views/onlinemall/product/modify.html",
+        data: { pageTitle: '商品管理' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [{
+                            name: 'QiNiu',
+                            insertBefore: '#ng_load_plugins_before',
+                            files: [
+                                'assets/global/plugins/plupload/angular-local-storage.js',
+                                'assets/global/plugins/plupload/qupload.js'
+                            ]
+                        },
+                            {
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/onlinemall/product/modify.js'
                                 ]
                             }
                         ]

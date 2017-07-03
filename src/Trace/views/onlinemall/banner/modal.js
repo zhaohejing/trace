@@ -6,16 +6,7 @@
 
             });
             var vm = this;
-            vm.dateOptions = {
-                locale: moment.locale(),
-                format: 'yyyy/mm/dd HH:mm:ss',
-                showClose: true,
-                keepOpen: false, sideBySide: true, toolbarPlacement: 'default', showTodayButton: true, showClear: true
-            };
-
-            vm.level = [{ id: 1, name: "一等奖" }, { id: 2, name: "二等奖" }, { id: 3, name: "三等奖" }, { id: 4, name: "参与奖" }];
             vm.gift = {};
-            vm.activitys = [];
             vm.url = "api/gift/modify";
             vm.save = function () {
                 if (!vm.gift.activityId||vm.gift.activityId<=0) {
@@ -40,14 +31,6 @@
                 $uibModalInstance.dismiss();
             };
             vm.init = function () {
-                dataFactory.action("api/activity/allactivitys", "", null, { }).then(function (res) {
-                    if (res.success) {
-                        vm.activitys = res.result;
-                    } else {
-                        abp.notify.error("获取失败,请重试");
-                    }
-                });
-
                 if (model.id) {
                     dataFactory.action("api/gift/detail", "", null, { id: model.id }).then(function (res) {
                         if (res.success) {

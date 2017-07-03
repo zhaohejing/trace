@@ -692,6 +692,8 @@
     <Content Include="views\onlinemall\order\index.js" />
     <Content Include="views\onlinemall\product\index.html" />
     <Content Include="views\onlinemall\product\index.js" />
+    <Content Include="views\onlinemall\product\modify.html" />
+    <Content Include="views\onlinemall\product\modify.js" />
     <Content Include="views\statistical\index.html" />
     <Content Include="views\statistical\index.js" />
     <Content Include="views\users\index.html" />
