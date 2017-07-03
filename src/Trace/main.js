@@ -124,7 +124,7 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', function ($stat
            {
                url: "", title: "系列管理", icon: "fa fa-suitcase", child: [
                     { url: "plan", title: "系列管理", icon: "fa fa-sticky-note" }
-                 
+
                ]
            },
            {
@@ -158,7 +158,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             data: { pageTitle: '积分商城管理' },
             resolve: {
                 deps: [
-                    '$ocLazyLoad', function($ocLazyLoad) {
+                    '$ocLazyLoad', function ($ocLazyLoad) {
                         return $ocLazyLoad.load(
                             [
                                 {
@@ -174,7 +174,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                 ]
             }
         });
-        //方案管理
+    //方案管理
 
     $stateProvider
         //活动管理
@@ -185,7 +185,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             data: { pageTitle: '积分商品管理' },
             resolve: {
                 deps: [
-                    '$ocLazyLoad', function($ocLazyLoad) {
+                    '$ocLazyLoad', function ($ocLazyLoad) {
                         return $ocLazyLoad.load(
                             [
                                 {
