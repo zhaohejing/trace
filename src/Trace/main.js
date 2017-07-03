@@ -228,31 +228,40 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
      });
 
     $stateProvider
-   //轮播图管理
-    .state("figure",
-    {
-        url: "/onlinemall/figure/index.html",
-        templateUrl: "views/onlinemall/figure/index.html",
-        data: { pageTitle: '轮播图管理' },
-        resolve: {
-            deps: [
-                '$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load(
-                        [
-                            {
-                                name: 'MetronicApp',
+        //轮播图管理
+        .state("figure",
+        {
+            url: "/onlinemall/figure/index.html",
+            templateUrl: "views/onlinemall/figure/index.html",
+            data: { pageTitle: '轮播图管理' },
+            resolve: {
+                deps: [
+                    '$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            [{
+                                name: 'QiNiu',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
-                                    'views/onlinemall/figure/index.js'
+                                    'assets/global/plugins/plupload/angular-local-storage.js',
+                                    'assets/global/plugins/plupload/qupload.js'
                                 ]
-                            }
-                        ]
-                    );
-                }
-            ]
-        }
-    });
+                            },
+                                {
+                                    name: 'MetronicApp',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'views/onlinemall/figure/index.js',
+                                        'views/onlinemall/figure/modal.js'
 
+                                    ]
+                                }
+                            ]
+                        );
+                    }
+                ]
+            }
+        });
+   
     //bannar图管理
     $stateProvider.state("banner",
     {
@@ -263,12 +272,20 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             deps: [
                 '$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load(
-                        [
+                        [{
+                            name: 'QiNiu',
+                            insertBefore: '#ng_load_plugins_before',
+                            files: [
+                                'assets/global/plugins/plupload/angular-local-storage.js',
+                                'assets/global/plugins/plupload/qupload.js'
+                            ]
+                        },
                             {
                                 name: 'MetronicApp',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
-                                    'views/onlinemall/banner/index.js'
+                                    'views/onlinemall/banner/index.js',
+                                       'views/onlinemall/banner/modal.js'
                                 ]
                             }
                         ]
@@ -329,8 +346,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             ]
         }
     });
-
-
     //用户管理
     $stateProvider.state("users",
     {

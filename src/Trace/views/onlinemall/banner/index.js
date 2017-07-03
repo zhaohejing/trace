@@ -2,8 +2,8 @@
     angular.module('MetronicApp')
         .controller('views.onlinemall.figure.index',
         [
-            '$scope', "$state", 'settings', "dataFactory", 'appSession',
-            function ($scope, $state, settings, dataFactory, appSession) {
+            '$scope', "$state", 'settings', "dataFactory", 'appSession','$uibModal',
+            function ($scope, $state, settings, dataFactory, appSession, $uibModal) {
                 // ajax初始化
                 $scope.$on('$viewContentLoaded',
                     function () {
@@ -43,39 +43,37 @@
                 };
                 // vm.init();
                 vm.add = function () {
-                    $state.go("integralmodify");
+                    var modal = $uibModal.open({
+                        templateUrl: 'views/onlinemall/banner/modal.html',
+                        controller: 'views.onlinemall.banner.modal as vm',
+                        backdrop: 'static',
+                     //   size: 'lg', //模态框的大小尺寸
+                        resolve: {
+                            model: function () { return {} }
+                        }
+                    });
+                    modal.result.then(function (response) {
+                        vm.init();
+                    });
                 }
 
-                vm.edit = function () {
-                    var id = Object.getOwnPropertyNames(vm.table.checkModel);
-                    if (id.length != 1) {
-                        abp.notify.warn("请选择一个操作对象");
-                        return;
-                    }
-                    $state.go("modify", { id: id[0] });
-                }
-                vm.actors = function () {
-                    var id = Object.getOwnPropertyNames(vm.table.checkModel);
-                    if (id.length != 1) {
-                        abp.notify.warn("请选择一个操作对象");
-                        return;
-                    }
-                    $state.go("actor", { id: id[0] });
-                }
-                vm.delete = function () {
-                    var ids = Object.getOwnPropertyNames(vm.table.checkModel);
-                    if (ids.length <= 0) {
-                        abp.notify.warn("请选择要删除的对象");
-                        return;
-                    }
-                    for (var i in vm.table.checkModel) {
-                        if (vm.table.checkModel.hasOwnProperty(i)) {
-                            if (vm.table.checkModel[i].public) {
-                                abp.notify.warn("已发布对象不允许操作");
-                                return;
-                            }
+                vm.edit = function (row) {
+                    var modal = $uibModal.open({
+                        templateUrl: 'views/onlinemall/banner/modal.html',
+                        controller: 'views.onlinemall.banner.modal as vm',
+                        backdrop: 'static',
+                        //   size: 'lg', //模态框的大小尺寸
+                        resolve: {
+                            model: function () { return { id:row.id} }
                         }
-                    };
+                    });
+                    modal.result.then(function (response) {
+                        vm.init();
+                    });
+                }
+             
+                vm.delete = function (row) {
+                 
                     abp.message.confirm(
                         '删除将导致数据无法显示', //确认提示
                         '确定要删除么?', //确认提示（可选参数）
@@ -83,7 +81,7 @@
                             if (isConfirmed) {
                                 //...delete user 点击确认后执行
                                 //api/resource/delete
-                                dataFactory.action("api/activity/delete", "", null, { list: ids })
+                                dataFactory.action("api/activity/delete", "", null, { list: [row.id] })
                                     .then(function (res) {
                                         abp.notify.success("删除成功");
                                         vm.init();
@@ -92,25 +90,7 @@
                         });
 
                 }
-                vm.public = function () {
-                    var ids = Object.getOwnPropertyNames(vm.table.checkModel);
-                    if (ids.length <= 0) {
-                        abp.notify.warn("请选择单个操作对象");
-                        return;
-                    }
-                    for (var i in vm.table.checkModel) {
-                        if (vm.table.checkModel[i].public) {
-                            abp.notify.warn("已发布对象不允许操作");
-                            return;
-                        }
-                    }
-                    dataFactory.action("api/activity/public", "", null, { list: ids })
-                        .then(function (res) {
-                            abp.notify.success("发布成功");
-                            vm.init();
-                        });
-                }
-
+           
             }
         ]);
 })();

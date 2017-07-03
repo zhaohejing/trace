@@ -671,8 +671,12 @@
     <Content Include="views\integralmall\modify.js" />
     <Content Include="views\onlinemall\banner\index.html" />
     <Content Include="views\onlinemall\banner\index.js" />
+    <Content Include="views\onlinemall\banner\modal.html" />
+    <Content Include="views\onlinemall\banner\modal.js" />
     <Content Include="views\onlinemall\figure\index.html" />
     <Content Include="views\onlinemall\figure\index.js" />
+    <Content Include="views\onlinemall\figure\modal.html" />
+    <Content Include="views\onlinemall\figure\modal.js" />
     <Content Include="views\onlinemall\order\index.html" />
     <Content Include="views\onlinemall\order\index.js" />
     <Content Include="views\onlinemall\product\index.html" />
