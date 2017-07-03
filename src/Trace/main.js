@@ -8,15 +8,16 @@ var MetronicApp = angular.module("MetronicApp", [
     "ui.bootstrap",//样式
     "oc.lazyLoad",//懒加载
     "ngSanitize",//初始化
-      'objectTable',//table表格
-    'objPagination',//分页
+   //   'objectTable',//table表格
+   // 'objPagination',//分页
     'angularFileUpload',//文件上传
     'abp',
     'ngLocale',
  //   "isteven-multi-select",//下拉标签
     , "textAngular",
     'angularSpectrumColorpicker',
-    'ui.bootstrap.dropdownToggle'
+    'ui.bootstrap.dropdownToggle',
+    'smart-table'
 ]);
 
 //懒加载

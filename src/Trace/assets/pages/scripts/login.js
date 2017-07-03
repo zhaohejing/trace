@@ -144,14 +144,10 @@
             $('.forget-form').hide();
         });
     }
-
-
-
-
     return {
         //main function to initiate the module
         init: function () {
-            var cookie = $.cookie("eggsResult");
+            var cookie = $.cookie("traceResult");
             if (cookie != "" && cookie != undefined) {
                 try {
                     var cook = $.parseJSON(cookie);
@@ -180,7 +176,6 @@
         }
 
     };
-
 }();
 jQuery(document).ready(function () {
     Login.init();

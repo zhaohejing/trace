@@ -204,7 +204,6 @@
     <Content Include="assets\global\plugins\morris\morris.min.js" />
     <Content Include="assets\global\plugins\morris\raphael-min.js" />
     <Content Include="assets\global\plugins\ng-sweet-alert.js" />
-    <Content Include="assets\global\plugins\object-table.js" />
     <Content Include="assets\global\plugins\plupload\angular-local-storage.js" />
     <Content Include="assets\global\plugins\plupload\qupload.js" />
     <Content Include="assets\global\plugins\qrcode.js" />
@@ -222,6 +221,7 @@
     <Content Include="assets\global\plugins\simple-line-icons\icons-lte-ie7.js" />
     <Content Include="assets\global\plugins\simple-line-icons\simple-line-icons.css" />
     <Content Include="assets\global\plugins\simple-line-icons\simple-line-icons.min.css" />
+    <Content Include="assets\global\plugins\smart-table.js" />
     <Content Include="assets\global\plugins\sweetalert\ie9.css" />
     <Content Include="assets\global\plugins\sweetalert\sweet-alert.css" />
     <Content Include="assets\global\plugins\sweetalert\sweet-alert.html" />
