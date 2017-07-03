@@ -10,36 +10,27 @@
                         App.initAjax();
                     });
                 var vm = this;
-                vm.filter = { index: 1, size: 10, filter: "" };
 
                 //页面属性
                 vm.table = {
-                    data: [], //数据集
-                    checkModel: {}, //选择的集合
-                    filter: "", //条件搜索
+                    rows: [], //数据集
+                    filter: { index: 1, size: 10, name: "",state:1,cate:1 }, //条件搜索
                     pageConfig: { //分页配置
                         currentPage: 1, //当前页
                         itemsPerPage: 10, //页容量
                         totalItems: 0 //总数据
                     }
                 }
-                vm.test= function() {
-                    vm.table.pageConfig.totalItems = 3;
-                    vm.table.data = [{ a: "1", b: "2", c: "3" }, { a: "11", b: "22", c: "33" }, { a: "111", b: "222", c: "333" }];
-                  
-                }
-                vm.test();
+              
                 //获取用户数据集，并且添加配置项
                 vm.init = function() {
-                    vm.table.checkModel = {};
                     vm.filter.index = vm.table.pageConfig.currentPage;
                     vm.filter.size = vm.table.pageConfig.itemsPerPage;
-                    dataFactory.action("api/activity/activitys", "", null, vm.filter)
+                    dataFactory.action("api/activity/activitys", "", null, vm.table.filter)
                         .then(function(res) {
                             if (res.success) {
-                                vm.table.checkModel = {};
                                 vm.table.pageConfig.totalItems = res.result.total;
-                                vm.table.data = res.result.data;
+                                vm.table.rows = res.result.data;
                                vm.table.pageConfig.onChange = function() {
                                     vm.init();
                                 }

@@ -3,7 +3,7 @@
         <ul class="page-breadcrumb">
             <li>
                 <i class="fa fa-hand-o-right"></i>
-                <a href="#">活动管理</a>
+                <a href="#">积分商城管理</a>
             </li>
         </ul>
     </div>
@@ -13,52 +13,59 @@
                 <div class="col-md-12">
                     <div class="input-icon right">
                         <i ng-click="vm.init()" class="fa fa-search"></i>
-                        <input type="text" class="form-control input-circle" placeholder="按条件搜索" value="" ng-model="vm.filter.filter">
+                        <input type="text" class="form-control input-circle" placeholder="按条件搜索"
+                               ng-model="vm.table.filter.name">
                     </div>
                 </div>
             </div>
             <div class="col-xs-4 text-right">
                 <button class="btn btn-primary blue" ng-click="vm.add()"><i class="fa fa-plus"></i> 添加</button>
-                <button class="btn btn-primary blue" ng-click="vm.public()"><i class="fa fa-plus"></i> 发布</button>
-                <button class="btn btn-primary blue" ng-click="vm.edit()"><i class="fa fa-plus"></i> 编辑</button>
-                <button class="btn btn-primary blue" ng-click="vm.actors()"><i class="fa fa-plus"></i> 管理参与者</button>
-                <button class="btn btn-primary blue" ng-click="vm.delete()"><i class="fa fa-times"></i> 删除</button>
+                <button class="btn btn-primary blue" ng-click="vm.export()"><i class="fa fa-times"></i> 导出</button>
             </div>
         </div>
         <div class="row">
             <table st-table="vm.table.data" class="table table-striped">
                 <thead>
-                <tr>
-                    <th ><input type="checkbox"></th>
-                    <th st-sort="a">first name</th>
-                    <th>last name</th>
-                    <th>birth date</th>
-                    <th>balance</th>
-                    <th>email</th>
-                    <th>action</th>
-                </tr>
+                    <tr>
+                        <th st-sort="a">攻略名称</th>
+                        <th>创建时间</th>
+                        <th>兑换积分</th>
+                        <th>库存</th>
+                        <th>类型</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.data">
-                    <td cs-select="row"></td>
-                    <td>{{row.a}}</td>
-                    <td>{{row.b}}</td>
-                    <td>{{row.c}}</td>
-                    <td>{{row.balance}}</td>
-                    <td>{{row.email}}</td>
-                    <td>
-                        <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
-                            <i class="glyphicon glyphicon-remove-circle">
-                            </i>
-                        </button>
-                    </td>
-                </tr>
+                    <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.data">
+                        <td>{{row.a}}</td>
+                        <td>{{row.b}}</td>
+                        <td>{{row.c}}</td>
+                        <td>{{row.balance}}</td>
+                        <td>{{row.email}}</td>
+                        <td>{{row.email}}</td>
+                        <td>
+                            <button type="button" ng-click="vm.modify(row)" class="btn btn-sm btn-default">
+                                修改
+                            </button>
+                            <button type="button" ng-click="vm.low(row)" class="btn btn-sm btn-warning">
+                                下架
+                            </button>
+                            <button type="button" ng-click="vm.delete(row)" class="btn btn-sm btn-danger">
+                                删除
+                            </button>
+                        </td>
+                    </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <div pagination conf="vm.table.pageConfig"></div>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
-            <!--分页-->
-            <nav class="paging">
-                <pagination conf="vm.table.pageConfig"></pagination>
-            </nav>
+
 
         </div>
     </div>
