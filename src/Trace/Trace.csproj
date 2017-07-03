@@ -413,24 +413,24 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="views\activity\index.html" />
-    <Content Include="views\activity\index.js" />
-    <Content Include="views\activity\modify.html" />
-    <Content Include="views\activity\modify.js" />
-    <Content Include="views\actor\index.html" />
-    <Content Include="views\actor\index.js" />
-    <Content Include="views\actor\modal.html" />
-    <Content Include="views\actor\modal.js" />
-    <Content Include="views\gift\index.html" />
-    <Content Include="views\gift\index.js" />
-    <Content Include="views\gift\modal.html" />
-    <Content Include="views\gift\modal.js" />
-    <Content Include="views\map\index.html" />
-    <Content Include="views\map\index.js" />
-    <Content Include="views\prize\index.html" />
-    <Content Include="views\prize\index.js" />
-    <Content Include="views\prize\modal.html" />
-    <Content Include="views\prize\modal.js" />
+    <Content Include="views\integralmall\index.html" />
+    <Content Include="views\integralmall\index.js" />
+    <Content Include="views\integralmall\modify.html" />
+    <Content Include="views\integralmall\modify.js" />
+    <Content Include="views\onlinemall\index.html" />
+    <Content Include="views\onlinemall\index.js" />
+    <Content Include="views\onlinemall\modal.html" />
+    <Content Include="views\onlinemall\modal.js" />
+    <Content Include="views\usermanager\index.html" />
+    <Content Include="views\usermanager\index.js" />
+    <Content Include="views\usermanager\modal.html" />
+    <Content Include="views\usermanager\modal.js" />
+    <Content Include="views\series\index.html" />
+    <Content Include="views\series\index.js" />
+    <Content Include="views\achievement\index.html" />
+    <Content Include="views\achievement\index.js" />
+    <Content Include="views\achievement\modal.html" />
+    <Content Include="views\achievement\modal.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -446,6 +446,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
+    <Folder Include="views\statistical\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
