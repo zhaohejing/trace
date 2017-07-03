@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module("MetronicApp")
-        .controller("views.map.index",
+        .controller("views.series.index",
         ["$scope", "$state", "settings", "dataFactory",
             function($scope, $state, settings, dataFactory) {
                 // ajax初始化

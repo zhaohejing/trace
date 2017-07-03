@@ -94,37 +94,37 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', function ($stat
       {
           url: "", title: "积分商城", icon: "fa fa-suitcase", child: [
                { url: "integral", title: "积分商城管理", icon: "fa fa-sticky-note" },
-                { url: "plan", title: "积分详情订单", icon: "fa fa-sticky-note" }
+                { url: "integralrecord", title: "积分详情订单", icon: "fa fa-sticky-note" }
           ]
       },
          {
              url: "", title: "在线商城", icon: "fa fa-suitcase", child: [
-                  { url: "map", title: "首页管理", icon: "fa fa-sticky-note" },
-                  { url: "record", title: "Banner图", icon: "fa fa-bars" },
-                   { url: "plan", title: "商品管理", icon: "fa fa-sticky-note" },
-                   { url: "plan", title: "订单页", icon: "fa fa-sticky-note" }
+                  { url: "figure", title: "首页管理", icon: "fa fa-sticky-note" },
+                  { url: "banner", title: "Banner图", icon: "fa fa-bars" },
+                   { url: "product", title: "商品管理", icon: "fa fa-sticky-note" },
+                   { url: "order", title: "订单页", icon: "fa fa-sticky-note" }
              ]
          },
            {
                url: "", title: "用户管理", icon: "fa fa-suitcase", child: [
-                    { url: "plan", title: "用户管理", icon: "fa fa-sticky-note" }
+                    { url: "users", title: "用户信息", icon: "fa fa-sticky-note" }
                ]
            },
            {
                url: "", title: "成就系统", icon: "fa fa-suitcase", child: [
-                    { url: "plan", title: "游迹成就", icon: "fa fa-sticky-note" },
-                    { url: "record", title: "纪念章成就", icon: "fa fa-bars" },
+                    { url: "trace", title: "游迹成就", icon: "fa fa-sticky-note" },
+                    { url: "medal", title: "纪念章成就", icon: "fa fa-bars" },
                ]
            },
            {
                url: "", title: "系列管理", icon: "fa fa-suitcase", child: [
-                    { url: "plan", title: "系列管理", icon: "fa fa-sticky-note" }
+                    { url: "series", title: "系列管理", icon: "fa fa-sticky-note" }
 
                ]
            },
            {
                url: "", title: "统计管理", icon: "fa fa-suitcase", child: [
-                    { url: "plan", title: "概览", icon: "fa fa-sticky-note" }
+                    { url: "statistical", title: "概览", icon: "fa fa-sticky-note" }
 
                ]
            }
@@ -142,10 +142,9 @@ MetronicApp.controller('FooterController', ['$scope', function ($scope) {
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
     $urlRouterProvider.otherwise("/integral.html");
-
-
+     
+    //积分商城管理
     $stateProvider
-        //活动管理
         .state("integral",
         {
             url: "/integral.html",
@@ -169,10 +168,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                 ]
             }
         });
-    //方案管理
-
+    //积分商品添加
     $stateProvider
-        //活动管理
         .state("integralmodify",
         {
             url: "/integral/modify.html",
@@ -204,7 +201,258 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                 ]
             }
         });
+    $stateProvider
+    //积分商品订单管理额
+     .state("integralrecord",
+     {
+         url: "/integral/record.html",
+         templateUrl: "views/integralmall/record.html",
+         data: { pageTitle: '积分订单管理' },
+         resolve: {
+             deps: [
+                 '$ocLazyLoad', function ($ocLazyLoad) {
+                     return $ocLazyLoad.load(
+                         [
+                             {
+                                 name: 'MetronicApp',
+                                 insertBefore: '#ng_load_plugins_before',
+                                 files: [
+                                     'views/integralmall/record.js'
+                                 ]
+                             }
+                         ]
+                     );
+                 }
+             ]
+         }
+     });
 
+    $stateProvider
+   //轮播图管理
+    .state("figure",
+    {
+        url: "/onlinemall/figure/index.html",
+        templateUrl: "views/onlinemall/figure/index.html",
+        data: { pageTitle: '轮播图管理' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [
+                            {
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/onlinemall/figure/index.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    });
+
+    //bannar图管理
+    $stateProvider.state("banner",
+    {
+        url: "/onlinemall/banner/index.html",
+        templateUrl: "views/onlinemall/banner/index.html",
+        data: { pageTitle: '轮播图管理' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [
+                            {
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/onlinemall/banner/index.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    });
+
+
+    //bannar图管理
+    $stateProvider.state("product",
+    {
+        url: "/onlinemall/product/index.html",
+        templateUrl: "views/onlinemall/product/index.html",
+        data: { pageTitle: '轮播图管理' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [
+                            {
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/onlinemall/product/index.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    });
+
+
+    //order管理
+    $stateProvider.state("order",
+    {
+        url: "/onlinemall/order/index.html",
+        templateUrl: "views/onlinemall/order/index.html",
+        data: { pageTitle: '轮播图管理' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [
+                            {
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/onlinemall/order/index.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    });
+
+
+    //用户管理
+    $stateProvider.state("users",
+    {
+        url: "/users/index.html",
+        templateUrl: "views/users/index.html",
+        data: { pageTitle: '轮播图管理' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [
+                            {
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/users/index.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    });
+
+    //游迹管理
+    $stateProvider.state("trace",
+    {
+        url: "/trace/index.html",
+        templateUrl: "views/achievement/trace/index.html",
+        data: { pageTitle: '游迹管理' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [
+                            {
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/achievement/trace/index.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    });
+
+    //纪念章管理
+    $stateProvider.state("medal",
+    {
+        url: "/medal/index.html",
+        templateUrl: "views/achievement/medal/index.html",
+        data: { pageTitle: '纪念章管理' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [
+                            {
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/achievement/medal/index.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    });
+    //系列管理
+    $stateProvider.state("series",
+    {
+        url: "/series/index.html",
+        templateUrl: "views/series/index.html",
+        data: { pageTitle: '系列管理' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [
+                            {
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/series/index.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    });
+    //统计管理
+    $stateProvider.state("statistical",
+    {
+        url: "/statistical/index.html",
+        templateUrl: "views/statistical/index.html",
+        data: { pageTitle: '统计管理' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [
+                            {
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/statistical/index.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    });
 }]);
 
 //启动

@@ -31,7 +31,7 @@
                 }
             }
             vm.activity = {};
-            if (!aid) {
+            if (aid) {
                 dataFactory.action("api/activity/detail", "", null, { id: aid })
                   .then(function (res) {
                       if (res.success) {
@@ -45,12 +45,10 @@
                 content: '<p>请输入富文本内容</p>'
 
             };
-            vm.filter = {
-                states: [{ id: 1, name: "上架" }, { id: 0, name: "下架" }],
-                cates: [{ id: 1, name: "纪念章" }, { id: 2, name: "名片" }, { id: 3, name: "明信片" }, { id: 4, name: "周边" }]
-            }
+            vm.cates = [{ id: 1, name: "纪念章" }, { id: 2, name: "名片" }, { id: 3, name: "明信片" }, { id: 4, name: "周边" }];
+            
             vm.cancel = function () {
-                $state.go("activity");
+                $state.go("integral");
             }
             //保存
             vm.save = function () {
