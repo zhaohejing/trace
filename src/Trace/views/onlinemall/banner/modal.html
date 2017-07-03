@@ -44,13 +44,13 @@
                                 data-toggle="dropdown" data-target=".dropdown1-parent"
                                href="#">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" data-ng-model="data.dateDropDownInput"
+                                    <input type="text" class="form-control" data-ng-model="vm.gift.date"
                                            data-date-time-input="YYYY-MM-DD HH:mm">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <datetimepicker   data-ng-model="data.dateDropDownInputNoFormatting"
+                                <datetimepicker   data-ng-model="vm.gift.date"
                                                 data-datetimepicker-config="{ dropdownSelector: '#dropdown1' }"></datetimepicker>
                             </ul>
                         </div>
