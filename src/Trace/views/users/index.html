@@ -12,7 +12,7 @@
             <div class="col-xs-4 right">
                 <ul class="page-breadcrumb" style="float: right">
                     <li>
-                        <button class="btn btn-primary blue" ng-click="vm.export()"><i class="fa fa-plus"></i> 导出</button>
+                        <button class="btn btn-sm blue" ng-click="vm.export()"><i class="fa fa-plus"></i> 导出</button>
                     </li>
 
                 </ul>
@@ -22,18 +22,28 @@
     <div class="portlet light bordered">
         <div class="row">
             <div class="col-xs-6">
-                <div class="input-icon right">
-                    <i ng-click="vm.init()" class="fa fa-search"></i>
-                    <input type="text" class="form-control input-circle" placeholder="手机号" ng-model="vm.table.filter.name">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-3 control-label">手机号:</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control"
+                                ng-class="{'edited':vm.activity.title}"  placeholder="手机号" maxlength="120"
+                                ng-model="vm.gift.giftName">
+                    </div>
                 </div>
             </div>
             <div class="col-xs-6">
-                <div class="input-icon right">
-                    <i ng-click="vm.init()" class="fa fa-search"></i>
-                    <input type="text" class="form-control input-circle" placeholder="地区" ng-model="vm.table.filter.name">
+                <div class="form-group form-md-line-input has-info">
+                    <label class="col-md-3 control-label">地区:</label>
+                    <div class="col-md-9 input-group input-group-sm">
+                        <div class="input-group-control">
+                            <input type="text" class="form-control input-sm" placeholder="地区" ng-model="vm.table.filter.name">
+                        </div>
+                        <span class="input-group-btn btn-right">
+                            <button ng-click="vm.init()" class="btn green-haze" type="button">查询</button>
+                        </span>
+                    </div>
                 </div>
             </div>
-
         </div>
         <div class="row">
             <table st-table="vm.table.data" class="table table-striped">

@@ -31,10 +31,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6">
-                <div class="input-icon right">
-                    <i ng-click="vm.init()" class="fa fa-search"></i>
-                    <input type="text" class="form-control input-circle" placeholder="按条件搜索" ng-model="vm.table.filter.name">
+            <div class="col-xs-5">
+                <div class="form-group form-md-line-input has-info">
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-control">
+                            <input type="text" class="form-control input-sm" placeholder="按条件搜索" ng-model="vm.table.filter.name">
+                        </div>
+                        <span class="input-group-btn btn-right">
+                            <button ng-click="vm.init()" class="btn green-haze" type="button">查询</button>
+                        </span>
+                    </div>
                 </div>
             </div>
 
