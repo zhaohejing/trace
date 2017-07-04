@@ -85,7 +85,7 @@
                             <div ng-file-select="vm.file.onFileSelect($files)"
                                  data-multiple="vm.file.multiple" title="选择图片"
                                  onclick="this.value = null"
-                                 class="border">点击上传图片</div>
+                                 class="smallfile"></div>
                             <ol>
                                 <li ng-repeat="(k,v) in vm.file.selectFiles">
                                     {{v.file.name}} ----- {{v.progress.p}}% <a href="#" ng-click="vm.file.abort(k)">X</a>
@@ -99,7 +99,7 @@
                                 <div ng-file-select="vm.file.onFileSelect($files)"
                                      data-multiple="vm.file.multiple" title="选择图片"
                                      onclick="this.value = null"
-                                     class="border">点击上传图片</div>
+                                     class="bigfile"></div>
                                 <ol>
                                     <li ng-repeat="(k,v) in vm.file.selectFiles">
                                         {{v.file.name}} ----- {{v.progress.p}}% <a href="#" ng-click="vm.file.abort(k)">X</a>
@@ -112,8 +112,8 @@
             </div>
 
             <div class="modal-footer">
-                <button ng-disabled="vm.saving" type="button"  ng-click="vm.cancel()">返回</button>
-                <button type="submit" button-busy="vm.saving" busy-text="保存"
+                <button ng-disabled="vm.saving" type="button" class="btn btn-sm blue"  ng-click="vm.cancel()">返回</button>
+                <button type="submit" button-busy="vm.saving" class="btn btn-sm blue" busy-text="保存"
                         ng-click="vm.save()"
                         ng-disabled="modalform.$invalid">
                     <span>保存</span>

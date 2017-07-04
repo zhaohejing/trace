@@ -1,0 +1,12 @@
+﻿.smallfile {
+    width: 250px;
+    height: 250px;
+    background-image:url(upload.jpg);
+    margin: auto;
+}
+.bigfile {
+    width: 250px;
+    height: 250px;
+    background-image:url(upload.jpg);
+    margin: auto;
+}
