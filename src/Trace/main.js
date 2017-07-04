@@ -180,6 +180,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                     '$ocLazyLoad', function ($ocLazyLoad) {
                         return $ocLazyLoad.load(
                             [
+
                                 {
                                     name: 'QiNiu',
                                     insertBefore: '#ng_load_plugins_before',
