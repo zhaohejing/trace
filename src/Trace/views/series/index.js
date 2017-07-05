@@ -9,7 +9,6 @@
                         App.initAjax();
                     });
                 var vm = this;
-                vm.mapper;
                 vm.overlays = [];
                vm.mapReady = function (map,draw) {
                     map.enableScrollWheelZoom();

@@ -37,9 +37,14 @@
                     });
                     //回调获得覆盖物信息
                     var overlaycomplete = function (e) {
+                        if (scope.overlays.length==1) {
+                            map.clearOverlays();
+                            scope.overlays = [];
+                        }
                         var temp = { drawingMode: e.drawingMode,overlay:e.overlay };
                         scope.overlays.push(temp);
-                       
+                        map.addOverlay(e.overlay);
+
                     };
                     //添加鼠标绘制工具监听事件，用于获取绘制结果
                     draw.addEventListener("overlaycomplete", overlaycomplete);

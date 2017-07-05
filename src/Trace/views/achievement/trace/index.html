@@ -5,7 +5,7 @@
 
                 <li>
                     <i class="fa fa-hand-o-right"></i>
-                    <a href="#">游戏管理</a>
+                    <a href="#">游迹管理</a>
                 </li>
             </ul>
         </div>
@@ -13,9 +13,6 @@
             <ul class="page-breadcrumb" style="float: right">
                 <li>
                     <button class="btn btn-sm blue" ng-click="vm.add()"><i class="fa fa-plus"></i> 添加</button>
-                </li>
-                <li>
-                    <button class="btn btn-sm blue" ng-click="vm.export()"><i class="fa fa-plus"></i> 导出</button>
                 </li>
             </ul>
         </div>
@@ -66,12 +63,14 @@
             <table st-table="vm.table.data" class="table table-striped">
                 <thead>
                     <tr>
-                        <th st-sort="a">攻略名称</th>
+                        <th st-sort="a">游迹名称</th>
                         <th>创建时间</th>
-                        <th>兑换积分</th>
-                        <th>库存</th>
-                        <th>类型</th>
-                        <th>状态</th>
+                        <th>一级分类</th>
+                        <th>二级分类</th>
+                        <th>三级分类(系列)</th>
+                        <th>积分</th>
+                        <th>成就值</th>
+                        <th>称号</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -81,6 +80,8 @@
                         <td>{{row.b}}</td>
                         <td>{{row.c}}</td>
                         <td>{{row.balance}}</td>
+                        <td>{{row.balance}}</td>
+                        <td>{{row.balance}}</td>
                         <td>{{row.email}}</td>
                         <td>{{row.email}}</td>
                         <td>
@@ -88,7 +89,7 @@
                                 修改
                             </button>
                             <button type="button" ng-click="vm.low(row)" class="btn btn-sm btn-warning">
-                                下架
+                                发布
                             </button>
                             <button type="button" ng-click="vm.delete(row)" class="btn btn-sm btn-danger">
                                 删除
