@@ -1,58 +1,53 @@
-﻿angular.module('MetronicApp').controller('views.gift.modal',
-    ['$scope', 'settings', '$uibModalInstance', 'model', 'dataFactory', '$qupload',
-        function ($scope, settings, $uibModalInstance, model, dataFactory, $qupload) {
+﻿angular.module('MetronicApp').controller('views.common.allowpermission',
+    ['$scope', 'settings', '$uibModalInstance', 'model', 'dataFactory',
+        function ($scope, settings, $uibModalInstance, model, dataFactory) {
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
 
             });
             var vm = this;
-            vm.level = [{ id: 1, name: "一等奖" }, { id: 2, name: "二等奖" }, { id: 3, name: "三等奖" }, { id: 4, name: "参与奖" }];
-            vm.gift = {};
-            vm.activitys = [];
-            vm.url = "api/gift/modify";
+            vm.user = {};
+            vm.roles = [];
+            vm.url = "api/sysuser/allot";
             vm.save = function () {
-                if (!vm.gift.activityId||vm.gift.activityId<=0) {
-                    abp.notify.warn("请先创建活动");
-                    return;
-                }
-                if (vm.file.show.length != 1) {
-                    abp.notify.warn("请先上传文件");
-                    return;
-                }
-                vm.gift.imageName = vm.file.show[0].imageName;
-                vm.gift.imageUrl = vm.file.show[0].imageUrl;
-                dataFactory.action(vm.url, "", null, vm.gift).then(function (res) {
+                var parms = { users: [vm.user.id], roles: vm.roles };
+          
+                dataFactory.action(vm.url, "", null, parms).then(function (res) {
                     if (res.success) {
                         $uibModalInstance.close();
                     } else {
-                        abp.notify.error("保存失败,请重试");
+                        abp.notify.error(res.error);
                     }
                 });
             };
             vm.cancel = function () {
                 $uibModalInstance.dismiss();
             };
-
-
             vm.init = function () {
-                dataFactory.action("api/activity/allactivitys", "", null, { }).then(function (res) {
+                dataFactory.action("api/sysrole/getAll", "", null, {
+                    name: "",
+                    pageNum: 1,
+                    pageSize: 999
+                }).then(function (res) {
                     if (res.success) {
-                        vm.activitys = res.result;
+                        vm.roles = res.result;
                     } else {
-                        abp.notify.error("获取失败,请重试");
+                        abp.notify.error(res.error);
                     }
                 });
 
                 if (model.id) {
-                    dataFactory.action("api/gift/detail", "", null, { id: model.id }).then(function (res) {
+                    dataFactory.action("api/sysuser/getById", "", null, { id: model.id }).then(function (res) {
                         if (res.success) {
-                            vm.gift = res.result;
+                            vm.user = res.result;
                         } else {
-                            abp.notify.error("获取失败,请重试");
+                            abp.notify.error(res.error);
                         }
                     });
-                }
+                } 
             }
+            vm.init();
+
             vm.init();
             vm.file = {
                 multiple: false,

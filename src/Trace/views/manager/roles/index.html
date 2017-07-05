@@ -1,18 +1,18 @@
-﻿<div ng-controller="views.users.index as vm">
+﻿<div ng-controller="views.manager.roles.index as vm">
     <div class="page-bar">
         <div class="page-bar">
             <div class="col-xs-8">
                 <ul class="page-breadcrumb">
                     <li>
                         <i class="fa fa-hand-o-right"></i>
-                        <a href="#">用户管理</a>
+                        <a href="#">角色管理</a>
                     </li>
                 </ul>
             </div>
             <div class="col-xs-4 right">
                 <ul class="page-breadcrumb" style="float: right">
                     <li>
-                        <button class="btn btn-sm blue" ng-click="vm.export()"><i class="fa fa-plus"></i> 导出</button>
+                        <button class="btn btn-sm blue" ng-click="vm.add()"><i class="fa fa-plus"></i> 添加</button>
                     </li>
 
                 </ul>
@@ -23,20 +23,10 @@
         <div class="row">
             <div class="col-xs-6">
                 <div class="form-group form-md-line-input">
-                    <label class="col-md-3 control-label">手机号:</label>
-                    <div class="col-md-9">
-                        <input type="text" class="form-control"
-                                ng-class="{'edited':vm.activity.title}"  placeholder="手机号" maxlength="120"
-                                ng-model="vm.gift.giftName">
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6">
-                <div class="form-group form-md-line-input has-info">
-                    <label class="col-md-3 control-label">地区:</label>
+                    <label class="col-md-3 control-label">角色名:</label>
                     <div class="col-md-9 input-group input-group-sm">
                         <div class="input-group-control">
-                            <input type="text" class="form-control input-sm" placeholder="地区" ng-model="vm.table.filter.name">
+                            <input type="text" class="form-control input-sm" placeholder="角色名" ng-model="vm.filter.name">
                         </div>
                         <span class="input-group-btn btn-right">
                             <button ng-click="vm.init()" class="btn green-haze" type="button">查询</button>
@@ -49,37 +39,22 @@
             <table st-table="vm.table.data" class="table table-striped">
                 <thead>
                     <tr>
-                        <th st-sort="a">用户昵称</th>
-                        <th>手机号</th>
-                        <th>性别</th>
-                        <th>出生日期</th>
-                        <th>所在城市</th>
-                        <th>积分</th>
-                        <th>成就值</th>
-                        <th>纪念章</th>
-                        <th>登录密码</th>
-                        <th>称号</th>
+                        <th st-sort="a">角色名</th>
+                        <th>编码</th>
+                  
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.data">
-                        <td>{{row.a}}</td>
-                        <td>{{row.b}}</td>
-                        <td>{{row.c}}</td>
-                        <td>{{row.balance}}</td>
-                        <td>{{row.email}}</td>
-                        <td>{{row.email}}</td>
-                        <td>{{row.email}}</td>
-                        <td>{{row.email}}</td>
-                        <td>{{row.email}}</td>
-                        <td>{{row.email}}</td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.code}}</td>
                         <td>
-                            <a href="#" ng-click="vm.modify(row)">
+                            <a href="#" ng-click="vm.edit(row)">
                                 修改
                             </a>
-                            <a href="#" ng-click="vm.low(row)">
-                                下线
+                            <a href="#" ng-click="vm.allow(row)">
+                                分配权限
                             </a>
                             <a href="#" ng-click="vm.delete(row)">
                                 删除

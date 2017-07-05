@@ -1,0 +1,84 @@
+﻿<div ng-controller="views.manager.users.index as vm">
+    <div class="page-bar">
+        <div class="page-bar">
+            <div class="col-xs-8">
+                <ul class="page-breadcrumb">
+                    <li>
+                        <i class="fa fa-hand-o-right"></i>
+                        <a href="#">用户管理</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-4 right">
+                <ul class="page-breadcrumb" style="float: right">
+                    <li>
+                        <button class="btn btn-sm blue" ng-click="vm.add()"><i class="fa fa-plus"></i> 添加</button>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="portlet light bordered">
+        <div class="row">
+          
+            <div class="col-xs-6">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-3 control-label">用户名:</label>
+                    <div class="col-md-9 input-group input-group-sm">
+                        <div class="input-group-control">
+                            <input type="text" class="form-control input-sm" placeholder="用户名" ng-model="vm.filter.name">
+                        </div>
+                        <span class="input-group-btn btn-right">
+                            <button ng-click="vm.init()" class="btn green-haze" type="button">查询</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <table st-table="vm.table.data" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th st-sort="a">用户名</th>
+                        <th>昵称</th>
+                        <th>密码</th>
+                        <th>状态</th>
+                        <th>创建时间</th>
+                     
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.data">
+                        <td>{{row.user_name}}</td>
+                        <td>{{row.nick_name}}</td>
+                        <td>*********</td>
+                        <td>{{row.status==1?'启用':'禁用'}}</td>
+                        <td>{{row.create_time}}</td>
+                        <td>
+                            <a href="#" ng-click="vm.edit(row)">
+                                修改
+                            </a>
+                            <a href="#" ng-click="vm.allow(row)">
+                                分配角色
+                            </a>
+                            <a href="#" ng-click="vm.delete(row)">
+                                删除
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <div pagination conf="vm.table.pageConfig"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+
+        </div>
+    </div>
+</div>

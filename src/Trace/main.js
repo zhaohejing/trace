@@ -86,11 +86,19 @@ MetronicApp.controller('HeaderController', ['$scope', "appSession", function ($s
 }]);
 
 /* Setup Layout Part - Sidebar */
-MetronicApp.controller('SidebarController', ['$state', '$scope', function ($state, $scope) {
+MetronicApp.controller('SidebarController', ['$state', '$scope', 'dataFactory', function ($state, $scope, dataFactory) {
     var vm = this;
 
     $scope.$on('$includeContentLoaded', function () {
         Layout.initSidebar($state); // init sidebar
+    });
+    vm.list = [];
+    dataFactory.action('api/sysmenu/getMenuPerson', "", null, {}).then(function (res) {
+        if (res.success) {
+            vm.list = res.result;
+        } else {
+            abp.notify.error(res.error);
+        }
     });
     vm.list = [
       {
@@ -109,7 +117,8 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', function ($stat
          },
            {
                url: "", title: "用户管理", icon: "fa fa-suitcase", child: [
-                    { url: "users", title: "用户信息", icon: "fa fa-sticky-note" }
+                    { url: "users", title: "用户信息", icon: "fa fa-sticky-note" },
+               { url: "roles", title: "角色信息", icon: "fa fa-sticky-note" }
                ]
            },
            {
@@ -382,8 +391,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     //用户管理
     $stateProvider.state("users",
     {
-        url: "/users/index.html",
-        templateUrl: "views/users/index.html",
+        url: "/manager/users/index.html",
+        templateUrl: "views/manager/users/index.html",
         data: { pageTitle: '轮播图管理' },
         resolve: {
             deps: [
@@ -394,7 +403,38 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 name: 'MetronicApp',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
-                                    'views/users/index.js'
+                                    'views/manager/users/index.js',
+                                    'views/manager/users/modal.js',
+                                      'views/common/allowrole.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    });
+
+
+    //用户管理
+    $stateProvider.state("roles",
+    {
+        url: "/manager/roles/index.html",
+        templateUrl: "views/manager/roles/index.html",
+        data: { pageTitle: '轮播图管理' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [
+                            {
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/manager/roles/index.js',
+                                    'views/manager/roles/modal.js',
+                                    'views/common/allowpermission.js'
+
                                 ]
                             }
                         ]
