@@ -7,7 +7,8 @@
         return {
             restrict: 'A',
             scope: {
-                mapReady: '&'
+                mapReady: '&',
+                overlays:"="
             },
             link: function (scope, element, attrs) {
                 $window.baiduMapLoaded = function () {
@@ -34,6 +35,15 @@
                         polygonOptions: styleOptions, //多边形的样式
                         rectangleOptions: styleOptions //矩形的样式
                     });
+                    //回调获得覆盖物信息
+                    var overlaycomplete = function (e) {
+                        var temp = { drawingMode: e.drawingMode,overlay:e.overlay };
+                        scope.overlays.push(temp);
+                       
+                    };
+                    //添加鼠标绘制工具监听事件，用于获取绘制结果
+                    draw.addEventListener("overlaycomplete", overlaycomplete);
+
                     scope.mapReady({map: map,draw:draw});
                 };
                 var script = document.createElement("script");

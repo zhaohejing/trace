@@ -7,9 +7,10 @@
             </li>
         </ul>
     </div>
-    <div class="portlet light bordered">
-        <div baidu-map="f72BmbnulkYkxmS3YGqz94CTmutP0jbL" map-ready="vm.mapReady(map,draw)" style="height: 470px">
+    <button ng-click="vm.show()">显示</button>
 
+    <div class="portlet light bordered">
+        <div baidu-map="f72BmbnulkYkxmS3YGqz94CTmutP0jbL" map-ready="vm.mapReady(map,draw)" overlays="vm.overlays" style="height: 470px">
         </div>
       <!--  <div id="map" style="height: 470px; -webkit-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out;"></div>-->
 
