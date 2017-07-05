@@ -11,8 +11,10 @@ var MetronicApp = angular.module("MetronicApp", [
     'angularFileUpload',//文件上传
     'abp',
     'ngLocale',
-    'smart-table', 'ui.bootstrap.datetimepicker',
-    'ui.dateTimeInput'
+    'smart-table',
+    'ui.bootstrap.datetimepicker',
+    'ui.dateTimeInput',
+    'angular-baidu-map'
 ]);
 
 //懒加载

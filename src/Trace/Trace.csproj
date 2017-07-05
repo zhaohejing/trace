@@ -145,6 +145,7 @@
     <Content Include="assets\global\plugins\abp\libs\angularjs\abp.ng.js" />
     <Content Include="assets\global\plugins\abp\libs\requirejs\plugins\service.js" />
     <Content Include="assets\global\plugins\abp\utils\ie10fix.js" />
+    <Content Include="assets\global\plugins\angular-baidu-map.js" />
     <Content Include="assets\global\plugins\bootstrap-datetimepicker\css\bootstrap-datetimepicker.css" />
     <Content Include="assets\global\plugins\bootstrap-datetimepicker\css\bootstrap-datetimepicker.min.css" />
     <Content Include="assets\global\plugins\bootstrap-datetimepicker\css\datetimepicker.css" />
