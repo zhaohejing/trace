@@ -67,7 +67,20 @@
                         vm.init();
                     });
                 }
-              
+                vm.allow = function (row) {
+                    var modal = $uibModal.open({
+                        templateUrl: 'views/common/allowpermission.html',
+                        controller: 'views.common.allowpermission as vm',
+                        backdrop: 'static',
+                        //  size: 'lg', //模态框的大小尺寸
+                        resolve: {
+                            model: function () { return { id: row.id } }
+                        }
+                    });
+                    modal.result.then(function (response) {
+                        vm.init();
+                    });
+                }
                 vm.delete = function (row) {
                     abp.message.confirm(
                         '删除将导致数据无法显示', //确认提示
