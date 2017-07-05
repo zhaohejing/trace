@@ -21,25 +21,27 @@
                         fillOpacity: 0.6,      //填充的透明度，取值范围0 - 1。
                         strokeStyle: 'solid' //边线的样式，solid或dashed。
                     }
-                    //实例化鼠标绘制工具
-                    var draw = new BMapLib.DrawingManager(map, {
-                        isOpen: false, //是否开启绘制模式
+                    var config = {
+                        isOpen: true, //是否开启绘制模式
                         enableDrawingTool: true, //是否显示工具栏
                         drawingToolOptions: {
                             anchor: BMAP_ANCHOR_TOP_RIGHT, //位置
-                            offset: new BMap.Size(20, 20), //偏离值
+                            offset: new BMap.Size(5, 5), //偏离值
                             scale: 0.8 //工具栏缩放比例
                         },
                         circleOptions: styleOptions, //圆的样式
                         polylineOptions: styleOptions, //线的样式
                         polygonOptions: styleOptions, //多边形的样式
                         rectangleOptions: styleOptions //矩形的样式
-                    });
+                    };
+                    //实例化鼠标绘制工具
+                    var draw = new BMapLib.DrawingManager(map, config);
                     //回调获得覆盖物信息
                     var overlaycomplete = function (e) {
                         if (scope.overlays.length==1) {
                             map.clearOverlays();
                             scope.overlays = [];
+                          
                         }
                         var temp = { drawingMode: e.drawingMode,overlay:e.overlay };
                         scope.overlays.push(temp);
