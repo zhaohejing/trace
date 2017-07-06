@@ -601,6 +601,7 @@
     <Content Include="favicon.ico" />
     <Content Include="index.html" />
     <Content Include="js\directives\directives.js" />
+    <Content Include="js\directives\permissionTree.js" />
     <Content Include="js\factorys\dataFactory.js" />
     <Content Include="layout.html" />
     <Content Include="layouts\footer.html" />

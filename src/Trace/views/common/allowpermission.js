@@ -10,15 +10,7 @@
             vm.permissions = [];
             vm.url = "api/sysmenu/allot";
             vm.save = function () {
-                var temp = [];
-                angular.forEach(vm.permissions,
-                    function (v, i) {
-                        if (v.check) {
-                            temp.push(v.id);
-                        }
-                    });
-                var parms = { roles: [vm.role.id], menus: temp };
-
+                var parms = { roles: [vm.role.id], menus: vm.permissions.allow };
                 dataFactory.action(vm.url, "", null, parms).then(function (res) {
                     if (res.success) {
                         $uibModalInstance.close();

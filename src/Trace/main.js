@@ -93,13 +93,13 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', 'dataFactory', 
         Layout.initSidebar($state); // init sidebar
     });
     vm.list = [];
-    dataFactory.action('api/sysmenu/getMenuPerson', "", null, {}).then(function (res) {
-        if (res.success) {
-            vm.list = res.result;
-        } else {
-            abp.notify.error(res.error);
-        }
-    });
+    //dataFactory.action('api/sysmenu/getMenuPerson', "", null, {}).then(function (res) {
+    //    if (res.success) {
+    //        vm.list = res.result;
+    //    } else {
+    //        abp.notify.error(res.error);
+    //    }
+    //});
     vm.list = [
       {
           url: "", title: "积分商城", icon: "fa fa-suitcase", child: [
@@ -433,7 +433,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 files: [
                                     'views/manager/roles/index.js',
                                     'views/manager/roles/modal.js',
-                                    'views/common/allowpermission.js'
+                                    'views/common/allowpermission.js',
+                                    'js/directives/permissionTree.js'
 
                                 ]
                             }
