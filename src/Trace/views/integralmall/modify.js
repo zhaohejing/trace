@@ -8,34 +8,13 @@
             });
             var vm = this;
             var aid = $stateParams.id;
-            vm.date = {
-                leftopen: false,
-                rightopen: false,
-                inlineOptions: {
-                    showWeeks: false
-                },
-                dateOptions: {
-                    //dateDisabled: disabled,
-                    formatYear: 'yyyy',
-                    formatMonth: 'MM',
-                    formatDay: 'dd',
-                    maxDate: new Date(5000, 1, 1),
-                    minDate: new Date(1900, 1, 1),
-                    startingDay: 1
-                },
-                openleft: function () {
-                    vm.date.leftopen = !vm.date.leftopen;
-                },
-                openright: function () {
-                    vm.date.rightopen = !vm.date.rightopen;
-                }
-            }
-            vm.activity = {};
+          
+            vm.product = {};
             if (aid) {
-                dataFactory.action("api/activity/detail", "", null, { id: aid })
+                dataFactory.action("api/product/get?id="+aid, "GET", null,null)
                   .then(function (res) {
                       if (res.success) {
-                          vm.activity = res.result;
+                          vm.product = res.result;
                       } else {
                           abp.notify.error(res.error);
                       }
@@ -43,10 +22,8 @@
             }
             vm.config = {
                 content: '<p>请输入富文本内容</p>'
-
             };
             vm.cates = [{ id: 1, name: "纪念章" }, { id: 2, name: "名片" }, { id: 3, name: "明信片" }, { id: 4, name: "周边" }];
-            
             vm.cancel = function () {
                 $state.go("integral");
             }
@@ -58,14 +35,15 @@
                 }
                 vm.activity.images = vm.file.show;
                 var url = "api/activity/modify";
-                dataFactory.action(url, "", null, vm.activity).then(function (res) {
-                    if (res.success) {
-                        abp.notify.success("成功");
-                        $state.go("activity");
-                    } else {
-                        abp.notify.error(res.error);
-                    }
-                })
+                dataFactory.action(url, "", null, vm.activity)
+                    .then(function(res) {
+                        if (res.success) {
+                            abp.notify.success("成功");
+                            $state.go("activity");
+                        } else {
+                            abp.notify.error(res.error);
+                        }
+                    });
             }
 
             vm.file = {

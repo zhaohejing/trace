@@ -2,16 +2,17 @@
     <form name="modalform" role="form" novalidate class="form-validation">
         <div class="modal-header">
             <h4 class="modal-title">
-                <span ng-if="!vm.gift.id">添加轮播图</span>
-                <span ng-if="vm.gift.id"> {{vm.gift.giftName}} </span>
+                <span ng-if="!vm.gift.id">添加Banner</span>
+                <span ng-if="vm.gift.id"> 编辑Banner:{{vm.gift.giftName}} </span>
             </h4>
         </div>
         <div class="modal-body">
             <div class="row">
+              
                 <div class="form-group form-md-line-input">
                     <label class="col-md-3 control-label">轮播名称:</label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control"  ng-class="{'edited':vm.activity.title}" placeholder="请输入轮播图名称" maxlength="120"
+                        <input type="text" class="form-control" ng-class="{'edited':vm.activity.title}" placeholder="请输入轮播图名称" maxlength="120"
                                required ng-model="vm.gift.giftName">
                     </div>
                 </div>
@@ -58,11 +59,16 @@
                 </div>
             </div>
             <div class="row">
-                <div class="form-group form-md-line-input">
-                    <div ng-file-select="vm.file.onFileSelect($files)"
-                         data-multiple="vm.file.multiple" title="选择图片"
-                         onclick="this.value = null"
-                         class="smallfile"></div>
+                <div class="tiles">
+                    <div class="tile bg-red-sunglo" ng-file-select="vm.file.onFileSelect($files)" data-multiple="vm.file.multiple" onclick="this.value = null">
+                        <div class="tile-body">
+                            <i class="fa fa-cloud-upload"></i>
+                        </div>
+                        <div class="tile-object">
+                            <div class="name"> 限制 </div>
+                            <div class="number"> 100x100 </div>
+                        </div>
+                    </div>
                     <ol>
                         <li ng-repeat="(k,v) in vm.file.selectFiles">
                             {{v.file.name}} ----- {{v.progress.p}}% <a href="#" ng-click="vm.file.abort(k)">X</a>

@@ -2,17 +2,15 @@
     angular.module('MetronicApp')
         .controller('views.onlinemall.figure.index',
         [
-            '$scope', "$state", 'settings', "dataFactory", 'appSession','$uibModal',
-            function ($scope, $state, settings, dataFactory, appSession, $uibModal) {
+            '$scope', "$state", 'settings', "dataFactory",'$uibModal',
+            function ($scope, $state, settings, dataFactory, $uibModal) {
                 // ajax初始化
                 $scope.$on('$viewContentLoaded',
                     function () {
                         App.initAjax();
                     });
                 var vm = this;
-
                 vm.states = [{ id: 1, name: "有效" }, { id: 0, name: "失效" }];
-                
                 //页面属性
                 vm.table = {
                     rows: [], //数据集

@@ -6,7 +6,7 @@
 
             });
             var vm = this;
-            vm.gift = {};
+            vm.model = {};
             vm.url = "api/gift/modify";
             vm.save = function () {
                 if (!vm.gift.activityId || vm.gift.activityId <= 0) {
@@ -34,7 +34,7 @@
                 if (model.id) {
                     dataFactory.action("api/gift/detail", "", null, { id: model.id }).then(function (res) {
                         if (res.success) {
-                            vm.gift = res.result;
+                            vm.model = res.result;
                         } else {
                             abp.notify.error("获取失败,请重试");
                         }
@@ -46,11 +46,12 @@
                 multiple: false,
                 token: "",
                 init: function () {
-                    dataFactory.action("api/token/qnToken", "", null, {}).then(function (res) {
-                        if (res.result == "1") {
-                            vm.file.token = res.data;
-                        }
-                    })
+                    dataFactory.action("api/token/qnToken", "", null, {})
+                        .then(function(res) {
+                            if (res.result == "1") {
+                                vm.file.token = res.data;
+                            }
+                        });
                 },
                 uploadstate: false,
                 show: [],
