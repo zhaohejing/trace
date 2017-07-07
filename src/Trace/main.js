@@ -559,7 +559,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
         data: { pageTitle: '邮费管理' },
         resolve: {
             deps: [
-                '$ocLazyLoad', function ($ocLazyLoad) {
+                '$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load(
                         [
                             {
@@ -575,31 +575,128 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                 }
             ]
         }
-    })
-    //统计管理
-    $stateProvider.state("statistical",
-    {
-        url: "/statistical/index.html",
-        templateUrl: "views/statistical/index.html",
-        data: { pageTitle: '统计管理' },
-        resolve: {
-            deps: [
-                '$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load(
-                        [
-                            {
-                                name: 'MetronicApp',
-                                insertBefore: '#ng_load_plugins_before',
-                                files: [
-                                    'views/statistical/index.js'
-                                ]
-                            }
-                        ]
-                    );
-                }
-            ]
-        }
     });
+    //统计管理
+    //概述
+    $stateProvider.state("overview",
+        {
+            url: "/overview/index.html",
+            templateUrl: "views/statistical/overview/index.html",
+            data: { pageTitle: '概述' },
+            resolve: {
+                deps: [
+                    '$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            [
+                                {
+                                    name: 'MetronicApp',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'views/statistical/overview/index.js'
+                                    ]
+                                }
+                            ]
+                        );
+                    }
+                ]
+            }
+        })
+        //购买记录
+        .state("purchaserecords",
+        {
+            url: "/purchaserecords/index.html",
+            templateUrl: "views/statistical/purchaserecords/index.html",
+            data: { pageTitle: '购买记录' },
+            resolve: {
+                deps: [
+                    '$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            [
+                                {
+                                    name: 'MetronicApp',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'views/statistical/purchaserecords/index.js'
+                                    ]
+                                }
+                            ]
+                        );
+                    }
+                ]
+            }
+        })
+        //购买记录-扫描
+        .state("purchasescan",
+        {
+            url: "/purchasescan/index.html",
+            templateUrl: "views/statistical/purchaserecords/index.html",
+            data: { pageTitle: '购买记录-扫描' },
+            resolve: {
+                deps: [
+                    '$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            [
+                                {
+                                    name: 'MetronicApp',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'views/statistical/purchasescan/index.js'
+                                    ]
+                                }
+                            ]
+                        );
+                    }
+                ]
+            }
+        })
+        //购买记录-时段
+        .state("purchasetime",
+        {
+            url: "/purchasetime/index.html",
+            templateUrl: "views/statistical/purchasetime/index.html",
+            data: { pageTitle: '购买记录-扫描' },
+            resolve: {
+                deps: [
+                    '$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            [
+                                {
+                                    name: 'MetronicApp',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'views/statistical/purchasetime/index.js'
+                                    ]
+                                }
+                            ]
+                        );
+                    }
+                ]
+            }
+        })
+        //游迹获取记录
+        .state("gaintrace",
+        {
+            url: "/gaintrace/index.html",
+            templateUrl: "views/statistical/gaintrace/index.html",
+            data: { pageTitle: '游迹获取记录' },
+            resolve: {
+                deps: [
+                    '$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load(
+                            [
+                                {
+                                    name: 'MetronicApp',
+                                    insertBefore: '#ng_load_plugins_before',
+                                    files: [
+                                        'views/statistical/gaintrace/index.js'
+                                    ]
+                                }
+                            ]
+                        );
+                    }
+                ]
+            }
+        });
 }]);
 
 //启动

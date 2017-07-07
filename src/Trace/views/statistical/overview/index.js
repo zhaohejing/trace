@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('MetronicApp')
-        .controller('views.statistical.index',
+        .controller('views.statistical.overview.index',
         [
             '$scope', "$state", 'settings', "dataFactory", 'appSession',
             function ($scope, $state, settings, dataFactory, appSession) {

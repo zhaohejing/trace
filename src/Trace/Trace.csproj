@@ -662,6 +662,14 @@
     <Content Include="views\postage\modal.js" />
     <Content Include="views\series\modal.html" />
     <Content Include="views\series\modal.js" />
+    <Content Include="views\statistical\gaintrace\index.html" />
+    <Content Include="views\statistical\gaintrace\index.js" />
+    <Content Include="views\statistical\purchaserecords\index.html" />
+    <Content Include="views\statistical\purchaserecords\index.js" />
+    <Content Include="views\statistical\purchasescan\index.html" />
+    <Content Include="views\statistical\purchasescan\index.js" />
+    <Content Include="views\statistical\purchasetime\index.html" />
+    <Content Include="views\statistical\purchasetime\index.js" />
     <Content Include="views\trace\index.html" />
     <Content Include="views\trace\index.js" />
     <Content Include="views\trace\modify.html" />
@@ -694,8 +702,8 @@
     <Content Include="views\onlinemall\product\index.js" />
     <Content Include="views\onlinemall\product\modify.html" />
     <Content Include="views\onlinemall\product\modify.js" />
-    <Content Include="views\statistical\index.html" />
-    <Content Include="views\statistical\index.js" />
+    <Content Include="views\statistical\overview\index.html" />
+    <Content Include="views\statistical\overview\index.js" />
     <Content Include="views\manager\users\index.html" />
     <Content Include="views\manager\users\index.js" />
     <Content Include="views\manager\users\modal.html" />
