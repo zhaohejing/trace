@@ -1,0 +1,93 @@
+﻿<div>
+    <form name="modalform" role="form" novalidate class="form-validation">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span ng-if="!vm.model.id">添加轮播图</span>
+                <span ng-if="vm.model.id"> {{vm.model.name}} </span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-3 control-label">轮播名称:</label>
+                    <div class="col-md-9">
+
+                        <input type="text" class="form-control" ng-class="{'edited':vm.model.name}" placeholder="请输入轮播图名称" maxlength="120"
+                               required ng-model="vm.model.name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-3 control-label">URL:</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" ng-class="{'edited':vm.model.url}" placeholder="请输入URL地址" maxlength="120"
+                               required ng-model="vm.model.url">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-3 control-label">轮播权重:</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" ng-class="{'edited':vm.model.proptoy}" placeholder="请输入轮播权重" maxlength="120"
+                               required ng-model="vm.model.proptoy">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-3 control-label">上线时间:</label>
+                    <div class="col-md-9">
+                        <div class="dropdown dropdown1-parent">
+                            <a class="dropdown-toggle" id="dropdown1" role="button"
+                               data-toggle="dropdown" data-target=".dropdown1-parent"
+                               href="#">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" data-ng-model="vm.gift.date"
+                                           data-date-time-input="YYYY-MM-DD HH:mm">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="vm.model.time"
+                                                data-datetimepicker-config="{ dropdownSelector: '#dropdown1' }"></datetimepicker>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 center-align">
+                    <div class="tiles">
+                        <div class="tile bg-grey-steel-opacity" ng-file-select="vm.file.onFileSelect($files)" data-multiple="vm.file.multiple" onclick="this.value = null">
+                            <div class="tile-body">
+                                <i class="fa fa-cloud-upload"></i>
+                            </div>
+                            <div class="tile-object">
+                                <div class="name"> 限制 </div>
+                                <div class="number"> 100x100 </div>
+                            </div>
+                        </div>
+                        <ol>
+                            <li ng-repeat="(k,v) in vm.file.selectFiles">
+                                {{v.file.name}} ----- {{v.progress.p}}% <a href="#" ng-click="vm.file.abort(k)">X</a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button ng-disabled="vm.saving" type="button" class="btn btn-sm default" ng-click="vm.cancel()">关闭</button>
+            
+            <button type="submit" button-busy="vm.saving" class="btn btn-sm blue" busy-text="保存"
+                    ng-click="vm.save()"
+                    ng-disabled="modalform.$invalid">
+                <span>保存</span>
+            </button>
+        </div>
+    </form>
+</div>

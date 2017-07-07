@@ -1,61 +1,47 @@
-﻿(function () {
-    angular.module('MetronicApp').controller('views.achievement.trace.modify',
-        ['$scope', 'settings',  '$state', '$stateParams', 'dataFactory','$qupload',
-        function ($scope, settings, $state, $stateParams, dataFactory, $qupload) {
+﻿angular.module('MetronicApp').controller('views.onlinemall.figure.modal',
+    ['$scope', 'settings', '$uibModalInstance', 'model', 'dataFactory', '$qupload',
+        function ($scope, settings, $uibModalInstance, model, dataFactory, $qupload) {
             $scope.$on('$viewContentLoaded', function () {
-                // initialize core components
                 App.initAjax();
+
             });
             var vm = this;
-            var aid = $stateParams.id;
-            vm.overlays = [];
-            vm.mapReady = function (map, draw) {
-                map.enableScrollWheelZoom();
-                map.addControl(new BMap.NavigationControl());
-                map.addControl(new BMap.ScaleControl());
-                map.addControl(new BMap.OverviewMapControl());
-                map.addControl(new BMap.MapTypeControl());
-                var point = new BMap.Point(116.404, 39.915);
-                map.centerAndZoom(point, 15);
-                vm.mapper = { map: map, draw: draw };
-            };
-
-            vm.activity = {};
-            if (aid) {
-                dataFactory.action("api/activity/detail", "", null, { id: aid })
-                  .then(function (res) {
-                      if (res.success) {
-                          vm.activity = res.result;
-                      } else {
-                          abp.notify.error(res.error);
-                      }
-                  });
-            }
-       
-            vm.cates = [{ id: 1, name: "纪念章" }, { id: 2, name: "名片" }, { id: 3, name: "明信片" }, { id: 4, name: "周边" }];
-            
-            vm.cancel = function () {
-                $state.go("integral");
-            }
-            //保存
+            vm.model = {};
+            vm.url = "api/gift/modify";
             vm.save = function () {
-                if (vm.activity.id <= 0 && vm.file.show.length <= 0) {
+                if (!vm.gift.activityId || vm.gift.activityId <= 0) {
+                    abp.notify.warn("请先创建活动");
+                    return;
+                }
+                if (vm.file.show.length != 1) {
                     abp.notify.warn("请先上传文件");
                     return;
                 }
-                vm.activity.images = vm.file.show;
-                var url = "api/activity/modify";
-                dataFactory.action(url, "", null, vm.activity)
-                    .then(function(res) {
+                vm.gift.imageName = vm.file.show[0].imageName;
+                vm.gift.imageUrl = vm.file.show[0].imageUrl;
+                dataFactory.action(vm.url, "", null, vm.gift).then(function (res) {
+                    if (res.success) {
+                        $uibModalInstance.close();
+                    } else {
+                        abp.notify.error("保存失败,请重试");
+                    }
+                });
+            };
+            vm.cancel = function () {
+                $uibModalInstance.dismiss();
+            };
+            vm.init = function () {
+                if (model.id) {
+                    dataFactory.action("api/gift/detail", "", null, { id: model.id }).then(function (res) {
                         if (res.success) {
-                            abp.notify.success("成功");
-                            $state.go("activity");
+                            vm.model = res.result;
                         } else {
-                            abp.notify.error(res.error);
+                            abp.notify.error("获取失败,请重试");
                         }
                     });
+                }
             }
-
+            vm.init();
             vm.file = {
                 multiple: false,
                 token: abp.qiniuToken,
@@ -106,5 +92,3 @@
                 }
             }
         }]);
-})();
-

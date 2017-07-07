@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('MetronicApp')
-        .controller('views.achievement.trace.index',
+        .controller('views.trace.index',
         [
             '$scope', "$state", 'settings', "dataFactory", 'appSession',
             function ($scope, $state, settings, dataFactory, appSession) {

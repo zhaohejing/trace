@@ -449,7 +449,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     $stateProvider.state("trace",
     {
         url: "/trace/index.html",
-        templateUrl: "views/achievement/trace/index.html",
+        templateUrl: "views/trace/index.html",
         data: { pageTitle: '游迹管理' },
         resolve: {
             deps: [
@@ -460,7 +460,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 name: 'MetronicApp',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
-                                    'views/achievement/trace/index.js'
+                                    'views/trace/index.js'
                                 ]
                             }
                         ]
@@ -473,7 +473,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
         .state("tracemodify",
     {
         url: "/trace/modify.html",
-        templateUrl: "views/achievement/trace/modify.html",
+        templateUrl: "views/trace/modify.html",
         data: { pageTitle: '游迹管理' },
         resolve: {
             deps: [
@@ -491,7 +491,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 name: 'MetronicApp',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
-                                    'views/achievement/trace/modify.js'
+                                    'views/trace/modify.js'
                                 ]
                             }
                         ]
@@ -540,7 +540,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 name: 'MetronicApp',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
-                                    'views/series/index.js'
+                                    'views/series/index.js',
+                                    'views/series/modal.js'
                                 ]
                             }
                         ]
@@ -549,6 +550,32 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             ]
         }
     });
+
+    //邮费管理
+    $stateProvider.state("postage",
+    {
+        url: "/postage/index.html",
+        templateUrl: "views/postage/index.html",
+        data: { pageTitle: '邮费管理' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [
+                            {
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/postage/index.js',
+                                    'views/postage/modal.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    })
     //统计管理
     $stateProvider.state("statistical",
     {

@@ -1,11 +1,11 @@
-﻿<div ng-controller="views.manager.users.index as vm">
+﻿<div ng-controller="views.series.index as vm">
     <div class="page-bar">
         <div class="page-bar">
             <div class="col-xs-8">
                 <ul class="page-breadcrumb">
                     <li>
                         <i class="fa fa-hand-o-right"></i>
-                        <a href="#">用户管理</a>
+                        <a href="#">邮费管理</a>
                     </li>
                 </ul>
             </div>
@@ -22,10 +22,10 @@
     <div class="portlet light bordered">
         <div class="row">
             <div class="form-group form-md-line-input">
-                <label class="col-md-1 control-label">用户名:</label>
-                <div class="col-md-4 input-group input-group-sm">
+                <label class="col-md-2 control-label">省份名称:</label>
+                <div class="col-md-5 input-group input-group-sm">
                     <div class="input-group-control">
-                        <input type="text" class="form-control input-sm" placeholder="用户名" ng-model="vm.filter.name">
+                        <input type="text" class="form-control input-sm" placeholder="省份名称" ng-model="vm.filter.name">
                     </div>
                     <span class="input-group-btn btn-right">
                         <button ng-click="vm.init()" class="btn green-haze" type="button">查询</button>
@@ -37,28 +37,18 @@
             <table st-table="vm.table.data" class="table table-striped">
                 <thead>
                     <tr>
-                        <th st-sort="a">用户名</th>
-                        <th>昵称</th>
-                        <th>密码</th>
-                        <th>状态</th>
-                        <th>创建时间</th>
-
+                        <th st-sort="a">省份名称</th>
+                        <th>价格</th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.data">
-                        <td>{{row.user_name}}</td>
-                        <td>{{row.nick_name}}</td>
-                        <td>*********</td>
-                        <td>{{row.status==1?'启用':'禁用'}}</td>
-                        <td>{{row.create_time}}</td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.code}}</td>
                         <td>
                             <a href="#" ng-click="vm.edit(row)">
                                 修改
-                            </a>
-                            <a href="#" ng-click="vm.allow(row)">
-                                分配角色
                             </a>
                             <a href="#" ng-click="vm.delete(row)">
                                 删除
@@ -79,3 +69,13 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
