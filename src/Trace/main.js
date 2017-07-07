@@ -589,5 +589,13 @@ MetronicApp.run(["$rootScope", "settings", "$state", function ($rootScope, setti
             this.$apply(fn);
         }
     };
+    var token = $.parseJSON(abp.utils.getCookieValue("traceResult")).token;
+    var options = {
+        url: abp.baseUrl + 'api/qiniu/token',
+        headers: { 'Content-Type': 'application/json', "authorization": "Bearer " + token }
+    };
 
+    abp.ajax(options).done(function (result) {
+        abp.qiniuToken = result.data;
+    });
 }]);

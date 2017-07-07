@@ -5,10 +5,7 @@
             if (method === "") {
                 method = "POST";
             }
-          
-            var u = "http://118.89.225.78:8080/";
-            url = u + url;
-         
+            url = abp.baseUrl + url;
             var defer = $q.defer();
             if (appSession == null) {
                 abp.notify.error("用户token不存在");

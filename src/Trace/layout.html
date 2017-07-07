@@ -174,18 +174,6 @@
 
     <script type="text/javascript">
         var abp = abp || {};
-        var token = $.parseJSON(abp.utils.getCookieValue("traceResult")).token;
-        var options = {
-            url: '/api/token/qnToken',
-            headers: {
-                authorization: "bearer " +token 
-            }
-        };
-          
-        abp.ajax(options).done(function (data) {
-            abp.qiniuToken = data.result;
-        });
-     
     </script>
     <!-- END APP LEVEL ANGULARJS SCRIPTS -->
     <!-- END APP LEVEL JQUERY SCRIPTS -->
