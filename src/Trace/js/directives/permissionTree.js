@@ -26,15 +26,19 @@ MetronicApp.directive('permissionTree', [
                       if (treeInitializedBefore) {
                           $tree.jstree('destroy');
                       }
-
-                      var treeData = _.map($scope.editData, function (item) {
+                      var temp = [];
+                      angular.forEach($scope.editData.has_list,
+                          function(v, i) {
+                              temp.push(v.id);
+                          });
+                      var treeData = _.map($scope.editData.all_list, function (item) {
                           return {
                               id: item.id,
                               parent: item.pid ? item.pid : '#',
                               text: item.title,
                               state: {
                                   opened: true,
-                                  selected: _.contains($scope.editData.allow, item.id)
+                                  selected: _.contains(temp, item.id)
                               }
                           };
                       });

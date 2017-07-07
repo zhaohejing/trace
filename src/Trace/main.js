@@ -93,53 +93,53 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', 'dataFactory', 
         Layout.initSidebar($state); // init sidebar
     });
     vm.list = [];
-    //dataFactory.action('api/sysmenu/getMenuPerson', "", null, {}).then(function (res) {
-    //    if (res.success) {
-    //        vm.list = res.result;
-    //    } else {
-    //        abp.notify.error(res.error);
-    //    }
-    //});
-    vm.list = [
-      {
-          url: "", title: "积分商城", icon: "fa fa-suitcase", child: [
-               { url: "integral", title: "积分商城管理", icon: "fa fa-sticky-note" },
-                { url: "integralrecord", title: "积分详情订单", icon: "fa fa-sticky-note" }
-          ]
-      },
-         {
-             url: "", title: "在线商城", icon: "fa fa-suitcase", child: [
-                  { url: "figure", title: "首页管理", icon: "fa fa-sticky-note" },
-                  { url: "banner", title: "Banner图", icon: "fa fa-bars" },
-                   { url: "product", title: "商品管理", icon: "fa fa-sticky-note" },
-                   { url: "order", title: "订单页", icon: "fa fa-sticky-note" }
-             ]
-         },
-           {
-               url: "", title: "用户管理", icon: "fa fa-suitcase", child: [
-                    { url: "users", title: "用户信息", icon: "fa fa-sticky-note" },
-               { url: "roles", title: "角色信息", icon: "fa fa-sticky-note" }
-               ]
-           },
-           {
-               url: "", title: "成就系统", icon: "fa fa-suitcase", child: [
-                    { url: "trace", title: "游迹成就", icon: "fa fa-sticky-note" },
-                    { url: "medal", title: "纪念章成就", icon: "fa fa-bars" },
-               ]
-           },
-           {
-               url: "", title: "系列管理", icon: "fa fa-suitcase", child: [
-                    { url: "series", title: "系列管理", icon: "fa fa-sticky-note" }
+    dataFactory.action('api/sysmenu/getMenuPerson', "", null, {}).then(function (res) {
+        if (res.success) {
+            vm.list = res.result;
+        } else {
+            abp.notify.error(res.error);
+        }
+    });
+    //vm.list = [
+    //  {
+    //      url: "", title: "积分商城", icon: "fa fa-suitcase", child: [
+    //           { url: "integral", title: "积分商城管理", icon: "fa fa-sticky-note" },
+    //            { url: "integralrecord", title: "积分详情订单", icon: "fa fa-sticky-note" }
+    //      ]
+    //  },
+    //     {
+    //         url: "", title: "在线商城", icon: "fa fa-suitcase", child: [
+    //              { url: "figure", title: "首页管理", icon: "fa fa-sticky-note" },
+    //              { url: "banner", title: "Banner图", icon: "fa fa-bars" },
+    //               { url: "product", title: "商品管理", icon: "fa fa-sticky-note" },
+    //               { url: "order", title: "订单页", icon: "fa fa-sticky-note" }
+    //         ]
+    //     },
+    //       {
+    //           url: "", title: "用户管理", icon: "fa fa-suitcase", child: [
+    //                { url: "users", title: "用户信息", icon: "fa fa-sticky-note" },
+    //           { url: "roles", title: "角色信息", icon: "fa fa-sticky-note" }
+    //           ]
+    //       },
+    //       {
+    //           url: "", title: "成就系统", icon: "fa fa-suitcase", child: [
+    //                { url: "trace", title: "游迹成就", icon: "fa fa-sticky-note" },
+    //                { url: "medal", title: "纪念章成就", icon: "fa fa-bars" },
+    //           ]
+    //       },
+    //       {
+    //           url: "", title: "系列管理", icon: "fa fa-suitcase", child: [
+    //                { url: "series", title: "系列管理", icon: "fa fa-sticky-note" }
 
-               ]
-           },
-           {
-               url: "", title: "统计管理", icon: "fa fa-suitcase", child: [
-                    { url: "statistical", title: "概览", icon: "fa fa-sticky-note" }
+    //           ]
+    //       },
+    //       {
+    //           url: "", title: "统计管理", icon: "fa fa-suitcase", child: [
+    //                { url: "statistical", title: "概览", icon: "fa fa-sticky-note" }
 
-               ]
-           }
-    ];
+    //           ]
+    //       }
+    //];
 
 }]);
 /* Setup Layout Part - Footer */

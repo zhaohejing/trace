@@ -58,26 +58,20 @@
                 }
                 vm.activity.images = vm.file.show;
                 var url = "api/activity/modify";
-                dataFactory.action(url, "", null, vm.activity).then(function (res) {
-                    if (res.success) {
-                        abp.notify.success("成功");
-                        $state.go("activity");
-                    } else {
-                        abp.notify.error(res.error);
-                    }
-                })
+                dataFactory.action(url, "", null, vm.activity)
+                    .then(function(res) {
+                        if (res.success) {
+                            abp.notify.success("成功");
+                            $state.go("activity");
+                        } else {
+                            abp.notify.error(res.error);
+                        }
+                    });
             }
 
             vm.file = {
                 multiple: false,
-                token: "",
-                init: function () {
-                    dataFactory.action("api/token/qnToken", "", null, {}).then(function (res) {
-                        if (res.result == "1") {
-                            vm.file.token = res.data;
-                        }
-                    })
-                },
+                token: abp.qiniuToken,
                 uploadstate: false,
                 show: [],
                 selectFiles: [],
@@ -91,11 +85,11 @@
                         token: vm.file.token
                     });
                     vm.file.selectFiles[index].upload.then(function (response) {
-                        var fileName=vm.file.selectFiles[index].file.name;
+                        var fileName = vm.file.selectFiles[index].file.name;
                         var dto = {
-                            sort:index,
+                            sort: index,
                             title: fileName,
-                            url: "http://image.leftins.com/" + response.key,
+                            url: abp.qiniuUrl + response.key,
                             isTitle: fileName.indexOf("title") >= 0,
                             isShare: fileName.indexOf("share") >= 0
                         };
@@ -124,7 +118,6 @@
                     }
                 }
             }
-            vm.file.init();
         }]);
 })();
 

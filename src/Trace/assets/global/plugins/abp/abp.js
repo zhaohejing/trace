@@ -5,7 +5,8 @@
 
     //Current application root path (including virtual directory if exists).
     abp.appPath = abp.appPath || '/';
-
+    abp.qiniuToken = "";
+    abp.qiniuUrl = "http://image.leftins.com/";
     abp.pageLoadTime = new Date();
 
     //Converts given path to absolute path using abp.appPath variable.

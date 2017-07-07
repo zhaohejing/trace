@@ -44,15 +44,7 @@
             vm.init();
             vm.file = {
                 multiple: false,
-                token: "",
-                init: function () {
-                    dataFactory.action("api/token/qnToken", "", null, {})
-                        .then(function(res) {
-                            if (res.result == "1") {
-                                vm.file.token = res.data;
-                            }
-                        });
-                },
+                token: abp.qiniuToken,
                 uploadstate: false,
                 show: [],
                 selectFiles: [],
@@ -66,7 +58,14 @@
                         token: vm.file.token
                     });
                     vm.file.selectFiles[index].upload.then(function (response) {
-                        var dto = { imageName: vm.file.selectFiles[index].file.name, imageUrl: "http://image.leftins.com/" + response.key };
+                        var fileName = vm.file.selectFiles[index].file.name;
+                        var dto = {
+                            sort: index,
+                            title: fileName,
+                            url: abp.qiniuUrl + response.key,
+                            isTitle: fileName.indexOf("title") >= 0,
+                            isShare: fileName.indexOf("share") >= 0
+                        };
                         vm.file.show.push(dto);
                         vm.file.uploadstate = true;
                     }, function (response) {
@@ -92,5 +91,4 @@
                     }
                 }
             }
-            vm.file.init();
         }]);

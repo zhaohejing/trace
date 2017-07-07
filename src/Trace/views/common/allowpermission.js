@@ -26,15 +26,15 @@
                 $uibModalInstance.dismiss();
             };
             vm.init = function () {
-                dataFactory.action("api/sysmenu/getAll", "", null, { }).then(function (res) {
-                    if (res.success) {
-                        vm.permissions = res.result;
-                    } else {
-                        abp.notify.error(res.error);
-                    }
-                });
-
                 if (model.id) {
+                    dataFactory.action("api/sysmenu/getMenuByRole", "", null, { id: model.id }).then(function (res) {
+                        if (res.success) {
+                            vm.permissions = res.result;
+                        } else {
+                            abp.notify.error(res.error);
+                        }
+                    });
+
                     dataFactory.action("api/sysrole/getById", "", null, { id: model.id }).then(function (res) {
                         if (res.success) {
                             vm.role = res.result;

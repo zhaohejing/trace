@@ -10,11 +10,11 @@
  
         <li ng-repeat="a in vm.list" class="{{a.start==1?'start':''}} nav-item">
 
-            <a ng-if="a.url"  ui-sref="{{a.url}}">
+            <a ng-if="a.path"  ui-sref="{{a.path}}">
                 <i class="{{a.icon}}"></i>
                 <span class="title">{{a.title}}</span>
             </a>
-            <a ng-if="!a.url"  href="#" class="nav-link nav-toggle">
+            <a ng-if="!a.path"  href="#" class="nav-link nav-toggle">
                 <i class="{{a.icon}}"></i>
                 <span class="title">{{a.title}}</span>
                 <span class="arrow"></span>
@@ -22,11 +22,11 @@
 
             <ul ng-if="a.child" class="sub-menu">
                 <li ng-repeat="b in a.child">
-                    <a ng-if="b.url" ui-sref="{{b.url}}">
+                    <a ng-if="b.path" ui-sref="{{b.path}}">
                         <i class="{{b.icon}}"></i>
                         <span class="title">{{b.title}}</span>
                     </a>
-                    <a ng-if="!b.url" href="#" class="nav-link nav-toggle">
+                    <a ng-if="!b.path" href="#" class="nav-link nav-toggle">
                         <i class="{{b.icon}}"></i>
                         <span class="title">{{b.title}}</span>
                         <span class="arrow"></span>
@@ -34,18 +34,18 @@
                     <ul ng-if="b.child" class="sub-menu">
                         <li ng-repeat="c in b.child">
 
-                            <a ng-if="c.url" ui-sref="{{c.url}}">
+                            <a ng-if="c.path" ui-sref="{{c.path}}">
                                 <i class="{{c.icon}}"></i>
                                 <span class="title">{{c.title}}</span>
                             </a>
-                            <a ng-if="!c.url" href="javascript:;" class="nav-link nav-toggle">
+                            <a ng-if="!c.path" href="javascript:;" class="nav-link nav-toggle">
                                 <i class="{{c.icon}}"></i>
                                 <span class="title">{{c.title}}</span>
                                 <span class="arrow"></span>
                             </a>
                             <ul ng-if="c.child" class="sub-menu">
                                 <li ng-repeat="d in c.child">
-                                    <a ui-sref="{{d.url}}">
+                                    <a ui-sref="{{d.path}}">
                                         <i class="{{d.icon}}"></i>
                                         <span class="title">{{d.title}}</span>
                                     </a>
