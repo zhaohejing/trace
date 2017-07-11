@@ -100,47 +100,7 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', 'dataFactory', 
             abp.notify.error(res.error);
         }
     });
-    //vm.list = [
-    //  {
-    //      url: "", title: "积分商城", icon: "fa fa-suitcase", child: [
-    //           { url: "integral", title: "积分商城管理", icon: "fa fa-sticky-note" },
-    //            { url: "integralrecord", title: "积分详情订单", icon: "fa fa-sticky-note" }
-    //      ]
-    //  },
-    //     {
-    //         url: "", title: "在线商城", icon: "fa fa-suitcase", child: [
-    //              { url: "figure", title: "首页管理", icon: "fa fa-sticky-note" },
-    //              { url: "banner", title: "Banner图", icon: "fa fa-bars" },
-    //               { url: "product", title: "商品管理", icon: "fa fa-sticky-note" },
-    //               { url: "order", title: "订单页", icon: "fa fa-sticky-note" }
-    //         ]
-    //     },
-    //       {
-    //           url: "", title: "用户管理", icon: "fa fa-suitcase", child: [
-    //                { url: "users", title: "用户信息", icon: "fa fa-sticky-note" },
-    //           { url: "roles", title: "角色信息", icon: "fa fa-sticky-note" }
-    //           ]
-    //       },
-    //       {
-    //           url: "", title: "成就系统", icon: "fa fa-suitcase", child: [
-    //                { url: "trace", title: "游迹成就", icon: "fa fa-sticky-note" },
-    //                { url: "medal", title: "纪念章成就", icon: "fa fa-bars" },
-    //           ]
-    //       },
-    //       {
-    //           url: "", title: "系列管理", icon: "fa fa-suitcase", child: [
-    //                { url: "series", title: "系列管理", icon: "fa fa-sticky-note" }
-
-    //           ]
-    //       },
-    //       {
-    //           url: "", title: "统计管理", icon: "fa fa-suitcase", child: [
-    //                { url: "statistical", title: "概览", icon: "fa fa-sticky-note" }
-
-    //           ]
-    //       }
-    //];
-
+  
 }]);
 /* Setup Layout Part - Footer */
 MetronicApp.controller('FooterController', ['$scope', function ($scope) {
@@ -153,7 +113,6 @@ MetronicApp.controller('FooterController', ['$scope', function ($scope) {
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
     $urlRouterProvider.otherwise("/integral.html");
-     
     //积分商城管理
     $stateProvider
         .state("integral",
@@ -506,7 +465,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     {
         url: "/medal/index.html",
         templateUrl: "views/achievement/medal/index.html",
-        data: { pageTitle: '纪念章管理' },
+        data: { pageTitle: '成就管理' },
         resolve: {
             deps: [
                 '$ocLazyLoad', function ($ocLazyLoad) {
@@ -517,6 +476,29 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/achievement/medal/index.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    })
+        .state("medalmodify",
+    {
+        url: "/medal/modify.html",
+        templateUrl: "views/achievement/medal/modify.html",
+        data: { pageTitle: '成就编辑' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [
+                            {
+                                name: 'MetronicApp',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/achievement/medal/modify.js'
                                 ]
                             }
                         ]

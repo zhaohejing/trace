@@ -656,6 +656,8 @@
   <ItemGroup>
     <Content Include="views\achievement\medal\index.html" />
     <Content Include="views\achievement\medal\index.js" />
+    <Content Include="views\achievement\medal\modify.html" />
+    <Content Include="views\achievement\medal\modify.js" />
     <Content Include="views\postage\index.html" />
     <Content Include="views\postage\index.js" />
     <Content Include="views\postage\modal.html" />
