@@ -1,5 +1,5 @@
 ﻿(function () {
-    angular.module('MetronicApp').controller('views.achievement.medal.modify',
+    angular.module('MetronicApp').controller('views.achievement.trace.modify',
         ['$scope', 'settings', '$uibModal', '$state', '$stateParams', 'dataFactory', 'appSession', '$qupload',
         function ($scope, settings, $uibModal, $state, $stateParams, dataFactory, appSession, $qupload) {
             $scope.$on('$viewContentLoaded', function () {
@@ -8,10 +8,10 @@
             });
             var vm = this;
             var aid = $stateParams.id;
-          
+
             vm.product = {};
             if (aid) {
-                dataFactory.action("api/product/get?id="+aid, "GET", null,null)
+                dataFactory.action("api/product/get?id=" + aid, "GET", null, null)
                   .then(function (res) {
                       if (res.success) {
                           vm.product = res.result;
@@ -27,7 +27,7 @@
             vm.cancel = function () {
                 $state.go("integral");
             }
-            vm.alert= function() {
+            vm.alert = function () {
                 alert(1);
             }
             //保存
@@ -39,7 +39,7 @@
                 vm.activity.images = vm.file.show;
                 var url = "api/activity/modify";
                 dataFactory.action(url, "", null, vm.activity)
-                    .then(function(res) {
+                    .then(function (res) {
                         if (res.success) {
                             abp.notify.success("成功");
                             $state.go("activity");
