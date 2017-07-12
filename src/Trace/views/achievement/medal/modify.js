@@ -27,8 +27,19 @@
             vm.cancel = function () {
                 $state.go("integral");
             }
-            vm.alert= function() {
-                alert(1);
+            vm.choose= function() {
+                var modal = $uibModal.open({
+                    templateUrl: 'views/common/choose.html',
+                    controller: 'views.common.choose as vm',
+                    backdrop: 'static',
+                   // size: 'lg', //模态框的大小尺寸
+                    resolve: {
+                        model: function () { return { type:1 } }
+                    }
+                });
+                modal.result.then(function (response) {
+                    vm.init();
+                });
             }
             //保存
             vm.save = function () {

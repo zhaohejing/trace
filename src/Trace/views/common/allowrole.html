@@ -37,9 +37,9 @@
 
 
         <div class="modal-footer">
-            <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.cancel()">关闭</button>
-            <button type="submit" button-busy="vm.saving" busy-text="保存"
-                    class="btn btn-primary blue" ng-click="vm.save()"
+            <button ng-disabled="vm.saving" type="button" class="btn btn-sm default" ng-click="vm.cancel()">关闭</button>
+            <button type="submit" button-busy="vm.saving" class="btn btn-sm blue" busy-text="保存"
+                    ng-click="vm.save()"
                     ng-disabled="modalform.$invalid">
                 <span>保存</span>
             </button>

@@ -1,0 +1,51 @@
+﻿<div>
+    <form name="modalform" role="form" novalidate class="form-validation">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span >资源选择 </span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <table st-table="vm.table.data" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th st-sort="a">产品名称</th>
+                            <th>创建时间</th>
+                            <th>创建人</th>
+                            <th>权重</th>
+                            <th>状态</th>
+                            <th>链接</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.data">
+                            <td>{{row.a}}</td>
+                            <td>{{row.b}}</td>
+                            <td>{{row.c}}</td>
+                            <td>{{row.balance}}</td>
+                            <td>{{row.email}}</td>
+                            <td>{{row.email}}</td>
+                            <td>
+                              <input type="checkbox" />
+                            </td>
+                        </tr>
+                    </tbody>
+                  
+                </table>
+
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button ng-disabled="vm.saving" type="button" class="btn btn-sm default" ng-click="vm.cancel()">关闭</button>
+
+            <button type="submit" button-busy="vm.saving" class="btn btn-sm blue" busy-text="保存"
+                    ng-click="vm.save()"
+                    ng-disabled="modalform.$invalid">
+                <span>保存</span>
+            </button>
+        </div>
+    </form>
+</div>
