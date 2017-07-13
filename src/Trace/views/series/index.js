@@ -141,29 +141,41 @@
                     },
 
                     getTreeDataFromServer: function (callback) {
-                        var list = [
-                        { id: 1, displayName: "旅游", code: "00001", parentId: 0, memberCount: 13 },
-                         { id: 3, displayName: "北京", code: "00001.00003", parentId: 1, memberCount: 2 },
-                         { id: 4, displayName: "上海", code: "00001.00004", parentId: 1, memberCount: 3 },
-                         { id: 7, displayName: "圆明园", code: "00001.00004.00007", parentId: 3, memberCount: 3 },
-                        { id: 2, displayName: "摄影", code: "00002", parentId: 0, memberCount: 2 },
-                          { id: 5, displayName: "人物", code: "00002.00005", parentId: 2, memberCount: 4 },
-                          { id: 6, displayName: "风景", code: "00002.00006", parentId: 2, memberCount: 7 },
-                        ];
-                        var treeData = _.map(list, function (item) {
-                            return {
-                                id: item.id,
-                                parent: item.parentId ? item.parentId : '#',
-                                code: item.code,
-                                displayName: item.displayName,
-                                memberCount: item.memberCount,
-                                text: vm.organizationTree.generateTextOnTree(item),
-                                state: {
-                                    opened: true
-                                }
-                            };
-                        });
-                        callback(treeData);
+                        dataFactory.action("api/category/getAllByPid", "", null, {pid:"0"})
+                      .then(function (res) {
+                          if (res.success) {
+                              var list = res.result.data;
+                               list = [
+                     { id: 1, displayName: "旅游", code: "00001", parentId: 0, memberCount: 13 },
+                      { id: 3, displayName: "北京", code: "00001.00003", parentId: 1, memberCount: 2 },
+                      { id: 4, displayName: "上海", code: "00001.00004", parentId: 1, memberCount: 3 },
+                      { id: 7, displayName: "圆明园", code: "00001.00004.00007", parentId: 3, memberCount: 3 },
+                     { id: 2, displayName: "摄影", code: "00002", parentId: 0, memberCount: 2 },
+                       { id: 5, displayName: "人物", code: "00002.00005", parentId: 2, memberCount: 4 },
+                       { id: 6, displayName: "风景", code: "00002.00006", parentId: 2, memberCount: 7 },
+                              ];
+
+                              var treeData = _.map(list, function (item) {
+                                  return {
+                                      id: item.id,
+                                      parent: item.parentId ? item.parentId : '#',
+                                      code: item.code,
+                                      displayName: item.displayName,
+                                      memberCount: item.memberCount,
+                                      text: vm.organizationTree.generateTextOnTree(item),
+                                      state: {
+                                          opened: true
+                                      }
+                                  };
+                              });
+                              callback(treeData);
+                          } else {
+                              abp.notify.error(res.error);
+                          }
+                      });
+
+
+                     
                     },
 
                     init: function () {
