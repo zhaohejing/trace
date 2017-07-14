@@ -1,8 +1,8 @@
 ﻿(function () {
     angular.module("MetronicApp")
         .controller("views.series.index",
-        ["$scope", "$state", "settings", "dataFactory",
-            function($scope, $state, settings, dataFactory) {
+        ["$scope", "$state", "settings", "dataFactory","$uibModal",
+            function ($scope, $state, settings, dataFactory, $uibModal) {
                 // ajax初始化
                 $scope.$on("$viewContentLoaded",
                     function() {
@@ -48,6 +48,7 @@
                                         id: node.id,
                                         displayName: node.original.displayName
                                     }, function (updatedOu) {
+
                                         node.original.displayName = updatedOu.displayName;
                                         instance.rename_node(node, vm.organizationTree.generateTextOnTree(updatedOu));
                                     });
@@ -113,25 +114,25 @@
                         });
                     },
                     openCreateOrEditUnitModal: function (organizationUnit, closeCallback) {
-                        var modalInstance = $uibModal.open({
-                            templateUrl: '~/App/common/views/organizationUnits/createOrEditUnitModal.cshtml',
-                            controller: 'common.views.organizationUnits.createOrEditUnitModal as vm',
+                        var modal = $uibModal.open({
+                            templateUrl: 'views/series/modal.html',
+                            controller: 'views.series.modal as vm',
                             backdrop: 'static',
+                            //   size: 'lg', //模态框的大小尺寸
                             resolve: {
-                                organizationUnit: function () {
-                                    return organizationUnit;
-                                }
+                                org: function () { return  organizationUnit }
                             }
                         });
-
-                        modalInstance.result.then(function (result) {
-                            closeCallback && closeCallback(result);
+                        modal.result.then(function (response) {
+                            closeCallback && closeCallback(response);
                         });
+                      
                     },
 
                     generateTextOnTree: function (ou) {
                         var itemClass = ou.memberCount > 0 ? ' ou-text-has-members' : ' ou-text-no-members';
-                        return '<span title="' + ou.code + '" class="ou-text' + itemClass + '" data-ou-id="' + ou.id + '">' + ou.displayName + ' (<span class="ou-text-member-count">' + ou.memberCount + '</span>) <i class="fa fa-caret-down text-muted"></i></span>';
+                        return '<span title="' + ou.name + '" class="ou-text' +
+                            itemClass + '" data-ou-id="' + ou.id + '">' + ou.name + ' <i class="fa fa-caret-down text-muted"></i></span>';
                     },
 
                     incrementMemberCount: function (ouId, incrementAmount) {
@@ -141,27 +142,18 @@
                     },
 
                     getTreeDataFromServer: function (callback) {
-                        dataFactory.action("api/category/getAllByPid", "", null, {pid:"0"})
+                        dataFactory.action("api/category/getAll", "", null, {  })
                       .then(function (res) {
                           if (res.success) {
-                              var list = res.result.data;
-                               list = [
-                     { id: 1, displayName: "旅游", code: "00001", parentId: 0, memberCount: 13 },
-                      { id: 3, displayName: "北京", code: "00001.00003", parentId: 1, memberCount: 2 },
-                      { id: 4, displayName: "上海", code: "00001.00004", parentId: 1, memberCount: 3 },
-                      { id: 7, displayName: "圆明园", code: "00001.00004.00007", parentId: 3, memberCount: 3 },
-                     { id: 2, displayName: "摄影", code: "00002", parentId: 0, memberCount: 2 },
-                       { id: 5, displayName: "人物", code: "00002.00005", parentId: 2, memberCount: 4 },
-                       { id: 6, displayName: "风景", code: "00002.00006", parentId: 2, memberCount: 7 },
-                              ];
-
+                              var list = res.result;
+            
                               var treeData = _.map(list, function (item) {
                                   return {
                                       id: item.id,
-                                      parent: item.parentId ? item.parentId : '#',
-                                      code: item.code,
-                                      displayName: item.displayName,
-                                      memberCount: item.memberCount,
+                                      parent: item.pid ? item.pid : '#',
+                                      code: '',
+                                      displayName: item.name,
+                                      memberCount: 0,
                                       text: vm.organizationTree.generateTextOnTree(item),
                                       state: {
                                           opened: true
