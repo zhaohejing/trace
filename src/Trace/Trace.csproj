@@ -664,6 +664,8 @@
     <Content Include="views\achievement\trace\modify.js" />
     <Content Include="views\common\choose.html" />
     <Content Include="views\common\choose.js" />
+    <Content Include="views\onlinemall\product\choose.html" />
+    <Content Include="views\onlinemall\product\choose.js" />
     <Content Include="views\postage\index.html" />
     <Content Include="views\postage\index.js" />
     <Content Include="views\postage\modal.html" />

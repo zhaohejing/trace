@@ -51,7 +51,25 @@
                         }
                     });
             }
-
+            vm.choose= function() {
+                if (vm.product.vm.product.is_badge) {
+                    vm.product.type = 0;
+                    return;
+                }
+                var modal = $uibModal.open({
+                    templateUrl: 'views/onlinemall/product/choose.html',
+                    controller: 'views.onlinemall.product.choose as vm',
+                    backdrop: 'static',
+                    // size: 'lg', //模态框的大小尺寸
+                    resolve: {
+                        model: function () { return { type: 2 } }
+                    }
+                });
+                modal.result.then(function (response) {
+                    vm.product.list = response;
+                });
+            }
+         
             vm.file = {
                 multiple: false,
                 token: abp.qiniuToken,

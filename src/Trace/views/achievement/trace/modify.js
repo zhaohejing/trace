@@ -27,7 +27,6 @@
             vm.cancel = function () {
                 $state.go("integral");
             }
-            vm.alert = function () {
                 vm.choose = function () {
                     var modal = $uibModal.open({
                         templateUrl: 'views/common/choose.html',
@@ -42,7 +41,6 @@
                         vm.init();
                     });
                 }
-            }
             //保存
             vm.save = function () {
                 if (vm.activity.id <= 0 && vm.file.show.length <= 0) {
