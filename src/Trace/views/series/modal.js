@@ -1,35 +1,27 @@
 ﻿angular.module('MetronicApp').controller('views.series.modal',
-    ['$scope', 'settings', '$uibModalInstance', 'model', 'dataFactory',
-        function ($scope, settings, $uibModalInstance, model, dataFactory) {
+    ['$scope', 'settings', '$uibModalInstance', 'org', 'dataFactory',
+        function ($scope, settings, $uibModalInstance, org, dataFactory) {
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
 
             });
             var vm = this;
-            vm.model = {};
-            vm.url = "api/gift/modify";
+            vm.org = org;
+            vm.org.name = org.displayName;
+            vm.org.pid = org.parentId;
+            vm.url = vm.org.id ? "api/category/update" : "api/category/add";
             vm.save = function () {
-                if (!vm.gift.activityId || vm.gift.activityId <= 0) {
-                    abp.notify.warn("请先创建活动");
-                    return;
-                }
-                if (vm.file.show.length != 1) {
-                    abp.notify.warn("请先上传文件");
-                    return;
-                }
-                vm.gift.imageName = vm.file.show[0].imageName;
-                vm.gift.imageUrl = vm.file.show[0].imageUrl;
-                dataFactory.action(vm.url, "", null, vm.gift).then(function (res) {
+
+                dataFactory.action(vm.url, "", null, vm.org).then(function (res) {
                     if (res.success) {
-                        $uibModalInstance.close();
+                        $uibModalInstance.close(res);
                     } else {
-                        abp.notify.error("保存失败,请重试");
+                        abp.notify.error(res.error);
                     }
                 });
             };
             vm.cancel = function () {
                 $uibModalInstance.dismiss();
             };
-          
-        
+
         }]);

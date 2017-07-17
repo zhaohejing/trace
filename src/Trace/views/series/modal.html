@@ -2,21 +2,23 @@
     <form name="modalform" role="form" novalidate class="form-validation">
         <div class="modal-header">
             <h4 class="modal-title">
-                <span ng-if="!vm.model.id">添加分类</span>
-                <span ng-if="vm.model.id"> {{vm.model.name}} </span>
+                <span ng-if="!vm.org.id">添加分类</span>
+                <span ng-if="vm.org.id">编辑分类 {{vm.org.name}} </span>
             </h4>
         </div>
         <div class="modal-body">
+          
             <div class="row">
                 <div class="form-group form-md-line-input">
-                    <label class="col-md-3 control-label">轮播名称:</label>
+                    <label class="col-md-3 control-label">分类:</label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control" ng-class="{'edited':vm.model.name}" placeholder="请输入分类名称" maxlength="120"
-                               required ng-model="vm.model.name">
+                        <input type="text" class="form-control" ng-class="{'edited':vm.org.name}"
+                                placeholder="请输入分类名称" maxlength="120"
+                               required ng-model="vm.org.name">
                     </div>
                 </div>
             </div>
-        
+
         </div>
         <div class="modal-footer">
             <button ng-disabled="vm.saving" type="button" class="btn btn-sm default" ng-click="vm.cancel()">关闭</button>

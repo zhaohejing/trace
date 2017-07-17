@@ -48,7 +48,6 @@
                                         id: node.id,
                                         displayName: node.original.displayName
                                     }, function (updatedOu) {
-
                                         node.original.displayName = updatedOu.displayName;
                                         instance.rename_node(node, vm.organizationTree.generateTextOnTree(updatedOu));
                                     });
@@ -61,29 +60,39 @@
                                     vm.organizationTree.addUnit(node.id);
                                 }
                             },
-                            addMember: {
-                                label: '添加人员',
-                                _disabled: false,
-                                action: function () {
-                                    vm.members.openAddModal();
-                                }
-                            },
+                            //addMember: {
+                            //    label: '添加人员',
+                            //    _disabled: false,
+                            //    action: function () {
+                            //        vm.members.openAddModal();
+                            //    }
+                            //},
                             'delete': {
                                 label: '删除',
                                 _disabled: false,
                                 action: function (data) {
                                     var instance = $.jstree.reference(data.reference);
                                     abp.message.confirm(
-                                        app.localize('OrganizationUnitDeleteWarningMessage', node.original.displayName),
+                                        "确定要删除:"+node.original.displayName,
                                         function (isConfirmed) {
                                             if (isConfirmed) {
-                                                organizationUnitService.deleteOrganizationUnit({
-                                                    id: node.id
-                                                }).then(function () {
-                                                    abp.notify.success(app.localize('SuccessfullyDeleted'));
-                                                    instance.delete_node(node);
-                                                    vm.organizationTree.refreshUnitCount();
+                                                var url = "api/category/delete";
+                                                dataFactory.action(url, "", null, {id:node.id}).then(function (res) {
+                                                    if (res.success) {
+                                                        abp.notify.success("成功删除");
+                                                        instance.delete_node(node);
+                                                        vm.organizationTree.refreshUnitCount();
+                                                    } else {
+                                                        abp.notify.error(res.error);
+                                                    }
                                                 });
+                                                //organizationUnitService.deleteOrganizationUnit({
+                                                //    id: node.id
+                                                //}).then(function () {
+                                                //    abp.notify.success(app.localize('SuccessfullyDeleted'));
+                                                //    instance.delete_node(node);
+                                                //    vm.organizationTree.refreshUnitCount();
+                                                //});
                                             }
                                         }
                                     );
