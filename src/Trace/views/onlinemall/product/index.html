@@ -25,7 +25,7 @@
                     <label class="col-md-4 control-label">状态</label>
                     <div class="col-md-8">
                         <select ng-model="vm.table.filter.state" class="form-control edited" ui-validate="'$value>0'"
-                                ng-class="{'edited':vm.model.type>0}" ng-options="m.id as m.name for m in vm.states"></select>
+                                ng-class="{'edited':vm.table.filter.state>0}" ng-options="m.id as m.name for m in vm.states"></select>
                         <div class="form-control-focus"> </div>
                     </div>
                 </div>
