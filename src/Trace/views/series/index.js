@@ -48,7 +48,7 @@
                                         id: node.id,
                                         displayName: node.original.displayName
                                     }, function (updatedOu) {
-                                        node.original.displayName = updatedOu.displayName;
+                                        node.original.displayName = updatedOu.name;
                                         instance.rename_node(node, vm.organizationTree.generateTextOnTree(updatedOu));
                                     });
                                 }
@@ -112,7 +112,7 @@
                                     id: newOu.id,
                                     parent: newOu.parentId ? newOu.parentId : '#',
                                     code: newOu.code,
-                                    displayName: newOu.displayName,
+                                    displayName: newOu.name,
                                     memberCount: 0,
                                     text: vm.organizationTree.generateTextOnTree(newOu),
                                     state: {

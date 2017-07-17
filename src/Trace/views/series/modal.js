@@ -14,7 +14,7 @@
 
                 dataFactory.action(vm.url, "", null, vm.org).then(function (res) {
                     if (res.success) {
-                        $uibModalInstance.close(res);
+                        $uibModalInstance.close(vm.org);
                     } else {
                         abp.notify.error(res.error);
                     }
