@@ -37,10 +37,11 @@
                 if (vm.product.is_badge) {
                     vm.product.badge_image = vm.file.model[1].url;
                 }
+                vm.product.is_badge = vm.product.is_badge ? 1 : 0;
                 vm.product.image1 = vm.file.model[3]? vm.file.model[3].url:"";
                 vm.product.image2 = vm.file.model[4]? vm.file.model[4].url:"";
                 vm.product.tag = vm.file.model[2] ? vm.file.model[2].url : "";
-             
+              //  vm.product.type = vm.product.type === "1" ? 1 : 0;
                 dataFactory.action(vm.url, "", null, vm.product)
                     .then(function (res) {
                         if (res.success) {
