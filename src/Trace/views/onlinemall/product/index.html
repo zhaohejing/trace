@@ -50,30 +50,32 @@
                     <tr>
                         <th st-sort="a">产品名称</th>
                         <th>创建时间</th>
-                        <th>创建人</th>
-                        <th>权重</th>
+                        <th>价格</th>
+                        <th>库存</th>
+                        <th>一级分类</th>
+                        <th>二级分类</th>
+                        <th>三级分类</th>
                         <th>状态</th>
-                        <th>链接</th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.data">
-                        <td>{{row.a}}</td>
-                        <td>{{row.b}}</td>
-                        <td>{{row.c}}</td>
-                        <td>{{row.balance}}</td>
-                        <td>{{row.email}}</td>
-                        <td>{{row.email}}</td>
+                    <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.rows">
+                        <td>{{row.name}}</td>
+                        <td>{{row.online_time}}</td>
+                        <td>{{row.price}}</td>
+                        <td>{{row.inventory}}</td>
+                        <td>{{row.badge_category1}}</td>
+                        <td>{{row.badge_category2}}</td>
+                        <td>{{row.badge_category3}}</td>
+                        <td>{{row.status==1?'有效':'无效'}}</td>
+
                         <td>
-                            <a href="#"  ng-click="vm.modify(row)" >
-                                修改
+                            <a href="#"  ng-click="vm.edit(row)" > 修改
                             </a>
-                            <a href="#"  ng-click="vm.low(row)" >
-                                下线
+                            <a href="#"  ng-click="vm.outline(row)" >  下线
                             </a>
-                            <a href="#"  ng-click="vm.delete(row)" >
-                                删除
+                            <a href="#"  ng-click="vm.delete(row)" >  删除
                             </a>
                         </td>
                     </tr>

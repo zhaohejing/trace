@@ -142,7 +142,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     $stateProvider
         .state("integralmodify",
         {
-            url: "/integral/modify.html",
+            url: "/integral/modify.html/:id",
             templateUrl: "views/integralmall/modify.html",
             data: { pageTitle: '积分商品管理' },
             resolve: {
@@ -293,7 +293,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     })
         .state("productmodify",
     {
-        url: "/onlinemall/product/modify.html",
+        url: "/onlinemall/product/modify.html/:id",
         templateUrl: "views/onlinemall/product/modify.html",
         data: { pageTitle: '商品管理' },
         resolve: {

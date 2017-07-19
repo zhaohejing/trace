@@ -35,7 +35,7 @@
                     return;
                 }
                 if (vm.product.is_badge) {
-                    vm.product.badge_image = vm.file.model[1].url;
+                    vm.product.badge_image = vm.file.model[1]?vm.file.model[1].url:"";
                 }
                 vm.product.is_badge = vm.product.is_badge ? 1 : 0;
                 vm.product.image1 = vm.file.model[3]? vm.file.model[3].url:"";

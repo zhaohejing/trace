@@ -30,8 +30,8 @@
                     dataFactory.action("api/product/list", "", null, vm.table.filter)
                         .then(function (res) {
                             if (res.success) {
-                                vm.table.pageConfig.totalItems = res.result.total;
-                                vm.table.rows = res.result.data;
+                                vm.table.pageConfig.totalItems = res.total;
+                                vm.table.rows = res.result;
                                 vm.table.pageConfig.onChange = function () {
                                     vm.init();
                                 }
@@ -46,7 +46,6 @@
                 }
 
                 vm.edit = function (row) {
-                
                     $state.go("productmodify", { id: row.id });
                 }
              
@@ -58,7 +57,7 @@
                             if (isConfirmed) {
                                 //...delete user 点击确认后执行
                                 //api/resource/delete
-                                dataFactory.action("api/activity/delete", "", null, { list: [row.id] })
+                                dataFactory.action("api/product/delete", "", null, { list: [row.id] })
                                     .then(function (res) {
                                         abp.notify.success("删除成功");
                                         vm.init();
@@ -66,6 +65,22 @@
                             }
                         });
 
+                }
+                vm.outline=function(row) {
+                    abp.message.confirm(
+                      '下线将导致数据无法正常购买', //确认提示
+                      '确定要将此商品下线么?', //确认提示（可选参数）
+                      function (isConfirmed) {
+                          if (isConfirmed) {
+                              //...delete user 点击确认后执行
+                              //api/resource/delete
+                              dataFactory.action("api/product/outline", "", null, { list: [row.id] })
+                                  .then(function (res) {
+                                      abp.notify.success("下线成功");
+                                      vm.init();
+                                  });
+                          }
+                      });
                 }
                 //vm.public = function () {
                 //    var ids = Object.getOwnPropertyNames(vm.table.checkModel);
@@ -85,7 +100,7 @@
                 //            vm.init();
                 //        });
                 //}
-
+                vm.init();
             }
         ]);
 })();
