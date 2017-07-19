@@ -96,7 +96,10 @@
                         <td>
                             <a href="#"  ng-click="vm.edit(row)" > 修改
                             </a>
-                            <a href="#"  ng-click="vm.outline(row)" >  下线
+                            <a ng-if="row.status==1" href="#"  ng-click="vm.outline(row,0)" >  下线
+                            </a>
+                            <a ng-if="row.status==0" href="#" ng-click="vm.outline(row,1)">
+                               上线
                             </a>
                             <a href="#"  ng-click="vm.delete(row)" >  删除
                             </a>

@@ -94,15 +94,15 @@
                         });
 
                 }
-                vm.outline=function(row) {
+                vm.outline = function (row, status) {
+                    var title = status === 0 ? "确定要将此商品下线么" : "确定要将此商品上线么";
                     abp.message.confirm(
-                      '下线将导致数据无法正常购买', //确认提示
-                      '确定要将此商品下线么?', //确认提示（可选参数）
+                      title, //确认提示（可选参数）
                       function (isConfirmed) {
                           if (isConfirmed) {
                               //...delete user 点击确认后执行
                               //api/resource/delete
-                              dataFactory.action("api/product/outline", "", null, { list: [row.id] })
+                              dataFactory.action("api/product/updateStatus", "", null, { list: [row.id], status: status })
                                   .then(function (res) {
                                       abp.notify.success("下线成功");
                                       vm.init();
