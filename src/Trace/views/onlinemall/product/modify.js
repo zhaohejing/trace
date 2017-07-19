@@ -10,6 +10,7 @@
             var aid = $stateParams.id;
 
             vm.product = {};
+            vm.products = [];
             vm.url = "api/product/add";
             if (aid) {
                 vm.url = "api/product/update";
@@ -26,7 +27,7 @@
                 content: 'wwwww'
             };
             vm.cancel = function () {
-                $state.go("integral");
+                $state.go("product");
             }
             //保存
             vm.save = function () {
@@ -41,7 +42,17 @@
                 vm.product.image1 = vm.file.model[3]? vm.file.model[3].url:"";
                 vm.product.image2 = vm.file.model[4]? vm.file.model[4].url:"";
                 vm.product.tag = vm.file.model[2] ? vm.file.model[2].url : "";
-              //  vm.product.type = vm.product.type === "1" ? 1 : 0;
+
+                if (vm.products.length > 0) {
+                    var temp = [];
+                    angular.forEach(vm.products,
+                        function(v, i) {
+                            temp.push(v.id);
+                        });
+                    vm.product.list = temp;
+                }
+
+                //  vm.product.type = vm.product.type === "1" ? 1 : 0;
                 dataFactory.action(vm.url, "", null, vm.product)
                     .then(function (res) {
                         if (res.success) {
@@ -53,7 +64,7 @@
                     });
             }
             vm.choose= function() {
-                if (vm.product.vm.product.is_badge) {
+                if (vm.product.is_badge) {
                     vm.product.type = 0;
                     return;
                 }
@@ -61,13 +72,13 @@
                     templateUrl: 'views/onlinemall/product/choose.html',
                     controller: 'views.onlinemall.product.choose as vm',
                     backdrop: 'static',
-                    // size: 'lg', //模态框的大小尺寸
+                     size: 'lg', //模态框的大小尺寸
                     resolve: {
                         model: function () { return { type: 2 } }
                     }
                 });
                 modal.result.then(function (response) {
-                    vm.product.list = response;
+                    vm.products = response;
                 });
             }
          

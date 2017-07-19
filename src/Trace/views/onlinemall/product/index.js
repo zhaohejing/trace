@@ -44,7 +44,35 @@
                 vm.add = function () {
                     $state.go("productmodify");
                 }
-
+                vm.cate = {
+                    a: [], b: [], c: [],
+                    init: function () {
+                        dataFactory.action("api/category/getAllByPid?pid=0", "", null, {})
+                     .then(function (res) {
+                         if (res.success) {
+                             vm.cate.a = res.result;
+                         } else {
+                             abp.notify.error(res.error);
+                         }
+                     });
+                    },
+                    change: function (type) {
+                        var pid = type === 1 ? vm.product.badge_category1 : vm.product.badge_category2;
+                        dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
+                .then(function (res) {
+                    if (res.success) {
+                        if (type === 1) {
+                            vm.cate.b = res.result;
+                        } else {
+                            vm.cate.c = res.result;
+                        }
+                    } else {
+                        abp.notify.error(res.error);
+                    }
+                });
+                    }
+                }
+                vm.cate.init();
                 vm.edit = function (row) {
                     $state.go("productmodify", { id: row.id });
                 }

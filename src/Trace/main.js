@@ -312,7 +312,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 name: 'MetronicApp',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
-                                    'views/onlinemall/product/modify.js'
+                                    'views/onlinemall/product/modify.js',
+                                    'views/onlinemall/product/choose.js'
                                 ]
                             }
                         ]
