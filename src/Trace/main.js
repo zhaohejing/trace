@@ -432,7 +432,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
         //游记编辑
         .state("tracemodify",
     {
-        url: "/trace/modify.html",
+        url: "/trace/modify.html:id",
         templateUrl: "views/trace/modify.html",
         data: { pageTitle: '游迹管理' },
         resolve: {

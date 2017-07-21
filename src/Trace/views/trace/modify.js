@@ -8,7 +8,22 @@
             });
             var vm = this;
             var aid = $stateParams.id;
-            vm.overlays = [];
+            vm.overlays = {};
+          
+            vm.trace = {};
+            vm.url = "api/travels/add";
+            if (aid) {
+                vm.url = "api/travels/update";
+                dataFactory.action("api/travels/get?id="+aid, "GET", null, {  })
+                  .then(function (res) {
+                      if (res.success) {
+                          vm.trace = res.result;
+                          vm.overlays = angular.fromJson(vm.trace.content);
+                      } else {
+                          abp.notify.error(res.error);
+                      }
+                  });
+            }
             vm.mapReady = function (map, draw) {
                 map.enableScrollWheelZoom();
                 map.addControl(new BMap.NavigationControl());
@@ -19,34 +34,47 @@
                 map.centerAndZoom(point, 15);
                 vm.mapper = { map: map, draw: draw };
             };
-            vm.activity = {};
-            if (aid) {
-                dataFactory.action("api/activity/detail", "", null, { id: aid })
-                  .then(function (res) {
-                      if (res.success) {
-                          vm.activity = res.result;
-                      } else {
-                          abp.notify.error(res.error);
-                      }
-                  });
-            }
-       
             vm.cancel = function () {
                 $state.go("trace");
             }
+            vm.cate = {
+                a: [], b: [], c: [],
+                init: function () {
+                    dataFactory.action("api/category/getAllByPid?pid=0", "", null, {})
+                 .then(function (res) {
+                     if (res.success) {
+                         vm.cate.a = res.result;
+                     } else {
+                         abp.notify.error(res.error);
+                     }
+                 });
+                },
+                change: function (type) {
+                    var pid = type === 1 ? vm.trace.category1 : vm.trace.category2;
+                    dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
+            .then(function (res) {
+                if (res.success) {
+                    if (type === 1) {
+                        vm.cate.b = res.result;
+                    } else {
+                        vm.cate.c = res.result;
+                    }
+                } else {
+                    abp.notify.error(res.error);
+                }
+            });
+                }
+            }
+            vm.cate.init();
             //保存
             vm.save = function () {
-                if (vm.activity.id <= 0 && vm.file.show.length <= 0) {
-                    abp.notify.warn("请先上传文件");
-                    return;
-                }
-                vm.activity.images = vm.file.show;
-                var url = "api/activity/modify";
-                dataFactory.action(url, "", null, vm.activity)
+                vm.trace.image = vm.file.model[1] ? vm.file.model[1].url : "";
+                vm.trace.content = angular.toJson(vm.overlays);
+                dataFactory.action(vm.url, "", null, vm.trace)
                     .then(function(res) {
                         if (res.success) {
                             abp.notify.success("成功");
-                            $state.go("activity");
+                            $state.go("trace");
                         } else {
                             abp.notify.error(res.error);
                         }
@@ -58,8 +86,9 @@
                 token: abp.qiniuToken,
                 uploadstate: false,
                 show: [],
+                model: {},
                 selectFiles: [],
-                start: function (index) {
+                start: function (index, type) {
                     vm.file.selectFiles[index].progress = {
                         p: 0
                     };
@@ -69,14 +98,11 @@
                         token: vm.file.token
                     });
                     vm.file.selectFiles[index].upload.then(function (response) {
-                        var fileName = vm.file.selectFiles[index].file.name;
                         var dto = {
-                            sort: index,
-                            title: fileName,
+                            type: type,
                             url: abp.qiniuUrl + response.key,
-                            isTitle: fileName.indexOf("title") >= 0,
-                            isShare: fileName.indexOf("share") >= 0
                         };
+                        vm.file.model[type] = dto;
                         vm.file.show.push(dto);
                         vm.file.uploadstate = true;
                     }, function (response) {
@@ -87,18 +113,19 @@
                     });
                 },
                 abort: function () {
+                    vm.file.model = {};
                     //  vm.model.address = response.address;
                     vm.file.show = [];
                     vm.file.selectFiles = [];
                 },
-                onFileSelect: function ($files) {
+                onFileSelect: function ($files, type) {
                     vm.file.selectFiles = [];
                     var offsetx = vm.file.selectFiles.length;
                     for (var i = 0; i < $files.length; i++) {
                         vm.file.selectFiles[i + offsetx] = {
                             file: $files[i]
                         };
-                        vm.file.start(i + offsetx);
+                        vm.file.start(i + offsetx, type);
                     }
                 }
             }

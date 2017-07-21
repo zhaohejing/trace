@@ -11,10 +11,10 @@
                 overlays:"="
             },
             link: function (scope, element, attrs) {
+                var dto;
                 var genderModel = function (map, bMap) {
-                    if (scope.overlays.length) {
+                    if (scope.overlays && scope.overlays.points) {
                         var model = scope.overlays;
-                        var dto;
                         var point = model.points[0];
                         var temp = [];
                         //点
@@ -26,14 +26,14 @@
                         } else if (model.drawingMode === "circle") {
                             dto = new bMap.Circle(new bMap.Point(point.x, point.y),
                                 point.r,
-                                { strokeColor: "blue", strokeWeight: 2, strokeOpacity: 0.5 }); //创建圆
+                                { strokeColor: "red", strokeWeight: 2, strokeOpacity: 0.5 }); //创建圆
 
                         } else if (model.drawingMode === "polyline") {
                             angular.forEach(model.points,
                                 function (v, i) {
                                     temp.push(new bMap.Point(v.x, v.y));
                                 });
-                            dto = new bMap.Polyline(temp, { strokeColor: "blue", strokeWeight: 2, strokeOpacity: 0.5 }); //创建折线
+                            dto = new bMap.Polyline(temp, { strokeColor: "red", strokeWeight: 2, strokeOpacity: 0.5 }); //创建折线
 
                             dto.enableEditing();
 
@@ -42,7 +42,7 @@
                               function (v, i) {
                                   temp.push(new bMap.Point(v.x, v.y));
                               });
-                            dto = new bMap.Polygon(temp, { strokeColor: "blue", strokeWeight: 2, strokeOpacity: 0.5 }); //创建多边形
+                            dto = new bMap.Polygon(temp, { strokeColor: "red", strokeWeight: 2, strokeOpacity: 0.5 }); //创建多边形
                             dto.enableEditing();
                         } 
                         if (dto) {
@@ -53,7 +53,7 @@
                 var getmodel = function (mode, overlay) {
                     var dto = { drawingMode: mode };
                     //点
-                    if (mode === "maker") {
+                    if (mode === "marker") {
                         dto.points = [{ x: overlay.point.lng, y: overlay.point.lat }];
                     } else if (mode === "circle") {
                         dto.points = [{ x: overlay.point.lng, y: overlay.point.lat, r: overlay.xa }];
@@ -68,6 +68,7 @@
                     return dto;
                 }
                 $window.baiduMapLoaded = function () {
+                    var temp = null;
                     var map = new BMap.Map(element[0]);
                     var styleOptions = {
                         strokeColor: "red",    //边线颜色。
@@ -96,11 +97,15 @@
                     genderModel(map, BMap);
                     //回调获得覆盖物信息
                     var overlaycomplete = function (e) {
-                        if (scope.overlays.length === 1) {
-                            map.removeOverlay(scope.overlays[0].overlay);
+                        if (scope.overlays) {
+                            map.removeOverlay(dto);
                             scope.overlays = {};
                         }
+                        if (temp) {
+                            map.removeOverlay(temp);
+                        }
                         scope.overlays = getmodel(e.drawingMode, e.overlay);
+                        temp = e.overlay;
                         map.addOverlay(e.overlay);
                     };
                     //添加鼠标绘制工具监听事件，用于获取绘制结果

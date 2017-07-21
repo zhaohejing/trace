@@ -15,7 +15,7 @@
                 //页面属性
                 vm.table = {
                     rows: [], //数据集
-                    filter: { pageNum: 1, pageSize: 10, name: "", state: 1 }, //条件搜索
+                    filter: { pageNum: 1, pageSize: 10, name: "" }, //条件搜索
                     pageConfig: { //分页配置
                         currentPage: 1, //当前页
                         itemsPerPage: 10, //页容量
@@ -25,13 +25,13 @@
 
                 //获取用户数据集，并且添加配置项
                 vm.init = function () {
-                    vm.filter.index = vm.table.pageConfig.currentPage;
-                    vm.filter.size = vm.table.pageConfig.itemsPerPage;
-                    dataFactory.action("api/activity/activitys", "", null, vm.table.filter)
+                    vm.table.filter.pageNum = vm.table.pageConfig.currentPage;
+                    vm.table.filter.pageSize = vm.table.pageConfig.itemsPerPage;
+                    dataFactory.action("api/travels/list", "", null, vm.table.filter)
                         .then(function (res) {
                             if (res.success) {
-                                vm.table.pageConfig.totalItems = res.result.total;
-                                vm.table.rows = res.result.data;
+                                vm.table.pageConfig.totalItems = res.total;
+                                vm.table.rows = res.result;
                                 vm.table.pageConfig.onChange = function () {
                                     vm.init();
                                 }
@@ -57,7 +57,7 @@
                      });
                     },
                     change: function (type) {
-                        var pid = type === 1 ? vm.product.badge_category1 : vm.product.badge_category2;
+                        var pid = type === 1 ? vm.table.filter.category1 : vm.table.filter.category2;
                         dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
                 .then(function (res) {
                     if (res.success) {
@@ -74,7 +74,6 @@
                 }
                 vm.cate.init();
                 vm.edit = function (row) {
-                 
                     $state.go("tracemodify", { id: row.id});
                 }
                 vm.delete = function (row) {
@@ -85,7 +84,7 @@
                             if (isConfirmed) {
                                 //...delete user 点击确认后执行
                                 //api/resource/delete
-                                dataFactory.action("api/activity/delete", "", null, { list: [row.id] })
+                                dataFactory.action("api/travels/delete", "", null, { list: [row.id] })
                                     .then(function (res) {
                                         abp.notify.success("删除成功");
                                         vm.init();
@@ -93,15 +92,14 @@
                             }
                         });
                 }
-                vm.public = function (row) {
-                  
-                    dataFactory.action("api/activity/public", "", null, { list: [row.id] })
+                vm.public = function (row, state) {
+                    dataFactory.action("api/travels/updateStatus", "", null, { list: [row.id],status:state })
                         .then(function (res) {
-                            abp.notify.success("发布成功");
+                            abp.notify.success("执行成功");
                             vm.init();
                         });
                 }
-
+                vm.init();
             }
         ]);
 })();
