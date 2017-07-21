@@ -21,6 +21,44 @@
     </div>
     <div class="portlet light bordered">
         <div class="row">
+         
+            <div class="col-xs-8">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label">选择系列</label>
+                    <div class="col-md-4">
+                        <select ng-model="vm.table.filter.a"
+                                class="form-control edited" ui-validate="'$value>0'" ng-change="vm.cate.change(1)"
+                                ng-class="{'edited':vm.table.filter.a>0}" ng-options="m.id as m.name for m in vm.cate.a"></select>
+                        <div class="form-control-focus"> </div>
+                    </div>
+                    <div class="col-md-3">
+                        <select ng-model="vm.table.filter.b"
+                                class="form-control edited" ui-validate="'$value>0'" ng-change="vm.cate.change(2)"
+                                ng-class="{'edited':vm.table.filter.b>0}" ng-options="m.id as m.name for m in vm.cate.b"></select>
+                        <div class="form-control-focus"> </div>
+                    </div>
+                    <div class="col-md-3">
+                        <select ng-model="vm.table.filter.c"
+                                class="form-control edited" ui-validate="'$value>0'"
+                                ng-class="{'edited':vm.table.filter.c>0}" ng-options="m.id as m.name for m in vm.cate.c"></select>
+                        <div class="form-control-focus"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group form-md-line-input has-info">
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-control">
+                            <input type="text" class="form-control input-sm" placeholder="按条件搜索" ng-model="vm.table.filter.name">
+                        </div>
+                        <span class="input-group-btn btn-right">
+                            <button ng-click="vm.init()" class="btn green-haze" type="button">查询</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>   <div class="row">
             <div class="col-xs-8">
                 <div class="form-group form-md-line-input">
                     <label class="col-md-2 control-label">类别</label>

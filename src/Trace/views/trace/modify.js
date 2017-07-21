@@ -19,7 +19,6 @@
                 map.centerAndZoom(point, 15);
                 vm.mapper = { map: map, draw: draw };
             };
-
             vm.activity = {};
             if (aid) {
                 dataFactory.action("api/activity/detail", "", null, { id: aid })
@@ -32,8 +31,6 @@
                   });
             }
        
-            vm.cates = [{ id: 1, name: "纪念章" }, { id: 2, name: "名片" }, { id: 3, name: "明信片" }, { id: 4, name: "周边" }];
-            
             vm.cancel = function () {
                 $state.go("trace");
             }

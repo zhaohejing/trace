@@ -11,6 +11,62 @@
                 overlays:"="
             },
             link: function (scope, element, attrs) {
+                var genderModel = function (map, bMap) {
+                    if (scope.overlays.length) {
+                        var model = scope.overlays;
+                        var dto;
+                        var point = model.points[0];
+                        var temp = [];
+                        //点
+                        if (model.drawingMode === "marker") {
+                            dto = new bMap.Marker(new bMap.Point(point.x, point.y)); // 创建点
+                            //可拖拽
+                            dto.enableDragging();
+
+                        } else if (model.drawingMode === "circle") {
+                            dto = new bMap.Circle(new bMap.Point(point.x, point.y),
+                                point.r,
+                                { strokeColor: "blue", strokeWeight: 2, strokeOpacity: 0.5 }); //创建圆
+
+                        } else if (model.drawingMode === "polyline") {
+                            angular.forEach(model.points,
+                                function (v, i) {
+                                    temp.push(new bMap.Point(v.x, v.y));
+                                });
+                            dto = new bMap.Polyline(temp, { strokeColor: "blue", strokeWeight: 2, strokeOpacity: 0.5 }); //创建折线
+
+                            dto.enableEditing();
+
+                        } else if (model.drawingMode === "polygon" || model.drawingMode === "rectangle") {
+                            angular.forEach(model.points,
+                              function (v, i) {
+                                  temp.push(new bMap.Point(v.x, v.y));
+                              });
+                            dto = new bMap.Polygon(temp, { strokeColor: "blue", strokeWeight: 2, strokeOpacity: 0.5 }); //创建多边形
+                            dto.enableEditing();
+                        } 
+                        if (dto) {
+                            map.addOverlay(dto);
+                        }
+                    }
+                }
+                var getmodel = function (mode, overlay) {
+                    var dto = { drawingMode: mode };
+                    //点
+                    if (mode === "maker") {
+                        dto.points = [{ x: overlay.point.lng, y: overlay.point.lat }];
+                    } else if (mode === "circle") {
+                        dto.points = [{ x: overlay.point.lng, y: overlay.point.lat, r: overlay.xa }];
+                    } else if (mode === "polyline" || mode === "rectangle" || mode === "polygon") {
+                        var temp = [];
+                        angular.forEach(overlay.po,
+                            function(v, i) {
+                                temp.push({ x: v.lng, y: v.lat });
+                            });
+                        dto.points = temp;
+                    }
+                    return dto;
+                }
                 $window.baiduMapLoaded = function () {
                     var map = new BMap.Map(element[0]);
                     var styleOptions = {
@@ -34,29 +90,33 @@
                         polygonOptions: styleOptions, //多边形的样式
                         rectangleOptions: styleOptions //矩形的样式
                     };
+                   // var marker = new BMap.Marker(point);
                     //实例化鼠标绘制工具
                     var draw = new BMapLib.DrawingManager(map, config);
+                    genderModel(map, BMap);
                     //回调获得覆盖物信息
                     var overlaycomplete = function (e) {
-                        if (scope.overlays.length==1) {
-                            map.clearOverlays();
-                            scope.overlays = [];
-                          
+                        if (scope.overlays.length === 1) {
+                            map.removeOverlay(scope.overlays[0].overlay);
+                            scope.overlays = {};
                         }
-                        var temp = { drawingMode: e.drawingMode,overlay:e.overlay };
-                        scope.overlays.push(temp);
+                        scope.overlays = getmodel(e.drawingMode, e.overlay);
                         map.addOverlay(e.overlay);
-
                     };
                     //添加鼠标绘制工具监听事件，用于获取绘制结果
                     draw.addEventListener("overlaycomplete", overlaycomplete);
-
                     scope.mapReady({map: map,draw:draw});
                 };
                 var script = document.createElement("script");
                 script.src = 'http://api.map.baidu.com/api?v=2.0&ak=' + attrs.baiduMap + '&callback=baiduMapLoaded';
                 document.body.appendChild(script);
+
+
+            
+
             }
+            
+           
         };
     }]);
 })();
