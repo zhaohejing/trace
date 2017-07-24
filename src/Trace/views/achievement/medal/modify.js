@@ -9,23 +9,49 @@
             var vm = this;
             var aid = $stateParams.id;
           
-            vm.product = {};
+            vm.achi = { type:1};
             if (aid) {
-                dataFactory.action("api/product/get?id="+aid, "GET", null,null)
+                dataFactory.action("api/achievement/get?id=" + aid, "GET", null, null)
                   .then(function (res) {
                       if (res.success) {
-                          vm.product = res.result;
+                          vm.achi = res.result;
                       } else {
                           abp.notify.error(res.error);
                       }
                   });
             }
-            vm.config = {
-                content: '<p>请输入富文本内容</p>'
-            };
-            vm.cates = [{ id: 1, name: "纪念章" }, { id: 2, name: "名片" }, { id: 3, name: "明信片" }, { id: 4, name: "周边" }];
+         
+            vm.cate = {
+                a: [], b: [], c: [],
+                init: function () {
+                    dataFactory.action("api/category/getAllByPid?pid=0", "", null, {})
+                 .then(function (res) {
+                     if (res.success) {
+                         vm.cate.a = res.result;
+                     } else {
+                         abp.notify.error(res.error);
+                     }
+                 });
+                },
+                change: function (type) {
+                    var pid = type === 1 ? vm.product.badge_category1 : vm.product.badge_category2;
+                    dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
+            .then(function (res) {
+                if (res.success) {
+                    if (type === 1) {
+                        vm.cate.b = res.result;
+                    } else {
+                        vm.cate.c = res.result;
+                    }
+                } else {
+                    abp.notify.error(res.error);
+                }
+            });
+                }
+            }
+            vm.cate.init();
             vm.cancel = function () {
-                $state.go("integral");
+                $state.go("medal");
             }
             vm.choose= function() {
                 var modal = $uibModal.open({
@@ -65,8 +91,10 @@
                 token: abp.qiniuToken,
                 uploadstate: false,
                 show: [],
+                model: {},
                 selectFiles: [],
-                start: function (index) {
+
+                start: function (index, type) {
                     vm.file.selectFiles[index].progress = {
                         p: 0
                     };
@@ -76,14 +104,11 @@
                         token: vm.file.token
                     });
                     vm.file.selectFiles[index].upload.then(function (response) {
-                        var fileName = vm.file.selectFiles[index].file.name;
                         var dto = {
-                            sort: index,
-                            title: fileName,
+                            type: type,
                             url: abp.qiniuUrl + response.key,
-                            isTitle: fileName.indexOf("title") >= 0,
-                            isShare: fileName.indexOf("share") >= 0
                         };
+                        vm.file.model[type] = dto;
                         vm.file.show.push(dto);
                         vm.file.uploadstate = true;
                     }, function (response) {
@@ -94,18 +119,19 @@
                     });
                 },
                 abort: function () {
+                    vm.file.model = {};
                     //  vm.model.address = response.address;
                     vm.file.show = [];
                     vm.file.selectFiles = [];
                 },
-                onFileSelect: function ($files) {
+                onFileSelect: function ($files, type) {
                     vm.file.selectFiles = [];
                     var offsetx = vm.file.selectFiles.length;
                     for (var i = 0; i < $files.length; i++) {
                         vm.file.selectFiles[i + offsetx] = {
                             file: $files[i]
                         };
-                        vm.file.start(i + offsetx);
+                        vm.file.start(i + offsetx, type);
                     }
                 }
             }

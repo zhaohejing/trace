@@ -487,7 +487,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     })
         .state("medalmodify",
     {
-        url: "/medal/modify.html",
+        url: "/medal/modify.html:id",
         templateUrl: "views/achievement/medal/modify.html",
         data: { pageTitle: '成就编辑' },
         resolve: {
@@ -544,7 +544,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     })
         .state("traceachimodify",
     {
-        url: "/traceachi/modify.html",
+        url: "/traceachi/modify.html:id",
         templateUrl: "views/achievement/trace/modify.html",
         data: { pageTitle: '成就编辑' },
         resolve: {

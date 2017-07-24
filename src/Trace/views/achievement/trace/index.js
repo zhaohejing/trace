@@ -11,8 +11,35 @@
                     });
                 var vm = this;
 
-                vm.cates = [{ id: 1, name: "纪念章" }, { id: 0, name: "游迹" }];
-
+                vm.cate = {
+                    a: [], b: [], c: [],
+                    init: function () {
+                        dataFactory.action("api/category/getAllByPid?pid=0", "", null, {})
+                     .then(function (res) {
+                         if (res.success) {
+                             vm.cate.a = res.result;
+                         } else {
+                             abp.notify.error(res.error);
+                         }
+                     });
+                    },
+                    change: function (type) {
+                        var pid = type === 1 ? vm.product.badge_category1 : vm.product.badge_category2;
+                        dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
+                .then(function (res) {
+                    if (res.success) {
+                        if (type === 1) {
+                            vm.cate.b = res.result;
+                        } else {
+                            vm.cate.c = res.result;
+                        }
+                    } else {
+                        abp.notify.error(res.error);
+                    }
+                });
+                    }
+                }
+                vm.cate.init();
                 //页面属性
                 vm.table = {
                     rows: [], //数据集
