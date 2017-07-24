@@ -133,18 +133,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-4">
-                        <div class="form-group form-md-line-input">
-                            <label class="col-md-4 control-label">绑定纪念章</label>
-                            <div class="col-md-8">
-                                <select ng-model="vm.achi.achi"
-                                        class="form-control edited" ui-validate="'$value>0'"  required=""
-                                        ng-class="{'edited':vm.achi.achi>0}"
-                                         ng-options="m.id as m.name for m in vm.achilist.list"></select>
-                                <div class="form-control-focus"> </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <div class="col-xs-4">
                         <div class="form-group form-md-radios">
                             <div class="md-radio-inline">
@@ -170,6 +159,19 @@
                         </div>
 
                     </div>
+                    <div ng-if="vm.achi.is_group==0" class="col-xs-4">
+        <div class="form-group form-md-line-input">
+            <label class="col-md-4 control-label">绑定纪念章</label>
+            <div class="col-md-8">
+                <select ng-model="vm.tempachi"
+                        class="form-control edited" ui-validate="'$value>0'"  required
+                        ng-class="{'edited':vm.tempachi>0}"
+                         ng-options="m.id as m.badge_name for m in vm.achilist.list"></select>
+                <div class="form-control-focus"> </div>
+            </div>
+        </div>
+    </div>
+
                 </div>
                 <div ng-if="vm.achi.is_group==1" class="row">
                     <div class="tabbable-line">
@@ -179,7 +181,7 @@
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <table st-table="vm.table.data" class="table table-striped">
+                            <table st-table="vm.templist" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th st-sort="a">名称</th>
@@ -193,19 +195,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.data">
-                                        <td>{{row.a}}</td>
-                                        <td>{{row.b}}</td>
-                                        <td>{{row.c}}</td>
-                                        <td>{{row.balance}}</td>
-                                        <td>{{row.email}}</td>
-                                        <td>{{row.email}}</td>
-                                        <td>{{row.email}}</td>
-                                        <td>
-                                            <button type="button" ng-click="vm.delete(row)" class="btn btn-sm btn-danger">
-                                                删除
-                                            </button>
-                                        </td>
+                                    <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.templist">
+                                        <td>{{row.name}}</td>
+                                        <td>{{row.online_time}}</td>
+                                        <td>{{row.price}}</td>
+                                        <td>{{row.inventory}}</td>
+                                        <td>{{row.badge_category1}}</td>
+                                        <td>{{row.badge_category2}}</td>
+                                        <td>{{row.badge_category3}}</td>
+                                        <td>{{row.status==1?'有效':'无效'}}</td>
+                                       
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -221,24 +220,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-4"></div>
-                    <div class="col-xs-4">
-                        <div class="tiles">
-                            <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,2)" data-multiple="vm.file.multiple" onclick="this.value = null">
-                                <div class="tile-body">
-                                    <i class="fa fa-cloud-upload"></i>
-                                </div>
-                                <div class="tile-object">
-                                    <div class="name"> 限制 </div>
-                                    <div class="number"> 170x170 </div>
-                                </div>
+            <div class="row">
+                <div class="col-xs-4"></div>
+                <div class="col-xs-4">
+                    <div class="tiles">
+                        <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,2)" data-multiple="vm.file.multiple" onclick="this.value = null">
+                            <div class="tile-body">
+                                <i class="fa fa-cloud-upload"></i>
                             </div>
-                          
+                            <div class="tile-object">
+                                <div class="name"> 限制 </div>
+                                <div class="number"> 170x170 </div>
+                            </div>
                         </div>
+                          
                     </div>
-                    <div class="col-xs-4"></div>
                 </div>
+                <div class="col-xs-4"></div>
+            </div>
+                <ueditor config="editorConfig" ng-model="vm.achi.content">
+                </ueditor>
             </div>
 
             <div class="modal-footer">

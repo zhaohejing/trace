@@ -507,7 +507,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/achievement/medal/modify.js',
-                                    'views/common/choose.js'
+                                    'views/achievement/medal/choose.js'
                                 ]
                             }
                         ]
@@ -563,7 +563,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 name: 'MetronicApp',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
-                                    'views/achievement/trace/modify.js'
+                                    'views/achievement/trace/modify.js',
+                                     'views/achievement/trace/choose.js'
                                 ]
                             }
                         ]

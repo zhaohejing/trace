@@ -8,22 +8,12 @@
             });
             var vm = this;
             var aid = $stateParams.id;
-
+            vm.templist = [];
+            vm.url = "api/achievement/add";
             vm.achi = { type: 1 };
-            if (aid) {
-                dataFactory.action("api/achievement/get?id=" + aid, "GET", null, null)
-                  .then(function (res) {
-                      if (res.success) {
-                          vm.achi = res.result;
-                      } else {
-                          abp.notify.error(res.error);
-                      }
-                  });
-            }
-
             vm.cate = {
                 a: [], b: [], c: [],
-                init: function () {
+                init: function (pid, child) {
                     dataFactory.action("api/category/getAllByPid?pid=0", "", null, {})
                  .then(function (res) {
                      if (res.success) {
@@ -32,9 +22,31 @@
                          abp.notify.error(res.error);
                      }
                  });
+                    if (pid) {
+                        dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
+                .then(function (res) {
+                    if (res.success) {
+                        vm.cate.b = res.result;
+                    } else {
+                        abp.notify.error(res.error);
+                    }
+                });
+                    }
+                    if (child) {
+                        dataFactory.action("api/category/getAllByPid?pid=" + child, "", null, {})
+                .then(function (res) {
+                    if (res.success) {
+                        vm.cate.c = res.result;
+                    } else {
+                        abp.notify.error(res.error);
+                    }
+                });
+                    }
+
+
                 },
                 change: function (type) {
-                    var pid = type === 1 ? vm.product.badge_category1 : vm.product.badge_category2;
+                    var pid = type === 1 ? vm.achi.category1 : vm.achi.category2;
                     dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
             .then(function (res) {
                 if (res.success) {
@@ -49,7 +61,20 @@
             });
                 }
             }
-            vm.cate.init();
+            if (aid) {
+                vm.url = "api/achievement/update";
+                dataFactory.action("api/achievement/get?id=" + aid, "GET", null, null)
+                    .then(function (res) {
+                        if (res.success) {
+                            vm.achi = res.result;
+                            vm.cate.init(vm.achi.category1, vm.achi.category2);
+                        } else {
+                            abp.notify.error(res.error);
+                        }
+                    });
+            } else {
+                vm.cate.init();
+            }
             vm.cancel = function () {
                 $state.go("medal");
             }
@@ -71,31 +96,41 @@
 
             vm.choose = function () {
                 var modal = $uibModal.open({
-                    templateUrl: 'views/common/choose.html',
-                    controller: 'views.common.choose as vm',
+                    templateUrl: 'views/achievement/trace/choose.html',
+                    controller: 'views.achievement.trace.choose as vm',
                     backdrop: 'static',
-                    // size: 'lg', //模态框的大小尺寸
+                     size: 'lg', //模态框的大小尺寸
                     resolve: {
                         model: function () { return { type: 1 } }
                     }
                 });
                 modal.result.then(function (response) {
-                    vm.init();
+                    vm.templist = response;
                 });
             }
             //保存
             vm.save = function () {
-                if (vm.activity.id <= 0 && vm.file.show.length <= 0) {
-                    abp.notify.warn("请先上传文件");
-                    return;
+                if (vm.achi.is_group === "0") {
+                    vm.achi.list = [vm.tempachi];
+                } else {
+                    if (vm.templist.length > 0) {
+                        var temp = [];
+                        angular.forEach(vm.templist,
+                            function (v, i) {
+                                temp.push(v.id);
+                            });
+                        vm.achi.list = temp;
+                    }
                 }
-                vm.activity.images = vm.file.show;
-                var url = "api/activity/modify";
-                dataFactory.action(url, "", null, vm.activity)
+                vm.achi.button_image = vm.file.model[1] ? vm.file.model[1].url : "";
+                vm.achi.image = vm.file.model[2] ? vm.file.model[2].url : "";
+
+
+                dataFactory.action(vm.url, "", null, vm.achi)
                     .then(function (res) {
                         if (res.success) {
                             abp.notify.success("成功");
-                            $state.go("activity");
+                            $state.go("trace");
                         } else {
                             abp.notify.error(res.error);
                         }

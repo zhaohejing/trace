@@ -1,0 +1,103 @@
+﻿<div>
+    <form name="modalform" role="form" novalidate class="form-validation">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span >商品选择 </span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+             
+                <div class="col-xs-8">
+                    <div class="form-group form-md-line-input">
+                        <label class="col-md-2 control-label">选择系列</label>
+                        <div class="col-md-4">
+                            <select ng-model="vm.table.filter.a"
+                                    class="form-control edited" ui-validate="'$value>0'" ng-change="vm.cate.change(1)"
+                                    ng-class="{'edited':vm.table.filter.a>0}" ng-options="m.id as m.name for m in vm.cate.a"></select>
+                            <div class="form-control-focus"> </div>
+                        </div>
+                        <div class="col-md-3">
+                            <select ng-model="vm.table.filter.b"
+                                    class="form-control edited" ui-validate="'$value>0'" ng-change="vm.cate.change(2)"
+                                    ng-class="{'edited':vm.table.filter.b>0}" ng-options="m.id as m.name for m in vm.cate.b"></select>
+                            <div class="form-control-focus"> </div>
+                        </div>
+                        <div class="col-md-3">
+                            <select ng-model="vm.table.filter.c"
+                                    class="form-control edited" ui-validate="'$value>0'"
+                                    ng-class="{'edited':vm.table.filter.c>0}" ng-options="m.id as m.name for m in vm.cate.c"></select>
+                            <div class="form-control-focus"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group form-md-line-input has-info">
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-control">
+                                <input type="text" class="form-control input-sm" placeholder="按条件搜索" ng-model="vm.table.filter.name">
+                            </div>
+                            <span class="input-group-btn btn-right">
+                                <button ng-click="vm.init()" class="btn green-haze" type="button">查询</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+         
+            <div class="row">
+                <table st-table="vm.table.rows" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th st-sort="a">产品名称</th>
+                            <th>创建时间</th>
+                            <th>价格</th>
+                            <th>库存</th>
+                            <th>一级分类</th>
+                            <th>二级分类</th>
+                            <th>三级分类</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.rows">
+                            <td>{{row.name}}</td>
+                            <td>{{row.online_time}}</td>
+                            <td>{{row.price}}</td>
+                            <td>{{row.inventory}}</td>
+                            <td>{{row.badge_category1}}</td>
+                            <td>{{row.badge_category2}}</td>
+                            <td>{{row.badge_category3}}</td>
+                            <td>{{row.status==1?'有效':'无效'}}</td>
+
+                            <td>
+                                <input type="checkbox" ng-click="vm.select(row,$event)" />
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="9">
+                                <div pagination conf="vm.table.pageConfig"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+           
+
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button ng-disabled="vm.saving" type="button" class="btn btn-sm default" ng-click="vm.cancel()">关闭</button>
+
+            <button type="submit" button-busy="vm.saving" class="btn btn-sm blue" busy-text="保存"
+                    ng-click="vm.save()"
+                    ng-disabled="modalform.$invalid">
+                <span>保存</span>
+            </button>
+        </div>
+    </form>
+</div>

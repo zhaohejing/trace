@@ -2,13 +2,12 @@
     'use strict';
 
     var app = angular.module('angular-baidu-map', []);
-
     app.directive('baiduMap', ['$window', function ($window) {
         return {
             restrict: 'A',
             scope: {
                 mapReady: '&',
-                overlays:"="
+                overlays: "=overlays"
             },
             link: function (scope, element, attrs) {
                 var dto;

@@ -23,9 +23,7 @@
                       }
                   });
             }
-            vm.config = {
-                content: 'wwwww'
-            };
+         
             vm.cancel = function () {
                 $state.go("product");
             }
