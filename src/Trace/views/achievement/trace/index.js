@@ -94,11 +94,11 @@
 
                 }
                 vm.public = function (row) {
-                    dataFactory.action("api/activity/public", "", null, { list: [row.id] })
-                        .then(function (res) {
-                            abp.notify.success("发布成功");
-                            vm.init();
-                        });
+                    dataFactory.action("api/achievement/updateStatus", "", null, { list: [row.id],status:1 })
+                                    .then(function (res) {
+                                        abp.notify.success("发布成功");
+                                        vm.init();
+                                    });
                 }
             }
         ]);
