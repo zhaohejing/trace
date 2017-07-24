@@ -80,19 +80,22 @@
                 </thead>
                 <tbody>
                     <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.rows">
-                        <td>{{row.a}}</td>
-                        <td>{{row.b}}</td>
-                        <td>{{row.c}}</td>
-                        <td>{{row.balance}}</td>
-                        <td>{{row.email}}</td>
-                        <td>{{row.email}}</td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.category1}}</td>
+                        <td>{{row.category2}}</td>
+                        <td>{{row.category3}}</td>
+                        <td>{{row.integration}}</td>
+                        <td>{{row.finish}}</td>
+                        <td>{{row.achievement_val}}</td>
+                        <td>{{row.designation}}</td>
+                        <td>{{row.status}}</td>
                         <td>
-                            <button type="button" ng-click="vm.modify(row)" class="btn btn-sm btn-default">
+                            <a href="#" ng-click="vm.edit(row)" >
                                 修改
-                            </button>
-                            <button type="button" ng-click="vm.delete(row)" class="btn btn-sm btn-danger">
+                            </a>
+                            <a href="#" ng-click="vm.delete(row)" >
                                 删除
-                            </button>
+                            </a>
                         </td>
                     </tr>
                 </tbody>

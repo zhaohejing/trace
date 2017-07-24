@@ -9,8 +9,9 @@
             var vm = this;
             var aid = $stateParams.id;
             vm.templist = [];
+            vm.tempachi = 0;
             vm.url = "api/achievement/add";
-            vm.achi = { type: 1 };
+            vm.achi = { type: 2 };
             vm.cate = {
                 a: [], b: [], c: [],
                 init: function (pid, child) {
@@ -67,6 +68,7 @@
                     .then(function (res) {
                         if (res.success) {
                             vm.achi = res.result;
+                            vm.tempachi = vm.achi.list[0];
                             vm.cate.init(vm.achi.category1, vm.achi.category2);
                         } else {
                             abp.notify.error(res.error);
@@ -130,7 +132,7 @@
                     .then(function (res) {
                         if (res.success) {
                             abp.notify.success("成功");
-                            $state.go("trace");
+                            $state.go("traceachi");
                         } else {
                             abp.notify.error(res.error);
                         }

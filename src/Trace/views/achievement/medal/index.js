@@ -43,7 +43,7 @@
                 //页面属性
                 vm.table = {
                     rows: [], //数据集
-                    filter: { pageNum: 1, pageSize: 10, name: "",type:1 , category1: 0, category2: 0, category3: 0 }, //条件搜索
+                    filter: { pageNum: 1, pageSize: 10, name: "",type:1  }, //条件搜索
                     pageConfig: { //分页配置
                         currentPage: 1, //当前页
                         itemsPerPage: 10, //页容量
@@ -59,7 +59,7 @@
                         .then(function (res) {
                             if (res.success) {
                                 vm.table.pageConfig.totalItems = res.total;
-                                vm.table.rows = res.data;
+                                vm.table.rows = res.result;
                                 vm.table.pageConfig.onChange = function () {
                                     vm.init();
                                 }
@@ -73,7 +73,6 @@
                     $state.go("medalmodify");
                 }
                 vm.edit = function (row) {
-              
                     $state.go("medalmodify", { id:row.id });
                 }
                 vm.delete = function (row) {

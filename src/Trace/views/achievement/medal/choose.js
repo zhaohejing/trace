@@ -67,7 +67,7 @@
                  });
                 },
                 change: function (type) {
-                    var pid = type === 1 ? vm.product.badge_category1 : vm.product.badge_category2;
+                    var pid = type === 1 ? vm.table.filter.category1 : vm.table.filter.category2;
                     dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
             .then(function (res) {
                 if (res.success) {

@@ -183,36 +183,31 @@
                             <table st-table="vm.templist" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th st-sort="a">名称</th>
+                                        <th st-sort="a">游迹名称</th>
                                         <th>创建时间</th>
                                         <th>一级分类</th>
                                         <th>二级分类</th>
-                                        <th>系列</th>
-                                        <th>基础成就</th>
-                                        <th>状态</th>
+                                        <th>三级分类(系列)</th>
+                                        <th>url</th>
+                                        <th>图片</th>
                                         <th>操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.templist">
                                         <td>{{row.name}}</td>
-                                        <td>{{row.online_time}}</td>
-                                        <td>{{row.price}}</td>
-                                        <td>{{row.inventory}}</td>
-                                        <td>{{row.badge_category1}}</td>
-                                        <td>{{row.badge_category2}}</td>
-                                        <td>{{row.badge_category3}}</td>
-                                        <td>{{row.status==1?'有效':'无效'}}</td>
-                                      
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="7">
-                                            <div pagination conf="vm.table.pageConfig"></div>
+                                        <td>{{row.createtime}}</td>
+                                        <td>{{row.category1}}</td>
+                                        <td>{{row.category2}}</td>
+                                        <td>{{row.category3}}</td>
+                                        <td>{{row.url}}</td>
+                                        <td>{{row.image}}</td>
+                                        <td>
+                                            <input type="checkbox" ng-click="vm.select(row,$event)" />
                                         </td>
                                     </tr>
-                                </tfoot>
+                                </tbody>
+                           
                             </table>
 
 

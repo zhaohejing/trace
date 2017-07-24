@@ -43,7 +43,7 @@
                 //页面属性
                 vm.table = {
                     rows: [], //数据集
-                    filter: { pageNum: 1, pageSize: 10, name: "", category1: 0, category2: 0, category3: 0 }, //条件搜索
+                    filter: { pageNum: 1, pageSize: 10, name: "",type:2 }, //条件搜索
                     pageConfig: { //分页配置
                         currentPage: 1, //当前页
                         itemsPerPage: 10, //页容量
@@ -53,13 +53,13 @@
 
                 //获取用户数据集，并且添加配置项
                 vm.init = function () {
-                    vm.filter.pageNum = vm.table.pageConfig.currentPage;
-                    vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
-                    dataFactory.action("api/activity/activitys", "", null, vm.table.filter)
+                    vm.table.filter.pageNum = vm.table.pageConfig.currentPage;
+                    vm.table.filter.pageSize = vm.table.pageConfig.itemsPerPage;
+                    dataFactory.action("api/achievement/list", "", null, vm.table.filter)
                         .then(function (res) {
                             if (res.success) {
-                                vm.table.pageConfig.totalItems = res.result.total;
-                                vm.table.rows = res.result.data;
+                                vm.table.pageConfig.totalItems = res.total;
+                                vm.table.rows = res.result;
                                 vm.table.pageConfig.onChange = function () {
                                     vm.init();
                                 }
@@ -68,7 +68,7 @@
                             }
                         });
                 };
-                // vm.init();
+                 vm.init();
                 vm.add = function () {
                     $state.go("traceachimodify");
                 }

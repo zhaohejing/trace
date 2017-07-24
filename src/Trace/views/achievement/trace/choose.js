@@ -1,11 +1,10 @@
-﻿angular.module('MetronicApp').controller('views.onlinemall.product.choose',
+﻿angular.module('MetronicApp').controller('views.achievement.trace.choose',
     ['$scope', 'settings', '$uibModalInstance', 'model', 'dataFactory',
         function ($scope, settings, $uibModalInstance, model, dataFactory) {
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
             });
             var vm = this;
-            vm.url = "api/sysuser/allot";
             vm.selected = {};
             vm.save = function () {
                 var temp = [];
@@ -14,7 +13,6 @@
                         temp.push(vm.selected[a]);
                     }
                 }
-
                 $uibModalInstance.close(temp);
             };
             vm.cancel = function () {
@@ -23,7 +21,7 @@
             //页面属性
             vm.table = {
                 rows: [], //数据集
-                filter: { pageNum: 1, pageSize: 10, name: "", status: 1 }, //条件搜索
+                filter: { pageNum: 1, pageSize: 10, name: "" }, //条件搜索
                 pageConfig: { //分页配置
                     currentPage: 1, //当前页
                     itemsPerPage: 10, //页容量
@@ -34,7 +32,7 @@
             vm.init = function () {
                 vm.table.filter.pageNum = vm.table.pageConfig.currentPage;
                 vm.table.filter.pageSize = vm.table.pageConfig.itemsPerPage;
-                dataFactory.action("api/product/singleList", "", null, vm.table.filter)
+                dataFactory.action("api/travels/list", "", null, vm.table.filter)
                     .then(function (res) {
                         if (res.success) {
                             vm.table.pageConfig.totalItems = res.total;
@@ -47,7 +45,7 @@
                         }
                     });
             };
-            vm.select=function(row, e) {
+            vm.select = function (row, e) {
                 if (e.target.checked) {
                     vm.selected[row.id] = row;
                 } else {
@@ -69,7 +67,7 @@
                  });
                 },
                 change: function (type) {
-                    var pid = type === 1 ? vm.product.badge_category1 : vm.product.badge_category2;
+                    var pid = type === 1 ? vm.table.filter.category1 : vm.table.filter.category2;
                     dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
             .then(function (res) {
                 if (res.success) {
