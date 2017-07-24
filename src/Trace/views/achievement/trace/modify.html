@@ -135,14 +135,13 @@
                     </div>
                     <div class="col-xs-4">
                         <div class="form-group form-md-line-input">
-                            <label class="col-md-4 control-label">绑定纪念章</label>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-control">
-                                    <input type="text" class="form-control input-sm" placeholder="选择纪念章" ng-model="vm.table.filter.name">
-                                </div>
-                                <span class="input-group-btn btn-right">
-                                    <button ng-click="vm.init()" class="btn green-haze" type="button">+</button>
-                                </span>
+                            <label class="col-md-4 control-label">绑定游迹</label>
+                            <div class="col-md-8">
+                                <select ng-model="vm.achi.achi"
+                                        class="form-control edited" ui-validate="'$value>0'" required=""
+                                        ng-class="{'edited':vm.achi.achi>0}"
+                                        ng-options="m.id as m.name for m in vm.achilist.list"></select>
+                                <div class="form-control-focus"> </div>
                             </div>
                         </div>
                     </div>

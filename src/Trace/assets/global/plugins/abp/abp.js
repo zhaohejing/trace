@@ -6,7 +6,8 @@
     //Current application root path (including virtual directory if exists).
     abp.appPath = abp.appPath || '/';
     abp.qiniuToken = "";
-    abp.baseUrl = "http://118.89.225.78:8080/";
+  //  abp.baseUrl = "http://118.89.225.78:8080/";
+    abp.baseUrl = "http://tcservice.hijigu.com:8080/";
     abp.qiniuUrl = "http://image.leftins.com/";
     abp.pageLoadTime = new Date();
 

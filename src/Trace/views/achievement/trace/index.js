@@ -2,8 +2,8 @@
     angular.module('MetronicApp')
         .controller('views.achievement.trace.index',
         [
-            '$scope', "$state", 'settings', "dataFactory", 'appSession',
-            function ($scope, $state, settings, dataFactory, appSession) {
+            '$scope', "$state", 'settings', "dataFactory",
+            function ($scope, $state, settings, dataFactory) {
                 // ajax初始化
                 $scope.$on('$viewContentLoaded',
                     function () {
@@ -43,7 +43,7 @@
                 //页面属性
                 vm.table = {
                     rows: [], //数据集
-                    filter: { index: 1, size: 10, name: "", state: 1, cate: 1 }, //条件搜索
+                    filter: { pageNum: 1, pageSize: 10, name: "", category1: 0, category2: 0, category3: 0 }, //条件搜索
                     pageConfig: { //分页配置
                         currentPage: 1, //当前页
                         itemsPerPage: 10, //页容量
@@ -53,8 +53,8 @@
 
                 //获取用户数据集，并且添加配置项
                 vm.init = function () {
-                    vm.filter.index = vm.table.pageConfig.currentPage;
-                    vm.filter.size = vm.table.pageConfig.itemsPerPage;
+                    vm.filter.pageNum = vm.table.pageConfig.currentPage;
+                    vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
                     dataFactory.action("api/activity/activitys", "", null, vm.table.filter)
                         .then(function (res) {
                             if (res.success) {

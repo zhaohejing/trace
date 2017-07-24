@@ -53,6 +53,22 @@
             vm.cancel = function () {
                 $state.go("medal");
             }
+            vm.achilist = {
+                list: [],
+                init: function () {
+                    dataFactory.action("api/travels/list", "", null, {})
+               .then(function (res) {
+                   if (res.success) {
+                       vm.achilist.list = res.result;
+                   } else {
+                       abp.notify.error(res.error);
+                   }
+               });
+                }
+            }
+            vm.achilist.init();
+
+
             vm.choose = function () {
                 var modal = $uibModal.open({
                     templateUrl: 'views/common/choose.html',

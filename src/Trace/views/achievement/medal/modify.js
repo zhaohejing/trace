@@ -50,6 +50,21 @@
                 }
             }
             vm.cate.init();
+            vm.achilist= {
+                list: [],
+                init: function() {
+                    dataFactory.action("api/achievement/list", "", null, {})
+               .then(function (res) {
+                   if (res.success) {
+                       vm.achilist.list = res.result;
+                   } else {
+                       abp.notify.error(res.error);
+                   }
+               });
+                }
+            }
+            vm.achilist.init();
+
             vm.cancel = function () {
                 $state.go("medal");
             }
