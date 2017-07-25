@@ -8,7 +8,7 @@
             vm.url = "api/sysuser/allot";
             vm.selected = {};
             vm.save = function () {
-                var temp = [];
+                var temp = model;
                 for (var a in vm.selected) {
                     if (vm.selected.hasOwnProperty(a)) {
                         temp.push(vm.selected[a]);

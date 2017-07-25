@@ -2,8 +2,8 @@
     angular.module('MetronicApp')
         .controller('views.achievement.medal.index',
         [
-            '$scope', "$state", 'settings', "dataFactory", 'appSession',
-            function ($scope, $state, settings, dataFactory, appSession) {
+            '$scope', "$state", 'settings', "dataFactory", 
+            function ($scope, $state, settings, dataFactory) {
                 // ajax初始化
                 $scope.$on('$viewContentLoaded',
                     function () {
@@ -50,7 +50,6 @@
                         totalItems: 0 //总数据
                     }
                 }
-
                 //获取用户数据集，并且添加配置项
                 vm.init = function () {
                     vm.table.filter.pageNum = vm.table.pageConfig.currentPage;

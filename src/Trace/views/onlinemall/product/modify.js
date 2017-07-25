@@ -11,17 +11,74 @@
 
             vm.product = {};
             vm.products = [];
+
+            vm.cate = {
+                a: [], b: [], c: [],
+                init: function (pid, child) {
+                    dataFactory.action("api/category/getAllByPid?pid=0", "", null, {})
+                 .then(function (res) {
+                     if (res.success) {
+                         vm.cate.a = res.result;
+                     } else {
+                         abp.notify.error(res.error);
+                     }
+                 });
+                    if (pid) {
+                        dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
+                .then(function (res) {
+                    if (res.success) {
+                        vm.cate.b = res.result;
+                    } else {
+                        abp.notify.error(res.error);
+                    }
+                });
+                    }
+                    if (child) {
+                        dataFactory.action("api/category/getAllByPid?pid=" + child, "", null, {})
+                .then(function (res) {
+                    if (res.success) {
+                        vm.cate.c = res.result;
+                    } else {
+                        abp.notify.error(res.error);
+                    }
+                });
+                    }
+
+
+                },
+                change: function (type) {
+                    var pid = type === 1 ? vm.product.badge_category1 : vm.product.badge_category2;
+                    dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
+            .then(function (res) {
+                if (res.success) {
+                    if (type === 1) {
+                        vm.cate.b = res.result;
+                    } else {
+                        vm.cate.c = res.result;
+                    }
+                } else {
+                    abp.notify.error(res.error);
+                }
+            });
+                }
+            }
             vm.url = "api/product/add";
             if (aid) {
                 vm.url = "api/product/update";
                 dataFactory.action("api/product/get?id=" + aid, "GET", null, {})
-                  .then(function (res) {
-                      if (res.success) {
-                          vm.product = res.result;
-                      } else {
-                          abp.notify.error(res.error);
-                      }
-                  });
+                    .then(function(res) {
+                        if (res.success) {
+                            vm.product = res.result;
+                            vm.products = vm.product.list;
+                            vm.product.is_badge = vm.product.is_badge === 1;
+                            vm.cate.init(vm.product.badge_category1, vm.product.badge_category2);
+
+                        } else {
+                            abp.notify.error(res.error);
+                        }
+                    });
+            } else {
+                vm.cate.init();
             }
          
             vm.cancel = function () {
@@ -72,14 +129,16 @@
                     backdrop: 'static',
                      size: 'lg', //模态框的大小尺寸
                     resolve: {
-                        model: function () { return { type: 2 } }
+                        model: function () { return  vm.products  }
                     }
                 });
                 modal.result.then(function (response) {
                     vm.products = response;
                 });
             }
-         
+            vm.remove= function(row) {
+                vm.products.splice($.inArray(row, vm.products), 1);
+            }
             vm.file = {
                 multiple: false,
                 token: abp.qiniuToken,
@@ -129,35 +188,7 @@
                     }
                 }
             }
-            vm.cate = {
-                a: [], b: [], c: [],
-                init: function () {
-                    dataFactory.action("api/category/getAllByPid?pid=0", "", null, {})
-                 .then(function (res) {
-                     if (res.success) {
-                         vm.cate.a = res.result;
-                     } else {
-                         abp.notify.error(res.error);
-                     }
-                 });
-                },
-                change: function (type) {
-                    var pid = type === 1 ? vm.product.badge_category1 : vm.product.badge_category2;
-                    dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
-            .then(function (res) {
-                if (res.success) {
-                    if (type === 1) {
-                        vm.cate.b = res.result;
-                    } else {
-                        vm.cate.c = res.result;
-                    }
-                } else {
-                    abp.notify.error(res.error);
-                }
-            });
-                }
-            }
-            vm.cate.init();
+         
         }]);
 })();
 

@@ -8,6 +8,8 @@
             });
             var vm = this;
             var aid = $stateParams.id;
+
+
             vm.cate = {
                 a: [], b: [], c: [],
                 init: function (pid, child) {
@@ -60,37 +62,47 @@
             }
             vm.trace = {};
             vm.url = "api/travels/add";
-            vm.mapReady = function (map, draw) {
-                map.enableScrollWheelZoom();
-                map.addControl(new BMap.NavigationControl());
-                map.addControl(new BMap.ScaleControl());
-                map.addControl(new BMap.OverviewMapControl());
-                map.addControl(new BMap.MapTypeControl());
-                var point = new BMap.Point(116.404, 39.915);
-                map.centerAndZoom(point, 15);
-                vm.mapper = { map: map, draw: draw };
-            };
             if (aid) {
                 vm.url = "api/travels/update";
                 dataFactory.action("api/travels/get?id=" + aid, "GET", null, {})
-                    .then(function(res) {
+                    .then(function (res) {
                         if (res.success) {
                             vm.trace = res.result;
                             vm.cate.init(vm.trace.category1, vm.trace.category2);
                             vm.overlays = angular.fromJson(vm.trace.content);
+                            vm.mapReady = function (map, draw) {
+                                map.enableScrollWheelZoom();
+                                map.addControl(new BMap.NavigationControl());
+                                map.addControl(new BMap.ScaleControl());
+                                map.addControl(new BMap.OverviewMapControl());
+                                map.addControl(new BMap.MapTypeControl());
+                                var point = new BMap.Point(116.404, 39.915);
+                                map.centerAndZoom(point, 15);
+                                vm.mapper = { map: map, draw: draw };
+                            };
                         } else {
                             abp.notify.error(res.error);
                         }
                     });
             } else {
                 vm.cate.init(vm.trace.category1, vm.trace.category2);
+                vm.mapReady = function (map, draw) {
+                    map.enableScrollWheelZoom();
+                    map.addControl(new BMap.NavigationControl());
+                    map.addControl(new BMap.ScaleControl());
+                    map.addControl(new BMap.OverviewMapControl());
+                    map.addControl(new BMap.MapTypeControl());
+                    var point = new BMap.Point(116.404, 39.915);
+                    map.centerAndZoom(point, 15);
+                    vm.mapper = { map: map, draw: draw };
+                };
             }
-          
+
             vm.cancel = function () {
                 $state.go("trace");
             }
-           
-           
+
+
             //保存
             vm.save = function () {
                 vm.trace.image = vm.file.model[1] ? vm.file.model[1].url : "";
@@ -154,6 +166,11 @@
                     }
                 }
             }
+
+          
+           
+          
+          
         }]);
 })();
 

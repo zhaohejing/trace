@@ -223,6 +223,7 @@
                                             <th>二级分类</th>
                                             <th>三级分类</th>
                                             <th>状态</th>
+                                            <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -235,9 +236,9 @@
                                             <td>{{row.badge_category2}}</td>
                                             <td>{{row.badge_category3}}</td>
                                             <td>{{row.status==1?'有效':'无效'}}</td>
+                                            <td><a href="#" ng-click="vm.remove(row)">X</a></td>
                                         </tr>
                                     </tbody>
-                                
                                 </table>
                               
                             </div>

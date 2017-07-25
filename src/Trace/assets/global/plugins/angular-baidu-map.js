@@ -11,6 +11,7 @@
             },
             link: function (scope, element, attrs) {
                 var dto;
+
                 var genderModel = function (map, bMap) {
                     if (scope.overlays && scope.overlays.points) {
                         var model = scope.overlays;
@@ -20,7 +21,7 @@
                         if (model.drawingMode === "marker") {
                             dto = new bMap.Marker(new bMap.Point(point.x, point.y)); // 创建点
                             //可拖拽
-                            dto.enableDragging();
+                          //  dto.enableDragging();
 
                         } else if (model.drawingMode === "circle") {
                             dto = new bMap.Circle(new bMap.Point(point.x, point.y),
@@ -34,7 +35,7 @@
                                 });
                             dto = new bMap.Polyline(temp, { strokeColor: "red", strokeWeight: 2, strokeOpacity: 0.5 }); //创建折线
 
-                            dto.enableEditing();
+                           // dto.enableEditing();
 
                         } else if (model.drawingMode === "polygon" || model.drawingMode === "rectangle") {
                             angular.forEach(model.points,
@@ -42,7 +43,7 @@
                                   temp.push(new bMap.Point(v.x, v.y));
                               });
                             dto = new bMap.Polygon(temp, { strokeColor: "red", strokeWeight: 2, strokeOpacity: 0.5 }); //创建多边形
-                            dto.enableEditing();
+                          //  dto.enableEditing();
                         } 
                         if (dto) {
                             map.addOverlay(dto);
@@ -107,6 +108,8 @@
                         temp = e.overlay;
                         map.addOverlay(e.overlay);
                     };
+                  
+
                     //添加鼠标绘制工具监听事件，用于获取绘制结果
                     draw.addEventListener("overlaycomplete", overlaycomplete);
                     scope.mapReady({map: map,draw:draw});

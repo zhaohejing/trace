@@ -68,7 +68,7 @@
                     .then(function (res) {
                         if (res.success) {
                             vm.achi = res.result;
-                            vm.tempachi = vm.achi.list[0];
+                            vm.tempachi = vm.achi.list[0].id;
                             vm.cate.init(vm.achi.category1, vm.achi.category2);
                         } else {
                             abp.notify.error(res.error);
@@ -78,7 +78,7 @@
                 vm.cate.init();
             }
             vm.cancel = function () {
-                $state.go("medal");
+                $state.go("traceachi");
             }
             vm.achilist = {
                 list: [],
