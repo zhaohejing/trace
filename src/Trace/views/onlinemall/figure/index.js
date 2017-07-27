@@ -14,7 +14,7 @@
                 //页面属性
                 vm.table = {
                     rows: [], //数据集
-                    filter: { index: 1, size: 10, name: "", state: 1, cate: 1 }, //条件搜索
+                    filter: { pageNum: 1, pageSize: 10, name: "" }, //条件搜索
                     pageConfig: { //分页配置
                         currentPage: 1, //当前页
                         itemsPerPage: 10, //页容量
@@ -24,13 +24,13 @@
 
                 //获取用户数据集，并且添加配置项
                 vm.init = function () {
-                    vm.filter.index = vm.table.pageConfig.currentPage;
-                    vm.filter.size = vm.table.pageConfig.itemsPerPage;
-                    dataFactory.action("api/activity/activitys", "", null, vm.table.filter)
+                    vm.table.filter.pageNum = vm.table.pageConfig.currentPage;
+                    vm.table.filter.pageSize = vm.table.pageConfig.itemsPerPage;
+                    dataFactory.action("api/shuffling/list", "", null, vm.table.filter)
                         .then(function (res) {
                             if (res.success) {
-                                vm.table.pageConfig.totalItems = res.result.total;
-                                vm.table.rows = res.result.data;
+                                vm.table.pageConfig.totalItems = res.total;
+                                vm.table.rows = res.result;
                                 vm.table.pageConfig.onChange = function () {
                                     vm.init();
                                 }
@@ -71,7 +71,6 @@
                 }
              
                 vm.delete = function (row) {
-                  
                     abp.message.confirm(
                         '删除将导致数据无法显示', //确认提示
                         '确定要删除么?', //确认提示（可选参数）
@@ -79,7 +78,7 @@
                             if (isConfirmed) {
                                 //...delete user 点击确认后执行
                                 //api/resource/delete
-                                dataFactory.action("api/activity/delete", "", null, { list: [row.id] })
+                                dataFactory.action("api/shuffling/delete", "", null, { list: [row.id] })
                                     .then(function (res) {
                                         abp.notify.success("删除成功");
                                         vm.init();
@@ -88,7 +87,7 @@
                         });
 
                 }
-
+                vm.init();
             }
         ]);
 })();

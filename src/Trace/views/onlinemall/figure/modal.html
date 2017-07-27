@@ -2,8 +2,8 @@
     <form name="modalform" role="form" novalidate class="form-validation">
         <div class="modal-header">
             <h4 class="modal-title">
-                <span ng-if="!vm.model.id">添加轮播图</span>
-                <span ng-if="vm.model.id"> {{vm.model.name}} </span>
+                <span ng-if="!vm.shu.id">添加轮播图</span>
+                <span ng-if="vm.shu.id"> {{vm.shu.shuffling_name}} </span>
             </h4>
         </div>
         <div class="modal-body">
@@ -12,8 +12,8 @@
                     <label class="col-md-3 control-label">轮播名称:</label>
                     <div class="col-md-9">
 
-                        <input type="text" class="form-control" ng-class="{'edited':vm.model.name}" placeholder="请输入轮播图名称" maxlength="120"
-                               required ng-model="vm.model.name">
+                        <input type="text" class="form-control" ng-class="{'edited':vm.shu.shuffling_name}" placeholder="请输入轮播图名称" maxlength="120"
+                               required ng-model="vm.shu.shuffling_name">
                     </div>
                 </div>
             </div>
@@ -21,8 +21,8 @@
                 <div class="form-group form-md-line-input">
                     <label class="col-md-3 control-label">URL:</label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control" ng-class="{'edited':vm.model.url}" placeholder="请输入URL地址" maxlength="120"
-                               required ng-model="vm.model.url">
+                        <input type="text" class="form-control" ng-class="{'edited':vm.shu.url}" placeholder="请输入URL地址" maxlength="120"
+                               required ng-model="vm.shu.url">
                     </div>
                 </div>
             </div>
@@ -31,8 +31,8 @@
                 <div class="form-group form-md-line-input">
                     <label class="col-md-3 control-label">轮播权重:</label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control" ng-class="{'edited':vm.model.proptoy}" placeholder="请输入轮播权重" maxlength="120"
-                               required ng-model="vm.model.proptoy">
+                        <input type="number" class="form-control" ng-class="{'edited':vm.shu.weight}" placeholder="请输入轮播权重" maxlength="120"
+                               required ng-model="vm.shu.weight">
                     </div>
                 </div>
             </div>
@@ -45,13 +45,13 @@
                                data-toggle="dropdown" data-target=".dropdown1-parent"
                                href="#">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" data-ng-model="vm.gift.date"
+                                    <input type="text" class="form-control" data-ng-model="vm.shu.online_time"
                                            data-date-time-input="YYYY-MM-DD HH:mm">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <datetimepicker data-ng-model="vm.model.time"
+                                <datetimepicker data-ng-model="vm.shu.online_time"
                                                 data-datetimepicker-config="{ dropdownSelector: '#dropdown1' }"></datetimepicker>
                             </ul>
                         </div>
@@ -62,7 +62,7 @@
                 <div class="col-xs-4"></div>
                 <div class="col-xs-4">
                     <div class="tiles">
-                        <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files)" data-multiple="vm.file.multiple" onclick="this.value = null">
+                        <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,1)" data-multiple="vm.file.multiple" onclick="this.value = null">
                             <div class="tile-body">
                                 <i class="fa fa-cloud-upload"></i>
                             </div>
@@ -71,11 +71,6 @@
                                 <div class="number"> 100x100 </div>
                             </div>
                         </div>
-                        <ol>
-                            <li ng-repeat="(k,v) in vm.file.selectFiles">
-                                {{v.file.name}} ----- {{v.progress.p}}% <a href="#" ng-click="vm.file.abort(k)">X</a>
-                            </li>
-                        </ol>
                     </div>
                 </div>
                 <div class="col-xs-4"></div>
