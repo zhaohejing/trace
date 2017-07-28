@@ -10,11 +10,10 @@
                         App.initAjax();
                     });
                 var vm = this;
-                vm.states = [{ id: 1, name: "有效" }, { id: 0, name: "失效" }];
                 //页面属性
                 vm.table = {
                     rows: [], //数据集
-                    filter: { pageNum: 1, pageSize: 10, name: "" }, //条件搜索
+                    filter: { pageNum: 1, pageSize: 10, name: "",cate:1 }, //条件搜索
                     pageConfig: { //分页配置
                         currentPage: 1, //当前页
                         itemsPerPage: 10, //页容量
@@ -86,6 +85,22 @@
                             }
                         });
 
+                }
+                vm.state=function(row, state) {
+                    var title = state === 0 ? "确定要将此项下线么" : "确定要将此项上线么";
+                    abp.message.confirm(
+                      title, //确认提示（可选参数）
+                      function (isConfirmed) {
+                          if (isConfirmed) {
+                              //...delete user 点击确认后执行
+                              //api/resource/delete
+                              dataFactory.action("api/shuffling/updateStatus", "", null, { list: [row.id], status: state })
+                                  .then(function (res) {
+                                      abp.notify.success("成功");
+                                      vm.init();
+                                  });
+                          }
+                      });
                 }
                 vm.init();
             }

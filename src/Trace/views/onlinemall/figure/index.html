@@ -19,7 +19,6 @@
     </div>
     <div class="portlet light bordered">
         <div class="row">
-            
                 <div class="col-xs-7">
                     <div class="form-group form-md-line-input">
                         <div class="input-group input-group-sm">
@@ -31,9 +30,7 @@
                             </span>
                         </div>
                     </div>
-
                 </div>
-
         </div>
         <div class="row">
             <table st-table="vm.table.rows" class="table table-striped">
@@ -54,13 +51,19 @@
                         <td>{{row.online_time}}</td>
                         <td>{{row.create_by}}</td>
                         <td>{{row.weight}}</td>
+                        <td>{{row.status}}</td>
                         <td>{{row.is_deleted}}</td>
                         <td>{{row.url}}</td>
                         <td>
                             <a href="#"  ng-click="vm.edit(row)" >
                                 修改
                             </a>
-                          
+                            <a ng-if="row.status==0" href="#" ng-click="vm.state(row,1)">
+                                上线
+                            </a>
+                            <a ng-if="row.status==1" href="#" ng-click="vm.state(row,0)">
+                                下线
+                            </a>
                             <a href="#"  ng-click="vm.delete(row)" >
                                 删除
                             </a>

@@ -6,7 +6,7 @@
 
             });
             var vm = this;
-            vm.shu = {};
+            vm.shu = { cate:1};
             vm.url = "api/shuffling/add";
             vm.save = function () {
                 vm.shu.image = vm.file.model[1] ? vm.file.model[1].url : "";
