@@ -41,8 +41,8 @@
                 // vm.init();
                 vm.add = function () {
                     var modal = $uibModal.open({
-                        templateUrl: 'views/onlinemall/figure/modal.html',
-                        controller: 'views.onlinemall.figure.modal as vm',
+                        templateUrl: 'views/onlinemall/banner/modal.html',
+                        controller: 'views.onlinemall.banner.modal as vm',
                         backdrop: 'static',
                         //   size: 'lg', //模态框的大小尺寸
                         resolve: {
@@ -56,8 +56,8 @@
 
                 vm.edit = function (row) {
                     var modal = $uibModal.open({
-                        templateUrl: 'views/onlinemall/figure/modal.html',
-                        controller: 'views.onlinemall.figure.modal as vm',
+                        templateUrl: 'views/onlinemall/banner/modal.html',
+                        controller: 'views.onlinemall.banner.modal as vm',
                         backdrop: 'static',
                         //   size: 'lg', //模态框的大小尺寸
                         resolve: {
