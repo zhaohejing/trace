@@ -43,9 +43,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.data">
-                        <td>{{row.name}}</td>
-                        <td>{{row.code}}</td>
+                    <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.rows">
+                        <td>{{row.province}}</td>
+                        <td>{{row.price}}</td>
                         <td>
                             <a href="#" ng-click="vm.edit(row)">
                                 修改
