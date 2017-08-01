@@ -1,4 +1,4 @@
-﻿angular.module('MetronicApp').controller('views.onlinemall.figure.modal',
+﻿angular.module('MetronicApp').controller('views.postage.modal',
     ['$scope', 'settings', '$uibModalInstance', 'model', 'dataFactory',
         function ($scope, settings, $uibModalInstance, model, dataFactory) {
             $scope.$on('$viewContentLoaded', function () {
