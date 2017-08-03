@@ -3,7 +3,9 @@ GLobal Directives
 ***/
 
 // Route State Load Spinner(used on page or content load)
-MetronicApp.directive('ngSpinnerBar', ['$rootScope', '$state',
+MetronicApp.directive('ngSpinnerBar',
+[
+    '$rootScope', '$state',
     function($rootScope, $state) {
         return {
             link: function(scope, element, attrs) {
@@ -11,35 +13,42 @@ MetronicApp.directive('ngSpinnerBar', ['$rootScope', '$state',
                 element.addClass('hide'); // hide spinner bar by default
 
                 // display the spinner bar whenever the route changes(the content part started loading)
-                $rootScope.$on('$stateChangeStart', function() {
-                    element.removeClass('hide'); // show spinner bar
-                });
+                $rootScope.$on('$stateChangeStart',
+                    function() {
+                        element.removeClass('hide'); // show spinner bar
+                    });
 
                 // hide the spinner bar on rounte change success(after the content loaded)
-                $rootScope.$on('$stateChangeSuccess', function() {
-                    element.addClass('hide'); // hide spinner bar
-                    $('body').removeClass('page-on-load'); // remove page loading indicator
-                    Layout.setAngularJsSidebarMenuActiveLink('match', null, $state); // activate selected link in the sidebar menu
-                   
-                    // auto scorll to page top
-                    setTimeout(function () {
-                        App.scrollTop(); // scroll to the top on content load
-                    }, $rootScope.settings.layout.pageAutoScrollOnLoad);     
-                });
+                $rootScope.$on('$stateChangeSuccess',
+                    function() {
+                        element.addClass('hide'); // hide spinner bar
+                        $('body').removeClass('page-on-load'); // remove page loading indicator
+                        Layout
+                            .setAngularJsSidebarMenuActiveLink('match', null, $state);
+// activate selected link in the sidebar menu
+
+                        // auto scorll to page top
+                        setTimeout(function() {
+                                App.scrollTop(); // scroll to the top on content load
+                            },
+                            $rootScope.settings.layout.pageAutoScrollOnLoad);
+                    });
 
                 // handle errors
-                $rootScope.$on('$stateNotFound', function() {
-                    element.addClass('hide'); // hide spinner bar
-                });
+                $rootScope.$on('$stateNotFound',
+                    function() {
+                        element.addClass('hide'); // hide spinner bar
+                    });
 
                 // handle errors
-                $rootScope.$on('$stateChangeError', function() {
-                    element.addClass('hide'); // hide spinner bar
-                });
+                $rootScope.$on('$stateChangeError',
+                    function() {
+                        element.addClass('hide'); // hide spinner bar
+                    });
             }
         };
     }
-])
+]);
 
 // Handle global LINK click
 MetronicApp.directive('a', function() {
@@ -63,7 +72,19 @@ MetronicApp.directive('dropdownMenuHover', function () {
     }
   };  
 });
-
+//数组过滤
+(function () {
+    'use strict';
+    MetronicApp.filter('arrayfilter', function () {
+        return function (index, array) {
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].id === index) {
+                    return array[i].name;
+                }
+            }
+        };
+    });
+})();
 MetronicApp.directive('datetimepickerNeutralTimezone', function () {
     return {
         restrict: 'A',

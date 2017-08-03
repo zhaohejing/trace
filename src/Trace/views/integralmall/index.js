@@ -13,7 +13,7 @@
 
                 vm.filter = {
                     states: [{ id: 1, name: "上架" }, { id: 0, name: "下架" }],
-                    cates: [{ id: 1, name: "实物" }, { id: 2, name: "虚拟" }]
+                    cates: [{ id: 1, name: "纪念章" }, { id: 2, name: "名片" }, { id: 3, name: "明信片" }, { id: 4, name: "周边" }]
                 }
                 //页面属性
                 vm.table = {

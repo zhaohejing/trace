@@ -78,7 +78,7 @@
                         <td>{{row.online_time}}</td>
                         <td>{{row.product_price}}</td>
                         <td>{{row.inventory}}</td>
-                        <td>{{row.product_type==1?'实物':'虚拟'}}</td>
+                        <td>{{row.product_type | arrayfilter:vm.filter.cates:row.product_type}}</td>
                         <td>{{row.status==0?'下线':'上线'}}</td>
                         <td>
                             <a href="#" ng-click="vm.edit(row)" >
