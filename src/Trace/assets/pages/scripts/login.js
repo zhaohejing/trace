@@ -9,7 +9,7 @@
         }
     };
 
-    var url = "http://118.89.225.78:8080/sys/login";
+    var url = "http://tcservice.hijigu.com:8080/sys/login";
  
     $("#loginSubmit")
           .click(function () {
