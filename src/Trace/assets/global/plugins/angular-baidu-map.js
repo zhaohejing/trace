@@ -21,7 +21,7 @@
                         if (model.drawingMode === "marker") {
                             dto = new bMap.Marker(new bMap.Point(point.x, point.y)); // 创建点
                             //可拖拽
-                          //  dto.enableDragging();
+                            //  dto.enableDragging();
 
                         } else if (model.drawingMode === "circle") {
                             dto = new bMap.Circle(new bMap.Point(point.x, point.y),
@@ -35,7 +35,7 @@
                                 });
                             dto = new bMap.Polyline(temp, { strokeColor: "red", strokeWeight: 2, strokeOpacity: 0.5 }); //创建折线
 
-                           // dto.enableEditing();
+                            // dto.enableEditing();
 
                         } else if (model.drawingMode === "polygon" || model.drawingMode === "rectangle") {
                             angular.forEach(model.points,
@@ -43,8 +43,8 @@
                                   temp.push(new bMap.Point(v.x, v.y));
                               });
                             dto = new bMap.Polygon(temp, { strokeColor: "red", strokeWeight: 2, strokeOpacity: 0.5 }); //创建多边形
-                          //  dto.enableEditing();
-                        } 
+                            //  dto.enableEditing();
+                        }
                         if (dto) {
                             map.addOverlay(dto);
                         }
@@ -60,7 +60,7 @@
                     } else if (mode === "polyline" || mode === "rectangle" || mode === "polygon") {
                         var temp = [];
                         angular.forEach(overlay.po,
-                            function(v, i) {
+                            function (v, i) {
                                 temp.push({ x: v.lng, y: v.lat });
                             });
                         dto.points = temp;
@@ -84,21 +84,15 @@
                         drawingToolOptions: {
                             anchor: BMAP_ANCHOR_TOP_RIGHT, //位置
                             offset: new BMap.Size(5, 5), //偏离值
-                            scale: 0.8 ,//工具栏缩放比例
-                            drawingTypes : [
-                          BMAP_DRAWING_MARKER,
-                        BMAP_DRAWING_CIRCLE,
-                      //  BMAP_DRAWING_POLYLINE,
-                        BMAP_DRAWING_POLYGON,
-                        BMAP_DRAWING_RECTANGLE 
-                        ]
+                            scale: 0.8,//工具栏缩放比例
+                       
                         },
                         circleOptions: styleOptions, //圆的样式
                         polylineOptions: styleOptions, //线的样式
                         polygonOptions: styleOptions, //多边形的样式
                         rectangleOptions: styleOptions //矩形的样式
                     };
-                   // var marker = new BMap.Marker(point);
+                    // var marker = new BMap.Marker(point);
                     //实例化鼠标绘制工具
                     var draw = new BMapLib.DrawingManager(map, config);
                     genderModel(map, BMap);
@@ -115,22 +109,22 @@
                         temp = e.overlay;
                         map.addOverlay(e.overlay);
                     };
-                  
+
 
                     //添加鼠标绘制工具监听事件，用于获取绘制结果
                     draw.addEventListener("overlaycomplete", overlaycomplete);
-                    scope.mapReady({map: map,draw:draw});
+                    scope.mapReady({ map: map, draw: draw });
                 };
                 var script = document.createElement("script");
                 script.src = 'http://api.map.baidu.com/api?v=2.0&ak=' + attrs.baiduMap + '&callback=baiduMapLoaded';
                 document.body.appendChild(script);
 
 
-            
+
 
             }
-            
-           
+
+
         };
     }]);
 })();

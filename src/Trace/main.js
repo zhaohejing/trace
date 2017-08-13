@@ -373,7 +373,31 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             ]
         }
     });
-
+    //用户管理
+    $stateProvider.state("customers",
+    {
+        url: "/manager/customers/index.html",
+        templateUrl: "views/manager/customers/index.html",
+        data: { pageTitle: '轮播图管理' },
+        resolve: {
+            deps: [
+                '$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [
+                            {
+                                name: 'i',
+                                insertBefore: '#ng_load_plugins_before',
+                                files: [
+                                    'views/manager/customers/index.js',
+                                    'views/manager/customers/modal.js'
+                                ]
+                            }
+                        ]
+                    );
+                }
+            ]
+        }
+    });
 
     //用户管理
     $stateProvider.state("roles",

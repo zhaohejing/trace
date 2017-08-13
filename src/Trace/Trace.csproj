@@ -668,6 +668,10 @@
     <Content Include="views\achievement\trace\modify.js" />
     <Content Include="views\common\choose.html" />
     <Content Include="views\common\choose.js" />
+    <Content Include="views\manager\customers\index.html" />
+    <Content Include="views\manager\customers\index.js" />
+    <Content Include="views\manager\customers\modal.html" />
+    <Content Include="views\manager\customers\modal.js" />
     <Content Include="views\onlinemall\product\choose.html" />
     <Content Include="views\onlinemall\product\choose.js" />
     <Content Include="views\postage\index.html" />
@@ -752,7 +756,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>23614</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

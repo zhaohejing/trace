@@ -29,7 +29,7 @@
                                 <div class="form-group form-md-line-input">
                                     <label class="col-md-3 control-label">游迹URL</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" ng-class="{'edited':vm.trace.url}" placeholder="游迹"
+                                        <input type="url" class="form-control" ng-class="{'edited':vm.trace.url}" placeholder="游迹"
                                                required ng-model="vm.trace.url">
                                     </div>
                                 </div>
@@ -81,11 +81,11 @@
                                     <div class="number"> 337x169 </div>
                                 </div>
                             </div>
-                            <ol>
+                            <!--<ol>
                                 <li ng-repeat="(k,v) in vm.file.selectFiles">
                                     {{v.file.name}} ----- {{v.progress.p}}% <a href="#" ng-click="vm.file.abort(k)">X</a>
                                 </li>
-                            </ol>
+                            </ol>-->
                         </div>
                     </div>
                 </div>

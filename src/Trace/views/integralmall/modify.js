@@ -78,6 +78,9 @@
                     vm.file.show = [];
                     vm.file.selectFiles = [];
                 },
+                remove: function (type) {
+                    vm.file.model[type] = null;
+                },
                 onFileSelect: function ($files, type) {
                     vm.file.selectFiles = [];
                     var offsetx = vm.file.selectFiles.length;

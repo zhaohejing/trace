@@ -93,14 +93,11 @@
                                         <div class="number"> 150x150 </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div ng-if="vm.file.model[1].url" class="col-xs-6">
-                            <div class="tile bg-grey" >
-                                <div class="tile-body">
-                                    <img ng-if="vm.file.model[1].url" src="{{vm.file.model[1].url}}" alt="" />
-                                </div>
+                            <div  >
+                                    <img ng-click="vm.file.remove(1)" style="width:150px;height:150px;" ng-if="vm.file.model[1].url" src="{{vm.file.model[1].url}}" alt="" />
                             </div>
                          
                         </div>
@@ -122,8 +119,8 @@
                             </div>
                         </div>
                         <div ng-if="vm.file.model[2].url" class="col-xs-6">
-                            <div class="tiles">
-                                <img ng-src="vm.file.model[2].url" />
+                            <div  >
+                                <img ng-click="vm.file.remove(2)" style="width:100px;height:100px;" ng-if="vm.file.model[2].url" src="{{vm.file.model[2].url}}" />
                             </div>
                         </div>
                     </div>

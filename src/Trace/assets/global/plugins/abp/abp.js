@@ -8,7 +8,7 @@
     abp.qiniuToken = "";
   //  abp.baseUrl = "http://118.89.225.78:8080/";
     abp.baseUrl = "http://tcservice.hijigu.com:8080/";
-    abp.qiniuUrl = "http://image.leftins.com/";
+    abp.qiniuUrl = "http://or2y05l99.bkt.clouddn.com/";
     abp.pageLoadTime = new Date();
 
     //Converts given path to absolute path using abp.appPath variable.
