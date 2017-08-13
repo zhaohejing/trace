@@ -75,7 +75,7 @@
                 <tbody>
                     <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.rows">
                         <td>{{row.product_name}}</td>
-                        <td>{{row.online_time}}</td>
+                        <td>{{row.online_time | timeChange}}</td>
                         <td>{{row.product_price}}</td>
                         <td>{{row.inventory}}</td>
                         <td>{{row.product_type | arrayfilter:vm.filter.cates:row.product_type}}</td>

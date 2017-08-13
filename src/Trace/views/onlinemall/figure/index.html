@@ -48,7 +48,7 @@
                 <tbody>
                     <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.rows">
                         <td>{{row.shuffling_name}}</td>
-                        <td>{{row.online_time}}</td>
+                        <td>{{row.online_time | timeChange}}</td>
                         <td>{{row.create_by}}</td>
                         <td>{{row.weight}}</td>
                         <td>{{row.status}}</td>

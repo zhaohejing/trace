@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('MetronicApp')
-        .controller('views.integralmall.index',
+        .controller('views.integralmall.record',
         [
             '$scope', "$state", 'settings', "dataFactory", 'appSession',
             function ($scope, $state, settings, dataFactory, appSession) {
