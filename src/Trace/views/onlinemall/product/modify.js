@@ -73,6 +73,17 @@
                             vm.product.is_badge = vm.product.is_badge === 1;
                             vm.cate.init(vm.product.badge_category1, vm.product.badge_category2);
 
+                            if (vm.product.badge_image) {
+                                vm.file.model[1] = { type: 1, url: vm.product.badge_image };
+                            }
+                            if (vm.product.image1) {
+                                vm.file.model[3] = { type: 3, url: vm.product.image1 };
+                            }
+                            if (vm.product.image2) {
+                                vm.file.model[4] = { type: 4, url: vm.product.image2 };
+                            }
+                      
+
                         } else {
                             abp.notify.error(res.error);
                         }
@@ -176,6 +187,9 @@
                     //  vm.model.address = response.address;
                     vm.file.show = [];
                     vm.file.selectFiles = [];
+                },
+                remove: function (type) {
+                    vm.file.model[type] = null;
                 },
                 onFileSelect: function ($files,type) {
                     vm.file.selectFiles = [];

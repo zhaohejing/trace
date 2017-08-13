@@ -230,7 +230,14 @@
 
                         </div>
                     </div>
-                    <div class="col-xs-4"></div>
+                    <div class="col-xs-4">
+                        <div ng-if="vm.file.model[2].url" class="col-xs-6">
+                            <div>
+                                <img ng-click="vm.file.remove(2)" style="width:170px;height:100px;" ng-if="vm.file.model[2].url" src="{{vm.file.model[2].url}}" alt="" />
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
                 <ueditor config="editorConfig" ng-model="vm.achi.content">
                 </ueditor>

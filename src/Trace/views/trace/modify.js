@@ -69,6 +69,10 @@
                         if (res.success) {
                             vm.trace = res.result;
                             vm.cate.init(vm.trace.category1, vm.trace.category2);
+                            if (vm.trace.image) {
+                                vm.file.model[1] = { type: 1, url: vm.trace.image };
+                            }
+
                             vm.overlays = angular.fromJson(vm.trace.content);
                             vm.mapReady = function (map, draw) {
                                 map.enableScrollWheelZoom();
@@ -125,6 +129,7 @@
                 show: [],
                 model: {},
                 selectFiles: [],
+
                 start: function (index, type) {
                     vm.file.selectFiles[index].progress = {
                         p: 0
@@ -154,6 +159,9 @@
                     //  vm.model.address = response.address;
                     vm.file.show = [];
                     vm.file.selectFiles = [];
+                },
+                remove: function (type) {
+                    vm.file.model[type] = null;
                 },
                 onFileSelect: function ($files, type) {
                     vm.file.selectFiles = [];

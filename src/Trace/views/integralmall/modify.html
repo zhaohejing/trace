@@ -39,7 +39,7 @@
                         <div class="form-group form-md-line-input">
                             <label class="col-md-3 control-label">商品价格</label>
                             <div class="col-md-9">
-                                <input type="number" ng-pattern="/^([1-9][0-9]*){1,9}$/"  class="form-control"  ng-class="{'edited':vm.product.product_price}" placeholder="商品价格"
+                                <input type="text" ng-pattern="/^([1-9][0-9]*){1,9}$/"  class="form-control"  ng-class="{'edited':vm.product.product_price}" placeholder="商品价格"
                                        required ng-model="vm.product.product_price">
                             </div>
                         </div>
@@ -99,7 +99,6 @@
                             <div  >
                                     <img ng-click="vm.file.remove(1)" style="width:150px;height:150px;" ng-if="vm.file.model[1].url" src="{{vm.file.model[1].url}}" alt="" />
                             </div>
-                         
                         </div>
                     </div>
 

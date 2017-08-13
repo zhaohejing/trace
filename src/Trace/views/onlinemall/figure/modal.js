@@ -27,6 +27,9 @@
                     dataFactory.action("api/shuffling/get?id="+model.id, "GET", null, {  }).then(function (res) {
                         if (res.success) {
                             vm.shu = res.result;
+                            if (vm.shu.image) {
+                                vm.file.model[1] = { type: 1, url: vm.shu.image }
+                            }
                         } else {
                             abp.notify.error(res.error);
                         }
@@ -71,6 +74,9 @@
                     //  vm.model.address = response.address;
                     vm.file.show = [];
                     vm.file.selectFiles = [];
+                },
+                remove: function (type) {
+                    vm.file.model[type] = null;
                 },
                 onFileSelect: function ($files, type) {
                     vm.file.selectFiles = [];

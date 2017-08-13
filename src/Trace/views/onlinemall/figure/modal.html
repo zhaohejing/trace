@@ -73,7 +73,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-4"></div>
+                <div class="col-xs-4">
+                    <div ng-if="vm.file.model[1].url" class="col-xs-6">
+                        <div>
+                            <img ng-click="vm.file.remove(1)" style="width:100px;height:100px;" ng-if="vm.file.model[1].url" src="{{vm.file.model[1].url}}" alt="" />
+                        </div>
+
+                    </div>
+                </div>
               
             </div>
         </div>

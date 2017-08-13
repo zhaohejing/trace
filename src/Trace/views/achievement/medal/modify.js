@@ -69,6 +69,10 @@
                             vm.achi = res.result;
                             vm.tempachi = vm.achi.list[0].id;
                             vm.cate.init(vm.achi.category1, vm.achi.category2);
+
+                            if (vm.achi.image) {
+                                vm.file.model[2] = { type: 2, url: vm.achi.image };
+                            }
                         } else {
                             abp.notify.error(res.error);
                         }
@@ -175,6 +179,9 @@
                         // progress
                         vm.file.selectFiles[index].progress.p = Math.floor(100 * evt.loaded / evt.totalSize);
                     });
+                },
+                remove: function (type) {
+                    vm.file.model[type] = null;
                 },
                 abort: function () {
                     vm.file.model = {};

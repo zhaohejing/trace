@@ -17,6 +17,12 @@
                   .then(function (res) {
                       if (res.success) {
                           vm.product = res.result;
+                          if (vm.product.image1) {
+                              vm.file.model[1] = { type: 1, url: vm.product.image1 }
+                          }
+                          if (vm.product.image2) {
+                              vm.file.model[2] = { type: 2, url: vm.product.image2 }
+                          }
                       } else {
                           abp.notify.error(res.error);
                       }

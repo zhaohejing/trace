@@ -92,7 +92,14 @@
                            
                             </div>
                         </div>
-                        <div class="col-xs-4"></div>
+                        <div class="col-xs-4">
+                            <div ng-if="vm.file.model[1].url" class="col-xs-6">
+                                <div>
+                                    <img ng-click="vm.file.remove(1)" style="width:150px;height:150px;" ng-if="vm.file.model[1].url" src="{{vm.file.model[1].url}}" alt="" />
+                                </div>
+
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -166,6 +173,7 @@
                         </div>
                     </div>
                     <div class="row">
+
                         <div class="col-xs-6">
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-3 control-label">选择标签</label>
@@ -265,7 +273,14 @@
                                     </ol>-->
                                 </div>
                             </div>
-                            <div class="col-xs-4"></div>
+                            <div class="col-xs-4">
+                                <div ng-if="vm.file.model[3].url" class="col-xs-6">
+                                    <div>
+                                        <img ng-click="vm.file.remove(3)" style="width:150px;height:150px;" ng-if="vm.file.model[3].url" src="{{vm.file.model[3].url}}" alt="" />
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                         <div class="col-xs-6">
                             <div class="col-xs-4"></div>
@@ -283,7 +298,14 @@
                                 
                                 </div>
                             </div>
-                            <div class="col-xs-4"></div>
+                            <div class="col-xs-4">
+                                <div ng-if="vm.file.model[4].url" class="col-xs-6">
+                                    <div>
+                                        <img ng-click="vm.file.remove(4)" style="width:100px;height:100px;" ng-if="vm.file.model[4].url" src="{{vm.file.model[4].url}}" alt="" />
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <ueditor  config="editorConfig" ng-model="vm.product.content">
