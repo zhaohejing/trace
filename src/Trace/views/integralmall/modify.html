@@ -12,10 +12,10 @@
         <form name="modalform" role="form" novalidate class="form-validation">
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-xs-8">
                         <div class="form-group form-md-line-input">
-                            <label class="col-md-3 control-label">商品名称</label>
-                            <div class="col-md-9">
+                            <label class="col-md-2 control-label">商品名称</label>
+                            <div class="col-md-10">
                                 <input type="text" class="form-control" ng-class="{'edited':vm.product.product_name}" placeholder="商品名称"
                                        required ng-model="vm.product.product_name">
                                 <div class="form-control-focus"> </div>
@@ -23,7 +23,7 @@
                         </div>
 
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-4">
                         <div class="form-group form-md-line-input">
                             <label class="col-md-3 control-label">商品种类</label>
                             <div class="col-md-9">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-xs-4">
                         <div class="form-group form-md-line-input">
                             <label class="col-md-3 control-label">商品价格</label>
                             <div class="col-md-9">
@@ -45,7 +45,7 @@
                         </div>
 
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-4">
                         <div class="form-group form-md-line-input">
                             <label class="col-md-3 control-label">商品库存</label>
                             <div class="col-md-9">
@@ -55,74 +55,81 @@
                         </div>
 
                     </div>
-
-                </div>
-                <div class="row">
-                    <div class="form-group form-md-line-input">
-                        <label class="col-md-3 control-label">上线时间:</label>
-                        <div class="col-md-9">
-                            <div class="dropdown dropdown1-parent">
-                                <a class="dropdown-toggle" id="dropdown1" role="button"
-                                   data-toggle="dropdown" data-target=".dropdown1-parent"
-                                   href="#">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" data-ng-model="vm.product.online_time"
-                                               data-date-time-input="YYYY-MM-DD HH:mm">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                    </div>
-                                </a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <datetimepicker data-ng-model="vm.product.online_time"
-                                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown1' }"></datetimepicker>
-                                </ul>
+                    <div class="col-xs-4">
+                        <div class="form-group form-md-line-input">
+                            <label class="col-md-3 control-label">上线时间:</label>
+                            <div class="col-md-9">
+                                <div class="dropdown dropdown1-parent">
+                                    <a class="dropdown-toggle" id="dropdown1" role="button"
+                                       data-toggle="dropdown" data-target=".dropdown1-parent"
+                                       href="#">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" data-ng-model="vm.product.online_time"
+                                                   data-date-time-input="YYYY-MM-DD HH:mm">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker data-ng-model="vm.product.online_time"
+                                                        data-datetimepicker-config="{ dropdownSelector: '#dropdown1' }"></datetimepicker>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                  
+                </div>
 
                 <div class="row">
+                    <div class="col-xs-3"></div>
                     <div class="col-xs-6">
                         <div class="col-xs-6">
-                            <div class="tiles">
-                                <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,1)" data-multiple="vm.file.multiple" onclick="this.value = null">
-                                    <div class="tile-body">
-                                        <i class="fa fa-cloud-upload"></i>
-                                    </div>
-                                    <div class="tile-object">
-                                        <div class="name"> 限制 </div>
-                                        <div class="number"> 150x150 </div>
+                            <div class="col-xs-6">
+                                <div class="tiles">
+                                    <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,1)" data-multiple="vm.file.multiple" onclick="this.value = null">
+                                        <div class="tile-body">
+                                            <i class="fa fa-cloud-upload"></i>
+                                        </div>
+                                        <div class="tile-object">
+                                            <div class="name"> 限制 </div>
+                                            <div class="number"> 150x150 </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div ng-if="vm.file.model[1].url" class="col-xs-6">
-                            <div  >
+                            <div ng-if="vm.file.model[1].url" class="col-xs-6">
+                                <div>
                                     <img ng-click="vm.file.remove(1)" style="width:150px;height:150px;" ng-if="vm.file.model[1].url" src="{{vm.file.model[1].url}}" alt="" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xs-6">
-                        <div class="col-xs-6">
-                            <div class="tiles">
-                                <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,2)" data-multiple="vm.file.multiple" onclick="this.value = null">
-                                    <div class="tile-body">
-                                        <i class="fa fa-cloud-upload"></i>
-                                    </div>
-                                    <div class="tile-object">
-                                        <div class="name"> 限制 </div>
-                                        <div class="number"> 100x100 </div>
-                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="col-xs-6">
+                                <div class="tiles">
+                                    <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,2)" data-multiple="vm.file.multiple" onclick="this.value = null">
+                                        <div class="tile-body">
+                                            <i class="fa fa-cloud-upload"></i>
+                                        </div>
+                                        <div class="tile-object">
+                                            <div class="name"> 限制 </div>
+                                            <div class="number"> 100x100 </div>
+                                        </div>
+                                    </div>
 
+                                </div>
+                            </div>
+                            <div ng-if="vm.file.model[2].url" class="col-xs-6">
+                                <div>
+                                    <img ng-click="vm.file.remove(2)" style="width:100px;height:100px;" ng-if="vm.file.model[2].url" src="{{vm.file.model[2].url}}" />
+                                </div>
                             </div>
                         </div>
-                        <div ng-if="vm.file.model[2].url" class="col-xs-6">
-                            <div  >
-                                <img ng-click="vm.file.remove(2)" style="width:100px;height:100px;" ng-if="vm.file.model[2].url" src="{{vm.file.model[2].url}}" />
-                            </div>
-                        </div>
+
                     </div>
+                    <div class="col-xs-3"></div>
+               
+                 
                 </div>
 
                 <div class="row">
