@@ -10,7 +10,7 @@
                         App.initAjax();
                     });
                 var vm = this;
-                vm.filter = { pageNum: 1, pageSize: 10, name: "" };
+                vm.filter = { pageNum: 1, pageSize: 10 };
 
                 //页面属性
                 vm.table = {
@@ -25,7 +25,7 @@
                 vm.init = function() {
                     vm.filter.pageNum = vm.table.pageConfig.currentPage;
                     vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
-                    dataFactory.action("api/sysuser/getAll", "", null, vm.filter)
+                    dataFactory.action("api/clientele/list", "", null, vm.filter)
                         .then(function(res) {
                             if (res.success) {
                                 vm.table.pageConfig.totalItems = res.total;
