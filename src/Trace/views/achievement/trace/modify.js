@@ -11,7 +11,7 @@
             vm.templist = [];
             vm.tempachi = 0;
             vm.url = "api/achievement/add";
-            vm.achi = { type: 2 };
+            vm.achi = { type: 2, is_group:0 };
             vm.cate = {
                 a: [], b: [], c: [],
                 init: function (pid, child) {
