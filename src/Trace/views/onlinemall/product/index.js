@@ -11,12 +11,12 @@
                     });
                 var vm = this;
 
-                vm.states = [{ id: 1, name: "有效" }, { id: 0, name: "失效" }];
+                vm.states = [{id:null,name:"全部"},{ id: 1, name: "有效" }, { id: 0, name: "无效" }];
                 
                 //页面属性
                 vm.table = {
                     rows: [], //数据集
-                    filter: { pageNum: 1, pageSize: 10, name: "", state: 1 }, //条件搜索
+                    filter: { pageNum: 1, pageSize: 10, name: "", state: null }, //条件搜索
                     pageConfig: { //分页配置
                         currentPage: 1, //当前页
                         itemsPerPage: 10, //页容量
@@ -57,7 +57,7 @@
                      });
                     },
                     change: function (type) {
-                        var pid = type === 1 ? vm.product.badge_category1 : vm.product.badge_category2;
+                        var pid = type === 1 ? vm.table.filter.a : vm.table.filter.b;
                         dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
                 .then(function (res) {
                     if (res.success) {

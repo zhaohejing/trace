@@ -75,7 +75,7 @@
                 <tbody>
                     <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.rows">
                         <td>{{row.name}}</td>
-                        <td>2018-01-01</td>
+                        <td>{{row.create_time |timeChange}}</td>
                         <td>{{row.category1}}</td>
                         <td>{{row.category2}}</td>
                         <td>{{row.category3}}</td>

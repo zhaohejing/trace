@@ -84,7 +84,14 @@
                         drawingToolOptions: {
                             anchor: BMAP_ANCHOR_TOP_RIGHT, //位置
                             offset: new BMap.Size(5, 5), //偏离值
-                            scale: 0.8 //工具栏缩放比例
+                            scale: 0.8 ,//工具栏缩放比例
+                            drawingTypes : [
+                          BMAP_DRAWING_MARKER,
+                        BMAP_DRAWING_CIRCLE,
+                      //  BMAP_DRAWING_POLYLINE,
+                        BMAP_DRAWING_POLYGON,
+                        BMAP_DRAWING_RECTANGLE 
+                        ]
                         },
                         circleOptions: styleOptions, //圆的样式
                         polylineOptions: styleOptions, //线的样式

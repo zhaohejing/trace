@@ -50,7 +50,7 @@
                         <div class="form-group form-md-line-input">
                             <label class="col-md-4 control-label">积分</label>
                             <div class="col-md-8">
-                                <input type="number" class="form-control" ng-class="{'edited':vm.achi.integration}" placeholder="积分"
+                                <input type="number" ng-pattern="/^([1-9][0-9]*){1,9}$/"  class="form-control" ng-class="{'edited':vm.achi.integration}" placeholder="积分"
                                        required ng-model="vm.achi.integration">
                                 <div class="form-control-focus"> </div>
                             </div>
@@ -61,7 +61,7 @@
                         <div class="form-group form-md-line-input">
                             <label class="col-md-4 control-label">成就值</label>
                             <div class="col-md-8">
-                                <input type="number" class="form-control" ng-class="{'edited':vm.achi.achievement_val}" placeholder="成就值"
+                                <input type="number" ng-pattern="/^([1-9][0-9]*){1,9}$/"  class="form-control" ng-class="{'edited':vm.achi.achievement_val}" placeholder="成就值"
                                        required ng-model="vm.achi.achievement_val">
                                 <div class="form-control-focus"> </div>
                             </div>
@@ -224,7 +224,7 @@
                                 </div>
                                 <div class="tile-object">
                                     <div class="name"> 限制 </div>
-                                    <div class="number"> 170x170 </div>
+                                    <div class="number"> 170x100 </div>
                                 </div>
                             </div>
 

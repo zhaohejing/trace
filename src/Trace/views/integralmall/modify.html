@@ -39,7 +39,7 @@
                         <div class="form-group form-md-line-input">
                             <label class="col-md-3 control-label">商品价格</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" ng-class="{'edited':vm.product.product_price}" placeholder="商品价格"
+                                <input type="number" ng-pattern="/^([1-9][0-9]*){1,9}$/"  class="form-control"  ng-class="{'edited':vm.product.product_price}" placeholder="商品价格"
                                        required ng-model="vm.product.product_price">
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                         <div class="form-group form-md-line-input">
                             <label class="col-md-3 control-label">商品库存</label>
                             <div class="col-md-9">
-                                <input type="number" class="form-control" ng-class="{'edited':vm.product.inventory}" placeholder="商品库存"
+                                <input type="number" ng-pattern="/^([1-9][0-9]*){1,9}$/" class="form-control" ng-class="{'edited':vm.product.inventory}" placeholder="商品库存"
                                        required ng-model="vm.product.inventory">
                             </div>
                         </div>
@@ -82,38 +82,55 @@
 
                 <div class="row">
                     <div class="col-xs-6">
-                        <div class="tiles">
-                            <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,1)" data-multiple="vm.file.multiple" onclick="this.value = null">
-                                <div class="tile-body">
-                                    <i class="fa fa-cloud-upload"></i>
+                        <div class="col-xs-6">
+                            <div class="tiles">
+                                <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,1)" data-multiple="vm.file.multiple" onclick="this.value = null">
+                                    <div class="tile-body">
+                                        <i class="fa fa-cloud-upload"></i>
+                                    </div>
+                                    <div class="tile-object">
+                                        <div class="name"> 限制 </div>
+                                        <div class="number"> 150x150 </div>
+                                    </div>
                                 </div>
-                                <div class="tile-object">
-                                    <div class="name"> 限制 </div>
-                                    <div class="number"> 100x100 </div>
+
+                            </div>
+                        </div>
+                        <div ng-if="vm.file.model[1].url" class="col-xs-6">
+                            <div class="tile bg-grey" >
+                                <div class="tile-body">
+                                    <img ng-if="vm.file.model[1].url" src="{{vm.file.model[1].url}}" alt="" />
                                 </div>
                             </div>
-
+                         
                         </div>
                     </div>
 
                     <div class="col-xs-6">
-                        <div class="tiles">
-                            <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,2)" data-multiple="vm.file.multiple" onclick="this.value = null">
-                                <div class="tile-body">
-                                    <i class="fa fa-cloud-upload"></i>
+                        <div class="col-xs-6">
+                            <div class="tiles">
+                                <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,2)" data-multiple="vm.file.multiple" onclick="this.value = null">
+                                    <div class="tile-body">
+                                        <i class="fa fa-cloud-upload"></i>
+                                    </div>
+                                    <div class="tile-object">
+                                        <div class="name"> 限制 </div>
+                                        <div class="number"> 100x100 </div>
+                                    </div>
                                 </div>
-                                <div class="tile-object">
-                                    <div class="name"> 限制 </div>
-                                    <div class="number"> 100x100 </div>
-                                </div>
-                            </div>
 
+                            </div>
+                        </div>
+                        <div ng-if="vm.file.model[2].url" class="col-xs-6">
+                            <div class="tiles">
+                                <img ng-src="vm.file.model[2].url" />
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="form-group form-md-line-input has-success">
+                    <div class="form-group form-md-line-input">
                         <label class="col-md-2 control-label">商品简介</label>
                         <div class="col-md-10">
                             <textarea class="form-control" rows="3" ng-class="{'edited':vm.product.description}"

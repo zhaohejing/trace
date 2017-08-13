@@ -19,6 +19,17 @@
     </div>
     <div class="portlet light bordered">
         <div class="row">
+            <div class="col-xs-5">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-4 control-label">状态</label>
+                    <div class="col-md-8">
+                        <select ng-model="vm.table.filter.status"
+                                class="form-control edited" ui-validate="'$value>0'"
+                                ng-class="{'edited':vm.table.filter.status>0}" ng-options="m.id as m.name for m in vm.filter.states"></select>
+                        <div class="form-control-focus"> </div>
+                    </div>
+                </div>
+            </div>
                 <div class="col-xs-7">
                     <div class="form-group form-md-line-input">
                         <div class="input-group input-group-sm">
@@ -51,8 +62,7 @@
                         <td>{{row.online_time | timeChange}}</td>
                         <td>{{row.create_by}}</td>
                         <td>{{row.weight}}</td>
-                        <td>{{row.status}}</td>
-                        <td>{{row.is_deleted}}</td>
+                        <td>{{row.status==1?'上线':'下线'}}</td>
                         <td>{{row.url}}</td>
                         <td>
                             <a href="#"  ng-click="vm.edit(row)" >

@@ -10,10 +10,13 @@
                         App.initAjax();
                     });
                 var vm = this;
+                vm.filter = {
+                    states: [{ id: null, name: "全部" }, { id: 1, name: "上架" }, { id: 0, name: "下架" }]
+                }
                 //页面属性
                 vm.table = {
                     rows: [], //数据集
-                    filter: { pageNum: 1, pageSize: 10, name: "", cate: 2 }, //条件搜索
+                    filter: { pageNum: 1, pageSize: 10, name: "", cate: 2, status: null }, //条件搜索
                     pageConfig: { //分页配置
                         currentPage: 1, //当前页
                         itemsPerPage: 10, //页容量
