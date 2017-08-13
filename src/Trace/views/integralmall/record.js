@@ -28,13 +28,13 @@
 
                 //获取用户数据集，并且添加配置项
                 vm.init = function () {
-                    vm.filter.index = vm.table.pageConfig.currentPage;
-                    vm.filter.size = vm.table.pageConfig.itemsPerPage;
-                    dataFactory.action("api/activity/activitys", "", null, vm.table.filter)
+                    vm.table.filter.pageNum = vm.table.pageConfig.currentPage;
+                    vm.table.filter.pageSize = vm.table.pageConfig.itemsPerPage;
+                    dataFactory.action("api/integral/list", "", null, vm.table.filter)
                         .then(function (res) {
                             if (res.success) {
-                                vm.table.pageConfig.totalItems = res.result.total;
-                                vm.table.rows = res.result.data;
+                                vm.table.pageConfig.totalItems = res.total;
+                                vm.table.rows = res.result;
                                 vm.table.pageConfig.onChange = function () {
                                     vm.init();
                                 }

@@ -126,7 +126,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         return $ocLazyLoad.load(
                             [
                                 {
-                                    name: 'MetronicApp',
+                                    name: 'a',
                                     insertBefore: '#ng_load_plugins_before',
                                     files: [
                                         'views/integralmall/index.js'
@@ -160,7 +160,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                     ]
                                 },
                                 {
-                                    name: 'MetronicApp',
+                                    name: 'b',
                                     insertBefore: '#ng_load_plugins_before',
                                     files: [
                                         'views/integralmall/modify.js'
@@ -185,7 +185,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                      return $ocLazyLoad.load(
                          [
                              {
-                                 name: 'MetronicApp',
+                                 name: 'c',
                                  insertBefore: '#ng_load_plugins_before',
                                  files: [
                                      'views/integralmall/record.js'
@@ -218,12 +218,11 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 ]
                             },
                                 {
-                                    name: 'MetronicApp',
+                                    name: 'd',
                                     insertBefore: '#ng_load_plugins_before',
                                     files: [
                                         'views/onlinemall/figure/index.js',
                                         'views/onlinemall/figure/modal.js'
-
                                     ]
                                 }
                             ]
@@ -252,7 +251,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             ]
                         },
                             {
-                                name: 'MetronicApp',
+                                name: 'e',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/onlinemall/banner/index.js',
@@ -279,7 +278,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                     return $ocLazyLoad.load(
                         [
                             {
-                                name: 'MetronicApp',
+                                name: 'f',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/onlinemall/product/index.js'
@@ -309,7 +308,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             ]
                         },
                             {
-                                name: 'MetronicApp',
+                                name: 'g',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/onlinemall/product/modify.js',
@@ -336,7 +335,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                     return $ocLazyLoad.load(
                         [
                             {
-                                name: 'MetronicApp',
+                                name: 'h',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/onlinemall/order/index.js'
@@ -360,7 +359,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                     return $ocLazyLoad.load(
                         [
                             {
-                                name: 'MetronicApp',
+                                name: 'i',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/manager/users/index.js',
@@ -388,7 +387,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                     return $ocLazyLoad.load(
                         [
                             {
-                                name: 'MetronicApp',
+                                name: 'j',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/manager/roles/index.js',
@@ -417,7 +416,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                     return $ocLazyLoad.load(
                         [
                             {
-                                name: 'MetronicApp',
+                                name: 'k',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/trace/index.js'
@@ -448,7 +447,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             ]
                         },
                             {
-                                name: 'MetronicApp',
+                                name: 'l',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/trace/modify.js'
@@ -473,7 +472,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                     return $ocLazyLoad.load(
                         [
                             {
-                                name: 'MetronicApp',
+                                name: 'm',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/achievement/medal/index.js'
@@ -503,7 +502,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             ]
                         },
                             {
-                                name: 'MetronicApp',
+                                name: 'n',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/achievement/medal/modify.js',
@@ -529,7 +528,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                     return $ocLazyLoad.load(
                         [
                             {
-                                name: 'MetronicApp',
+                                name: 'o',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/achievement/trace/index.js',
@@ -560,7 +559,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             ]
                         },
                             {
-                                name: 'MetronicApp',
+                                name: 'p',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/achievement/trace/modify.js',
@@ -587,7 +586,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                     return $ocLazyLoad.load(
                         [
                             {
-                                name: 'MetronicApp',
+                                name: 'q',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/series/index.js',
@@ -613,7 +612,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                     return $ocLazyLoad.load(
                         [
                             {
-                                name: 'MetronicApp',
+                                name: 'r',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/postage/index.js',
@@ -639,7 +638,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         return $ocLazyLoad.load(
                             [
                                 {
-                                    name: 'MetronicApp',
+                                    name: 's',
                                     insertBefore: '#ng_load_plugins_before',
                                     files: [
                                         'views/statistical/overview/index.js'
@@ -663,7 +662,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         return $ocLazyLoad.load(
                             [
                                 {
-                                    name: 'MetronicApp',
+                                    name: 't',
                                     insertBefore: '#ng_load_plugins_before',
                                     files: [
                                         'views/statistical/purchaserecords/index.js'
@@ -687,7 +686,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         return $ocLazyLoad.load(
                             [
                                 {
-                                    name: 'MetronicApp',
+                                    name: 'u',
                                     insertBefore: '#ng_load_plugins_before',
                                     files: [
                                         'views/statistical/purchasescan/index.js'
@@ -711,7 +710,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         return $ocLazyLoad.load(
                             [
                                 {
-                                    name: 'MetronicApp',
+                                    name: 'v',
                                     insertBefore: '#ng_load_plugins_before',
                                     files: [
                                         'views/statistical/purchasetime/index.js'
@@ -735,7 +734,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         return $ocLazyLoad.load(
                             [
                                 {
-                                    name: 'MetronicApp',
+                                    name: 'w',
                                     insertBefore: '#ng_load_plugins_before',
                                     files: [
                                         'views/statistical/gaintrace/index.js'
