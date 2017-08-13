@@ -13,8 +13,8 @@
                 <ul class="page-breadcrumb" style="float: right">
                     <li>
                         <button class="btn btn-sm blue" ng-click="vm.add()"><i class="fa fa-plus"></i> 添加</button>
+                        <button class="btn btn-sm blue" ng-click="vm.export()"><i class="fa fa-plus"></i> 导出</button>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -26,7 +26,7 @@
                     <label class="col-md-3 control-label">手机:</label>
                     <div class="col-md-9 input-group input-group-sm">
                         <div class="input-group-control">
-                            <input type="text" class="form-control input-sm" placeholder="手机" ng-model="vm.filter.name">
+                            <input type="text" class="form-control input-sm" placeholder="手机" ng-model="vm.filter.mobile">
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                     <label class="col-md-3 control-label">地区:</label>
                     <div class="col-md-9 input-group input-group-sm">
                         <div class="input-group-control">
-                            <input type="text" class="form-control input-sm" placeholder="地区" ng-model="vm.filter.name">
+                            <input type="text" class="form-control input-sm" placeholder="地区" ng-model="vm.filter.area">
                         </div>
                         <span class="input-group-btn btn-right">
                             <button ng-click="vm.init()" class="btn green-haze" type="button">查询</button>
@@ -50,13 +50,17 @@
             <table st-table="vm.table.data" class="table table-striped">
                 <thead>
                     <tr>
-                        <th st-sort="a">用户名</th>
-                        <th>昵称</th>
-                        <th>密码</th>
-                        <th>状态</th>
-                        <th>创建时间</th>
-
-                        <th>操作</th>
+                        <th st-sort="a">用户昵称</th>
+                        <th>手机号</th>
+                        <th>性别</th>
+                        <th>生日</th>
+                        <th>所在城市</th>
+                        <th>积分</th>
+                        <th>成就</th>
+                        <th>纪念章</th>
+                        <th>登陆密码</th>
+                        <th>称号</th>
+                        <!--<th>操作</th>-->
                     </tr>
                 </thead>
                 <tbody>
@@ -66,7 +70,12 @@
                         <td>*********</td>
                         <td>{{row.status==1?'启用':'禁用'}}</td>
                         <td>{{row.create_time}}</td>
-                        <td>
+                        <td>{{row.create_time}}</td>
+                        <td>{{row.create_time}}</td>
+                        <td>{{row.create_time}}</td>
+                        <td>{{row.create_time}}</td>
+                        <td>{{row.create_time}}</td>
+                        <!--<td>
                             <a href="#" ng-click="vm.edit(row)">
                                 修改
                             </a>
@@ -76,7 +85,7 @@
                             <a href="#" ng-click="vm.delete(row)">
                                 删除
                             </a>
-                        </td>
+                        </td>-->
                     </tr>
                 </tbody>
                 <tfoot>

@@ -385,7 +385,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                     return $ocLazyLoad.load(
                         [
                             {
-                                name: 'i',
+                                name: 'ii',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
                                     'views/manager/customers/index.js',
