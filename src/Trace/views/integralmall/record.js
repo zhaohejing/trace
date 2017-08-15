@@ -12,13 +12,13 @@
                 var vm = this;
 
                 vm.filter = {
-                    states: [{ id: null, name: "全部" }, { id: 1, name: "上架" }, { id: 0, name: "下架" }],
+                    states: [{ id: null, name: "全部" }, { id: 1, name: "以完成" }, { id: 0, name: "未完成" }],
                     cates: [{ id: null, name: "全部" }, { id: 1, name: "纪念章" }, { id: 2, name: "名片" }, { id: 3, name: "明信片" }, { id: 4, name: "周边" }]
                 }
                 //页面属性
                 vm.table = {
                     rows: [], //数据集
-                    filter: { index: 1, size: 10, name: "", state: null, cate: null }, //条件搜索
+                    filter: { pageNum: 1, pageSize: 10, name: "", state: null, cate: null }, //条件搜索
                     pageConfig: { //分页配置
                         currentPage: 1, //当前页
                         itemsPerPage: 10, //页容量
