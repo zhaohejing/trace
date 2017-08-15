@@ -86,9 +86,9 @@
                         <td>{{row.phone}}</td>
                         <td>{{row.order_state==0?'未兑换':(row.courier_order==null?'未发货':'已发货')}}</td>
                         <td>
-                            <!--<a href="#"  ng-click="vm.detail(row)" >
+                            <a href="#"  ng-click="vm.detail(row)" >
                                 详情
-                            </a>-->
+                            </a>
                             <a ng-if="row.courier_order" href="#"  ng-click="vm.postage(row)" >
                                 快递信息
                             </a>

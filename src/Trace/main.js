@@ -189,8 +189,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                  insertBefore: '#ng_load_plugins_before',
                                  files: [
                                      'views/integralmall/record.js',
-                                     'views/integralmall/detail.js',
-                                     'views/integralmall/post.js'
+                                     'views/common/detail.js',
+                                     'views/common/post.js'
                                  ]
                              }
                          ]
@@ -340,7 +340,9 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 name: 'h',
                                 insertBefore: '#ng_load_plugins_before',
                                 files: [
-                                    'views/onlinemall/order/index.js'
+                                    'views/onlinemall/order/index.js',
+                                       'views/common/detail.js',
+                                     'views/common/post.js'
                                 ]
                             }
                         ]

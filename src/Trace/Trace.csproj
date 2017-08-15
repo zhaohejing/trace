@@ -668,10 +668,10 @@
     <Content Include="views\achievement\trace\modify.js" />
     <Content Include="views\common\choose.html" />
     <Content Include="views\common\choose.js" />
-    <Content Include="views\integralmall\post.html" />
-    <Content Include="views\integralmall\post.js" />
-    <Content Include="views\integralmall\detail.html" />
-    <Content Include="views\integralmall\detail.js" />
+    <Content Include="views\common\post.html" />
+    <Content Include="views\common\post.js" />
+    <Content Include="views\common\detail.html" />
+    <Content Include="views\common\detail.js" />
     <Content Include="views\manager\customers\index.html" />
     <Content Include="views\manager\customers\index.js" />
     <Content Include="views\manager\customers\modal.html" />

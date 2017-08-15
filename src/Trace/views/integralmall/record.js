@@ -45,8 +45,8 @@
                 };
              vm.detail=function(row) {
                  var modal = $uibModal.open({
-                     templateUrl: 'views/integralmall/detail.html',
-                     controller: 'views.integralmall.detail as vm',
+                     templateUrl: 'views/common/detail.html',
+                     controller: 'views.common.detail as vm',
                      backdrop: 'static',
                      size: 'lg', //模态框的大小尺寸
                      resolve: {
@@ -59,12 +59,12 @@
              }
                 vm.postage=function(row) {
                     var modal = $uibModal.open({
-                        templateUrl: 'views/integralmall/post.html',
-                        controller: 'views.integralmall.post as vm',
+                        templateUrl: 'views/common/post.html',
+                        controller: 'views.common.post as vm',
                         backdrop: 'static',
                         size: 'sm', //模态框的大小尺寸
                         resolve: {
-                            model: function () { return { type:1,post:row } }
+                            model: function () { return { url: "api/integral/updatecourier", type: 1, post: row } }
                         }
                     });
                     modal.result.then(function (response) {
@@ -78,7 +78,7 @@
                         backdrop: 'static',
                         size: 'sm', //模态框的大小尺寸
                         resolve: {
-                            model: function () { return { type: 2, post: row } }
+                            model: function () { return { url: "api/integral/updatecourier", type: 2, post: row } }
                         }
                     });
                     modal.result.then(function (response) {

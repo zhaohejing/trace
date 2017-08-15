@@ -2,8 +2,8 @@
     angular.module('MetronicApp')
         .controller('views.integralmall.index',
         [
-            '$scope', "$state", 'settings', "dataFactory", 'appSession',
-            function ($scope, $state, settings, dataFactory, appSession) {
+            '$scope', "$state", 'settings', "dataFactory",
+            function ($scope, $state, settings, dataFactory) {
                 // ajax初始化
                 $scope.$on('$viewContentLoaded',
                     function () {
