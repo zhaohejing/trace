@@ -188,7 +188,9 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                  name: 'c',
                                  insertBefore: '#ng_load_plugins_before',
                                  files: [
-                                     'views/integralmall/record.js'
+                                     'views/integralmall/record.js',
+                                     'views/integralmall/detail.js',
+                                     'views/integralmall/post.js'
                                  ]
                              }
                          ]

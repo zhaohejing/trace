@@ -1,0 +1,63 @@
+﻿<div>
+    <form name="modalform" role="form" novalidate class="form-validation">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span ng-if="vm.type==1">快递信息</span>
+                <span ng-if="vm.type==2">发货 </span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-3 control-label">快递单公司</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" placeholder="快递单公司" maxlength="120" ng-readonly="vm.type==1"
+                               ng-class="{'edited':vm.post.courier_company}" required ng-model="vm.post.courier_company">
+                        <div class="form-control-focus"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-3 control-label">快递单号</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" placeholder="快递单号" maxlength="120" ng-readonly="vm.type==1"
+                               ng-class="{'edited':vm.post.courier_order}" required ng-model="vm.post.courier_order">
+                        <div class="form-control-focus"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-3 control-label">发货时间:</label>
+                    <div class="col-md-9">
+                        <div class="dropdown dropdown1-parent">
+                            <a class="dropdown-toggle" id="dropdown1" role="button"
+                               data-toggle="dropdown" data-target=".dropdown1-parent"
+                               href="#">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" required data-ng-model="vm.post.courier_time"
+                                           data-date-time-input="YYYY-MM-DD HH:mm">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="vm.post.courier_time" ng-disabled="vm.type==1"
+                                                data-datetimepicker-config="{ dropdownSelector: '#dropdown1' }"></datetimepicker>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+        <div class="modal-footer">
+            <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.cancel()">关闭</button>
+            <button type="submit" button-busy="vm.saving" busy-text="保存" ng-if="vm.type==2"
+                    class="btn btn-primary blue" ng-click="vm.save()"
+                    ng-disabled="modalform.$invalid">
+                <span>保存</span>
+            </button>
+        </div>
+    </form>
+</div>

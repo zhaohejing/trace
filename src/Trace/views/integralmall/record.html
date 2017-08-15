@@ -64,33 +64,36 @@
                     <tr>
                         <th st-sort="a">来源</th>
                         <th>单号</th>
-                        <th>购买商品</th>
+                        <th>订单名称</th>
                         <th>类型</th>
                         <th>数量</th>
-                        <th>所需积分</th>
-                        <th>奖品类型</th>
-                        <th>昵称</th>
-                        <th>日期</th>
+                        <th>积分值</th>
+                        <th>收货人</th>
+                        <th>手机号</th>
+                        <th>状态</th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.data">
-                        <td>{{row.a}}</td>
-                        <td>{{row.b}}</td>
-                        <td>{{row.c}}</td>
-                        <td>{{row.balance}}</td>
-                        <td>{{row.email}}</td>
-                        <td>{{row.email}}</td>
+                    <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.rows">
+                        <td>{{row.order_type==1?'兑换':'抽奖'}}</td>
+                        <td>{{row.order_num}}</td>
+                        <td>{{row.order_name}}</td>
+                        <td>{{row.product_type  | arrayfilter:vm.filter.cates:row.product_type}}</td>
+                        <td>{{row.order_count}}</td>
+                        <td>{{row.order_cost}}</td>
+                        <td>{{row.receiver}}</td>
+                        <td>{{row.phone}}</td>
+                        <td>{{row.order_state==0?'未兑换':(row.courier_order==null?'未发货':'已发货')}}</td>
                         <td>
-                            <a href="#"  ng-click="vm.modify(row)" >
-                                收货信息
+                            <!--<a href="#"  ng-click="vm.detail(row)" >
+                                详情
+                            </a>-->
+                            <a ng-if="row.courier_order" href="#"  ng-click="vm.postage(row)" >
+                                快递信息
                             </a>
-                            <a href="#"  ng-click="vm.low(row)" >
-                                快递单号
-                            </a>
-                            <a href="#"  ng-click="vm.delete(row)" >
-                                发货时间
+                            <a ng-if="!row.courier_order" href="#"  ng-click="vm.post(row)" >
+                                发货
                             </a>
                         </td>
                     </tr>
