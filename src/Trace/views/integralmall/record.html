@@ -68,6 +68,7 @@
                         <th>类型</th>
                         <th>数量</th>
                         <th>积分值</th>
+                        <th>运费</th>
                         <th>收货人</th>
                         <th>手机号</th>
                         <th>状态</th>
@@ -82,6 +83,7 @@
                         <td>{{row.product_type  | arrayfilter:vm.filter.cates:row.product_type}}</td>
                         <td>{{row.order_count}}</td>
                         <td>{{row.order_cost}}</td>
+                        <td>0</td>
                         <td>{{row.receiver}}</td>
                         <td>{{row.phone}}</td>
                         <td>{{row.order_state==0?'未兑换':(row.courier_order==null?'未发货':'已发货')}}</td>
