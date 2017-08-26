@@ -113,7 +113,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-xs-4">
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-3 control-label">商品名称:</label>
                                 <div class="col-md-9">
@@ -124,7 +124,7 @@
                             </div>
 
                         </div>
-                        <div class="col-xs-6">
+                        <div class="col-xs-4">
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-3 control-label">商品价格:</label>
                                 <div class="col-md-9">
@@ -135,19 +135,19 @@
                             </div>
 
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-xs-4">
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-3 control-label">商品库存:</label>
                                 <div class="col-md-9">
-                                    <input type="number" ng-pattern="/^([1-9][0-9]*){1,9}$/"  class="form-control"
+                                    <input type="number" ng-pattern="/^([1-9][0-9]*){1,9}$/" class="form-control"
                                            ng-class="{'edited':vm.product.inventory}" placeholder="商品库存" maxlength="120"
                                            required ng-model="vm.product.inventory">
                                 </div>
                             </div>
 
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-xs-6">
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-3 control-label">上线时间:</label>
@@ -170,21 +170,6 @@
                                 </div>
                             </div>
 
-                        </div>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-xs-6">
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-3 control-label">选择标签</label>
-                                <div class="col-md-9">
-                                    <div ng-file-select="vm.file.onFileSelect($files,2)"
-                                         data-multiple="vm.file.multiple" title="选择图片"
-                                         onclick="this.value = null"
-                                         class="btn btn-upload">点击上传图片</div>
-                                  
-                                </div>
-                            </div>
                         </div>
                         <div class="col-xs-6">
                             <div class="form-group form-md-radios">
@@ -209,7 +194,7 @@
                                     </div>
                                 </div>
                             </div>
-                         
+
                         </div>
                     </div>
                     <div ng-if="vm.product.type==2" class="row">
@@ -248,13 +233,13 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                              
+
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <div class="col-xs-4"></div>
+                            <div class="col-xs-4">大图</div>
                             <div class="col-xs-4">
                                 <div class="tiles">
                                     <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,3)" data-multiple="vm.file.multiple" onclick="this.value = null">
@@ -283,7 +268,7 @@
                             </div>
                         </div>
                         <div class="col-xs-6">
-                            <div class="col-xs-4"></div>
+                            <div class="col-xs-4">小图</div>
                             <div class="col-xs-4">
                                 <div class="tiles">
                                     <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,4)" data-multiple="vm.file.multiple" onclick="this.value = null">
@@ -308,7 +293,39 @@
                             </div>
                         </div>
                     </div>
-                    <ueditor  config="editorConfig" ng-model="vm.product.content">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="col-xs-4">选择标签</div>
+                            <div class="col-xs-4">
+                                <div class="tiles">
+                                    <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,2)" data-multiple="vm.file.multiple" onclick="this.value = null">
+                                        <div class="tile-body">
+                                            <i class="fa fa-cloud-upload"></i>
+                                        </div>
+                                        <div class="tile-object">
+                                            <div class="name"> 限制 </div>
+                                            <div class="number"> 750*280px </div>
+                                        </div>
+                                    </div>
+                                    <!--<ol>
+                        <li ng-repeat="(k,v) in vm.file.selectFiles">
+                            {{v.file.name}} ----- {{v.progress.p}}% <a href="#" ng-click="vm.file.abort(k)">X</a>
+                        </li>
+                    </ol>-->
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div ng-if="vm.file.model[2].url" class="col-xs-6">
+                                    <div>
+                                        <img ng-click="vm.file.remove(2)" style="width:150px;height:150px;" ng-if="vm.file.model[2].url" src="{{vm.file.model[2].url}}" alt="" />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <ueditor style="height:450px;"  config="editorConfig" ng-model="vm.product.content">
                     </ueditor>
                 </div>
             </div>

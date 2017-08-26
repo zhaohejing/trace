@@ -50,7 +50,7 @@
                         <div class="form-group form-md-line-input">
                             <label class="col-md-4 control-label">积分</label>
                             <div class="col-md-8">
-                                <input type="number" ng-pattern="/^([1-9][0-9]*){1,9}$/"  class="form-control" ng-class="{'edited':vm.achi.integration}" placeholder="积分"
+                                <input type="number" ng-pattern="/^([1-9][0-9]*){1,9}$/" class="form-control" ng-class="{'edited':vm.achi.integration}" placeholder="积分"
                                        required ng-model="vm.achi.integration">
                                 <div class="form-control-focus"> </div>
                             </div>
@@ -61,7 +61,7 @@
                         <div class="form-group form-md-line-input">
                             <label class="col-md-4 control-label">成就值</label>
                             <div class="col-md-8">
-                                <input type="number" ng-pattern="/^([1-9][0-9]*){1,9}$/"  class="form-control" ng-class="{'edited':vm.achi.achievement_val}" placeholder="成就值"
+                                <input type="number" ng-pattern="/^([1-9][0-9]*){1,9}$/" class="form-control" ng-class="{'edited':vm.achi.achievement_val}" placeholder="成就值"
                                        required ng-model="vm.achi.achievement_val">
                                 <div class="form-control-focus"> </div>
                             </div>
@@ -117,36 +117,21 @@
                         </div>
                     </div>
                     <div class="col-xs-4">
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-4 control-label">Url</label>
-                                <div class="col-md-8">
-                                    <input type="url" class="form-control" ng-class="{'edited':vm.achi.url}" placeholder="Url"
-                                           required ng-model="vm.achi.url">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
-                    </div>
-              
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-4">
                         <div class="form-group form-md-line-input">
-                            <label class="col-md-6 control-label">商城购买按钮</label>
-                            <div class="col-md-6">
-                                <div ng-file-select="vm.file.onFileSelect($files,1)"
-                                     data-multiple="vm.file.multiple" title="选择图片"
-                                     onclick="this.value = null"
-                                     class="btn btn-upload">点击上传图片</div>
-                                <!--<ol>
-                                    <li ng-repeat="(k,v) in vm.file.selectFiles">
-                                        {{v.file.name}} ----- {{v.progress.p}}% <a href="#" ng-click="vm.file.abort(k)">X</a>
-                                    </li>
-                                </ol>-->
+                            <label class="col-md-4 control-label">Url</label>
+                            <div class="col-md-8">
+                                <input type="url" class="form-control" ng-class="{'edited':vm.achi.url}" placeholder="Url"
+                                       required ng-model="vm.achi.url">
+                                <div class="form-control-focus"> </div>
                             </div>
                         </div>
                     </div>
+
+                </div>
+
+                <div class="row">
                    
+
                     <div class="col-xs-4">
                         <div class="form-group form-md-radios">
                             <div class="md-radio-inline">
@@ -173,17 +158,17 @@
 
                     </div>
                     <div ng-if="vm.achi.is_group==0" class="col-xs-4">
-        <div class="form-group form-md-line-input">
-            <label class="col-md-4 control-label">绑定纪念章</label>
-            <div class="col-md-8">
-                <select ng-model="vm.tempachi"
-                        class="form-control edited" ui-validate="'$value>0'"  required
-                        ng-class="{'edited':vm.tempachi>0}"
-                         ng-options="m.id as m.badge_name for m in vm.achilist.list"></select>
-                <div class="form-control-focus"> </div>
-            </div>
-        </div>
-    </div>
+                        <div class="form-group form-md-line-input">
+                            <label class="col-md-4 control-label">绑定纪念章</label>
+                            <div class="col-md-8">
+                                <select ng-model="vm.tempachi"
+                                        class="form-control edited" ui-validate="'$value>0'" required
+                                        ng-class="{'edited':vm.tempachi>0}"
+                                        ng-options="m.id as m.badge_name for m in vm.achilist.list"></select>
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <div ng-if="vm.achi.is_group==1" class="row">
@@ -217,7 +202,7 @@
                                         <td>{{row.badge_category2}}</td>
                                         <td>{{row.badge_category3}}</td>
                                         <td>{{row.status==1?'有效':'无效'}}</td>
-                                       
+
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -233,31 +218,61 @@
                         </div>
                     </div>
                 </div>
-            <div class="row">
-                <div class="col-xs-4"></div>
-                <div class="col-xs-4">
-                    <div class="tiles">
-                        <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,2)" data-multiple="vm.file.multiple" onclick="this.value = null">
-                            <div class="tile-body">
-                                <i class="fa fa-cloud-upload"></i>
-                            </div>
-                            <div class="tile-object">
-                                <div class="name"> 限制 </div>
-                                <div class="number"> 170x100 </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="col-xs-4">商城购买按钮图片</div>
+                        <div class="col-xs-4">
+                            <div class="tiles">
+                                <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,1)" data-multiple="vm.file.multiple" onclick="this.value = null">
+                                    <div class="tile-body">
+                                        <i class="fa fa-cloud-upload"></i>
+                                    </div>
+                                    <div class="tile-object">
+                                        <div class="name"> 限制 </div>
+                                        <div class="number"> 170x100 </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                          
-                    </div>
-                </div>
-                <div class="col-xs-4">
-                    <div ng-if="vm.file.model[2].url" class="col-xs-6">
-                        <div>
-                            <img ng-click="vm.file.remove(2)" style="width:170px;height:100px;" ng-if="vm.file.model[2].url" src="{{vm.file.model[2].url}}" alt="" />
+                        <div class="col-xs-4">
+                            <div ng-if="vm.file.model[1].url" class="col-xs-6">
+                                <div>
+                                    <img ng-click="vm.file.remove(1)" style="width:170px;height:100px;" ng-if="vm.file.model[1].url" src="{{vm.file.model[1].url}}" alt="" />
+                                </div>
+
+                            </div>
                         </div>
 
                     </div>
+                    <div class="col-xs-6">
+                        <div class="col-xs-4">成就图标</div>
+                        <div class="col-xs-4">
+                            <div class="tiles">
+                                <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,2)" data-multiple="vm.file.multiple" onclick="this.value = null">
+                                    <div class="tile-body">
+                                        <i class="fa fa-cloud-upload"></i>
+                                    </div>
+                                    <div class="tile-object">
+                                        <div class="name"> 限制 </div>
+                                        <div class="number"> 170x100 </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div ng-if="vm.file.model[2].url" class="col-xs-6">
+                                <div>
+                                    <img ng-click="vm.file.remove(2)" style="width:170px;height:100px;" ng-if="vm.file.model[2].url" src="{{vm.file.model[2].url}}" alt="" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
-            </div>
                 <ueditor config="editorConfig" ng-model="vm.achi.content">
                 </ueditor>
             </div>
