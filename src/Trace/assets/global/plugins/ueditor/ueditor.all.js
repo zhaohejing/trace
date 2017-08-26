@@ -1,7 +1,7 @@
 /*!
  * UEditor
  * version: ueditor
- * build: Wed Aug 10 2016 11:06:02 GMT+0800 (CST)
+ * build: Wed Aug 10 2016 11:06:23 GMT+0800 (CST)
  */
 
 (function(){
@@ -29452,7 +29452,6 @@ UE.ui = baidu.editor.ui = {};
      *
      */
     UE.getEditor = function (id, opt) {
-        UE.delEditor(id);
         var editor = instances[id];
         if (!editor) {
             editor = instances[id] = new UE.ui.Editor(opt);
