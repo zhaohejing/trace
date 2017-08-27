@@ -134,3 +134,4 @@ src/.vs/config/applicationhost.config
 !nuget.exe
 !SQLite.Interop.dll
 /src/Trace/assets/global/plugins/ueditor/asp/upload/image/20170826
+/src/Trace/assets/global/plugins/ueditor/asp/upload/image/20170827
