@@ -26,6 +26,7 @@
                     dataFactory.action("api/sysrole/getById", "", null, { id: model.id }).then(function (res) {
                         if (res.success) {
                             vm.role = res.result;
+                            vm.role.create_time = null;
                         } else {
                             abp.notify.error(res.error);
                         }
