@@ -12,7 +12,7 @@
                 var vm = this;
 
                 vm.filter = {
-                    states: [{ id: null, name: "全部" }, { id: 1, name: "以完成" }, { id: 0, name: "未完成" }],
+                    states: [{ id: null, name: "全部" }, { id: 1, name: "已发货" }, { id: 0, name: "发货" }],
                     cates: [{ id: null, name: "全部" }, { id: 1, name: "纪念章" }, { id: 2, name: "名片" }, { id: 3, name: "明信片" }, { id: 4, name: "周边" }]
                 }
                 //页面属性

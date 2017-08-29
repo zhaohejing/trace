@@ -245,6 +245,18 @@
     <Content Include="assets\global\plugins\toastr\toastr.min.css" />
     <Content Include="assets\global\plugins\toastr\toastr.min.js" />
     <Content Include="assets\global\plugins\ueditor\angular-ueditor.js" />
+    <Content Include="assets\global\plugins\ueditor\asp\action_config.asp" />
+    <Content Include="assets\global\plugins\ueditor\asp\action_crawler.asp" />
+    <Content Include="assets\global\plugins\ueditor\asp\action_list.asp" />
+    <Content Include="assets\global\plugins\ueditor\asp\action_upload.asp" />
+    <Content Include="assets\global\plugins\ueditor\asp\ASPJson.class.asp" />
+    <Content Include="assets\global\plugins\ueditor\asp\config_loader.asp" />
+    <Content Include="assets\global\plugins\ueditor\asp\controller.asp" />
+    <Content Include="assets\global\plugins\ueditor\asp\MultiformProcessor.class.asp" />
+    <Content Include="assets\global\plugins\ueditor\asp\PathFormatter.class.asp" />
+    <Content Include="assets\global\plugins\ueditor\asp\Uploader.Class.asp" />
+    <Content Include="assets\global\plugins\ueditor\asp\upload\image\20170826\15037242573843091.jpg" />
+    <Content Include="assets\global\plugins\ueditor\asp\upload\image\20170826\15037243452012906.jpg" />
     <Content Include="assets\global\plugins\ueditor\dialogs\anchor\anchor.html" />
     <Content Include="assets\global\plugins\ueditor\dialogs\attachment\attachment.css" />
     <Content Include="assets\global\plugins\ueditor\dialogs\attachment\attachment.html" />
@@ -645,6 +657,8 @@
     <Content Include="assets\global\plugins\ueditor\third-party\video-js\font\vjs.eot" />
     <Content Include="assets\global\plugins\ueditor\third-party\video-js\font\vjs.ttf" />
     <Content Include="assets\global\plugins\ueditor\third-party\video-js\font\vjs.woff" />
+    <Content Include="assets\global\plugins\ueditor\asp\config.json" />
+    <Content Include="assets\global\plugins\ueditor\asp\README.md" />
     <None Include="Properties\PublishProfiles\vote.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

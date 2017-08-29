@@ -6,7 +6,7 @@
     //Current application root path (including virtual directory if exists).
     abp.appPath = abp.appPath || '/';
     abp.qiniuToken = "";
-  //  abp.baseUrl = "http://118.89.225.78:8080/";
+    //  abp.baseUrl = "http://118.89.225.78:8080/";
     abp.baseUrl = "http://tcservice.hijigu.com:8080/";
     abp.qiniuUrl = "http://or2y05l99.bkt.clouddn.com/";
     abp.pageLoadTime = new Date();
@@ -19,6 +19,32 @@
 
         return abp.appPath + path;
     };
+    //检查尺寸是否符合规范
+    abp.vilidate= function (f, w, h, callback) {
+        if (w && h) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                //判断图片尺寸
+                var img = null;
+                img = document.createElement("img");
+                document.body.appendChild(img);
+                img.style.visibility = "hidden";
+                img.src = this.result;
+                var imgwidth = img.naturalWidth;
+                var imgheight = img.naturalHeight;
+                if (imgwidth != w || imgheight != h) {
+                    document.body.removeChild(img);
+                    callback && callback(true);
+                } else {
+                    callback && callback(true);
+                }
+            }
+            if (f)
+                reader.readAsDataURL(f);
+        } else {
+            callback && callback(true);
+        }
+    }
 
 
     /* AUTHORIZATION **********************************************/

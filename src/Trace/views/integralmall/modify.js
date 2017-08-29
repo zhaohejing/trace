@@ -17,6 +17,7 @@
                   .then(function (res) {
                       if (res.success) {
                           vm.product = res.result;
+                          vm.product.content = res.result.content;
                           if (vm.product.image1) {
                               vm.file.model[1] = { type: 1, url: vm.product.image1 }
                           }
