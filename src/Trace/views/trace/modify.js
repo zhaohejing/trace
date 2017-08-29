@@ -8,7 +8,7 @@
             });
             var vm = this;
             var aid = $stateParams.id;
-
+            vm.overlays = {};
 
             vm.cate = {
                 a: [], b: [], c: [],

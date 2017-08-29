@@ -678,6 +678,8 @@
     <Content Include="views\manager\customers\modal.js" />
     <Content Include="views\onlinemall\product\choose.html" />
     <Content Include="views\onlinemall\product\choose.js" />
+    <Content Include="views\onlinemall\product\modal.html" />
+    <Content Include="views\onlinemall\product\modal.js" />
     <Content Include="views\postage\index.html" />
     <Content Include="views\postage\index.js" />
     <Content Include="views\postage\modal.html" />

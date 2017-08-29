@@ -99,7 +99,8 @@
                             <a ng-if="row.status==1" href="#"  ng-click="vm.outline(row,0)" >  下线 </a>
                             <a ng-if="row.status==0" href="#" ng-click="vm.outline(row,1)"> 上线 </a>
                             <a href="#" ng-click="vm.delete(row)">  删除 </a>
-                            <a ng-if="row.is_badge==1" href="#"  ng-click="vm.dline(row)" >  纪念章下线 </a>
+                            <a ng-if="row.is_badge==1" href="#" ng-click="vm.dline(row)">  纪念章下线 </a>
+                            <a ng-if="row.is_badge==1"  href="#"  ng-click="vm.code(row)" >  生成链接 </a>
                         </td>
                     </tr>
                 </tbody>

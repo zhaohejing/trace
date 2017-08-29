@@ -98,6 +98,7 @@
                     genderModel(map, BMap);
                     //回调获得覆盖物信息
                     var overlaycomplete = function (e) {
+                        scope.overlays = {};
                         if (scope.overlays) {
                             map.removeOverlay(dto);
                             scope.overlays = {};
