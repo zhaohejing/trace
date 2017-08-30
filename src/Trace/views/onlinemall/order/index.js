@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('MetronicApp')
-        .controller('views.onlinemall.figure.index',
+        .controller('views.onlinemall.order.index',
         [
             '$scope', "$state", 'settings', "dataFactory", '$uibModal',
               function ($scope, $state, settings, dataFactory, $uibModal) {
