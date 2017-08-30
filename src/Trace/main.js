@@ -273,7 +273,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     {
         url: "/onlinemall/product/index.html",
         templateUrl: "views/onlinemall/product/index.html",
-        data: { pageTitle: '轮播图管理' },
+        data: { pageTitle: '商品管理' },
         resolve: {
             deps: [
                 '$ocLazyLoad', function ($ocLazyLoad) {
@@ -331,7 +331,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     {
         url: "/onlinemall/order/index.html",
         templateUrl: "views/onlinemall/order/index.html",
-        data: { pageTitle: '轮播图管理' },
+        data: { pageTitle: '订单管理' },
         resolve: {
             deps: [
                 '$ocLazyLoad', function ($ocLazyLoad) {
@@ -357,7 +357,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     {
         url: "/manager/users/index.html",
         templateUrl: "views/manager/users/index.html",
-        data: { pageTitle: '轮播图管理' },
+        data: { pageTitle: '用户管理' },
         resolve: {
             deps: [
                 '$ocLazyLoad', function ($ocLazyLoad) {
@@ -383,7 +383,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     {
         url: "/manager/customers/index.html",
         templateUrl: "views/manager/customers/index.html",
-        data: { pageTitle: '轮播图管理' },
+        data: { pageTitle: '用户管理' },
         resolve: {
             deps: [
                 '$ocLazyLoad', function ($ocLazyLoad) {
@@ -409,7 +409,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     {
         url: "/manager/roles/index.html",
         templateUrl: "views/manager/roles/index.html",
-        data: { pageTitle: '轮播图管理' },
+        data: { pageTitle: '角色管理' },
         resolve: {
             deps: [
                 '$ocLazyLoad', function ($ocLazyLoad) {

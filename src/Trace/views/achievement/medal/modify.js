@@ -68,6 +68,7 @@
                         if (res.success) {
                             vm.achi = res.result;
                             vm.tempachi = vm.achi.list[0].id;
+                            vm.templist = vm.achi.list;
                             vm.cate.init(vm.achi.category1, vm.achi.category2);
 
                             if (vm.achi.image) {
