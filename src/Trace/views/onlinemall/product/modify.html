@@ -250,7 +250,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <div class="col-xs-4">大图</div>
+                            <div class="col-xs-4">Banner</div>
                             <div class="col-xs-4">
                                 <div class="tiles">
                                     <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,3)" data-multiple="vm.file.multiple" onclick="this.value = null">
@@ -259,27 +259,22 @@
                                         </div>
                                         <div class="tile-object">
                                             <div class="name"> 限制 </div>
-                                            <div class="number"> 150x150 </div>
+                                            <div class="number"> 750*280px </div>
                                         </div>
                                     </div>
-                                    <!--<ol>
-                                        <li ng-repeat="(k,v) in vm.file.selectFiles">
-                                            {{v.file.name}} ----- {{v.progress.p}}% <a href="#" ng-click="vm.file.abort(k)">X</a>
-                                        </li>
-                                    </ol>-->
                                 </div>
                             </div>
                             <div class="col-xs-4">
                                 <div ng-if="vm.file.model[3].url" class="col-xs-6">
                                     <div>
-                                        <img ng-click="vm.file.remove(3)" style="width:150px;height:150px;" ng-if="vm.file.model[3].url" src="{{vm.file.model[3].url}}" alt="" />
+                                        <img ng-click="vm.file.remove(3)" style="width:750px;height:280px;" ng-if="vm.file.model[3].url" src="{{vm.file.model[3].url}}" alt="" />
                                     </div>
 
                                 </div>
                             </div>
                         </div>
                         <div class="col-xs-6">
-                            <div class="col-xs-4">小图</div>
+                            <div class="col-xs-4">图标</div>
                             <div class="col-xs-4">
                                 <div class="tiles">
                                     <div class="tile bg-grey" ng-file-select="vm.file.onFileSelect($files,4)" data-multiple="vm.file.multiple" onclick="this.value = null">
@@ -288,7 +283,7 @@
                                         </div>
                                         <div class="tile-object">
                                             <div class="name"> 限制 </div>
-                                            <div class="number"> 100x100 </div>
+                                            <div class="number"> 136*136px </div>
                                         </div>
                                     </div>
                                 
@@ -297,7 +292,7 @@
                             <div class="col-xs-4">
                                 <div ng-if="vm.file.model[4].url" class="col-xs-6">
                                     <div>
-                                        <img ng-click="vm.file.remove(4)" style="width:100px;height:100px;" ng-if="vm.file.model[4].url" src="{{vm.file.model[4].url}}" alt="" />
+                                        <img ng-click="vm.file.remove(4)" style="width:136px;height:136px;" ng-if="vm.file.model[4].url" src="{{vm.file.model[4].url}}" alt="" />
                                     </div>
 
                                 </div>

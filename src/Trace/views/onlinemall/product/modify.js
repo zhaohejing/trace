@@ -71,6 +71,7 @@
                             vm.product = res.result;
                             vm.products = vm.product.list;
                             vm.product.is_badge = vm.product.is_badge === 1;
+                            vm.product.is_perfect = vm.product.is_perfect ===1;
                             vm.cate.init(vm.product.badge_category1, vm.product.badge_category2);
 
                             if (vm.product.badge_image) {
@@ -105,6 +106,7 @@
                     vm.product.badge_image = vm.file.model[1]?vm.file.model[1].url:"";
                 }
                 vm.product.is_badge = vm.product.is_badge ? 1 : 0;
+                vm.product.is_perfect = vm.product.is_perfect ? 1 : 0;
                 vm.product.image1 = vm.file.model[3]? vm.file.model[3].url:"";
                 vm.product.image2 = vm.file.model[4]? vm.file.model[4].url:"";
                 vm.product.tag = vm.file.model[2] ? vm.file.model[2].url : "";
