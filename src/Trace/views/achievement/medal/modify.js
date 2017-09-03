@@ -9,7 +9,7 @@
             var vm = this;
             var aid = $stateParams.id;
           
-            vm.achi = { type: 1, is_group:0 };
+            vm.achi = { type: 1, is_group:0 ,list:[]};
             vm.url = "api/achievement/add";
             vm.cate = {
                 a: [], b: [], c: [],
