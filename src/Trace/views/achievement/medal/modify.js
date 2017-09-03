@@ -123,7 +123,7 @@
             }
             //保存
             vm.save = function () {
-                if (vm.achi.is_group ==="0") {
+                if (vm.achi.is_group ===0) {
                     vm.achi.list = [vm.tempachi];
                 } else {
                     if (vm.templist.length > 0) {
