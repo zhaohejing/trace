@@ -107,8 +107,8 @@
                 }
                 vm.product.is_badge = vm.product.is_badge ? 1 : 0;
                 vm.product.is_perfect = vm.product.is_perfect ? 1 : 0;
-                vm.product.image1 = vm.file.model[3]? vm.file.model[3].url:"";
-                vm.product.image2 = vm.file.model[4]? vm.file.model[4].url:"";
+                vm.product.image1 = vm.file.model[4]? vm.file.model[4].url:"";
+                vm.product.image2 = vm.file.model[3]? vm.file.model[3].url:"";
                 vm.product.tag = vm.file.model[2] ? vm.file.model[2].url : "";
 
                 if (vm.products.length > 0) {
