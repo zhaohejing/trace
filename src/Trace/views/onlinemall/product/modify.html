@@ -128,8 +128,11 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-3 control-label">商品价格:</label>
                                 <div class="col-md-9">
-                                    <input type="number" ng-pattern="/^([1-9][0-9]*){1,9}$/"  class="form-control"
-                                           ng-class="{'edited':vm.product.price}" placeholder="商品价格" 
+                                    <!--ng-pattern="/^([1-9][0-9]*){1,9}$/"-->
+                                    
+                                    <input type="number" ng-pattern="/^\d+\.\d+$/"
+                                           class="form-control"
+                                           ng-class="{'edited':vm.product.price}" placeholder="商品价格"
                                            required ng-model="vm.product.price">
                                 </div>
                             </div>
