@@ -78,10 +78,10 @@
                                 vm.file.model[1] = { type: 1, url: vm.product.badge_image };
                             }
                             if (vm.product.image1) {
-                                vm.file.model[3] = { type: 3, url: vm.product.image1 };
+                                vm.file.model[4] = { type: 4, url: vm.product.image1 };
                             }
                             if (vm.product.image2) {
-                                vm.file.model[4] = { type: 4, url: vm.product.image2 };
+                                vm.file.model[3] = { type: 3, url: vm.product.image2 };
                             }
                       
 
