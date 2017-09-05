@@ -131,6 +131,8 @@
     <Content Include="assets\global\img\social\bj.jpg" />
     <Content Include="assets\global\img\social\efanlogo.png" />
     <Content Include="assets\global\img\social\qcode.png" />
+    <Content Include="assets\layouts\layout\img\logo.png" />
+    <Content Include="assets\global\img\social\login.jpg" />
     <Content Include="assets\global\img\syncfusion-icons-white.png" />
     <Content Include="assets\global\img\syncfusion-icons.png" />
     <Content Include="assets\global\plugins\abp\abp.js" />
