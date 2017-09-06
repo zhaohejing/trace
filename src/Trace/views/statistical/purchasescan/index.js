@@ -11,26 +11,113 @@
                 });
             var vm = this;
 
-            vm.filter = {
-                states: [{ id: null, name: "全部" }, { id: 1, name: "上架" }, { id: 0, name: "下架" }],
-                cates: [{ id: null, name: "全部" }, { id: 1, name: "纪念章" }, { id: 2, name: "名片" }, { id: 3, name: "明信片" }, { id: 4, name: "周边" }]
-            }
+         
             //页面属性
             vm.table = {
                 rows: [], //数据集
-                filter: { pageNum: 1, pageSize: 10, status: null, cate: null }, //条件搜索
+                filter: { pageNum: 1, pageSize: 10, prov: null, city: null, category1: null, category2: null, category3: null,start:null,end:null }, //条件搜索
                 pageConfig: { //分页配置
                     currentPage: 1, //当前页
                     itemsPerPage: 10, //页容量
                     totalItems: 0 //总数据
                 }
             }
+            vm.address = {
+                url:"sys/positions?id=",
+                prov: [{ id: null, name: "全部" }], city: [{ id: null, name: "全部" }],
+                init: function () {
+                    dataFactory.action(vm.address.url + 0, "GET", null, {})
+               .then(function (res) {
+                   if (res) {
+                       vm.address.prov = [{ id: null, name: "全部" }];
 
+                       vm.address.prov=  vm.address.prov.concat( res);
+                   } else {
+                       abp.notify.error("获取失败");
+                   }
+               });
+                }, change: function () {
+                    dataFactory.action(vm.address.url + vm.table.filter.prov, "GET", null, {})
+         .then(function (res) {
+             if (res) {
+                 vm.address.city = [{ id: null, name: "全部" }];
+
+                 vm.address.city=   vm.address.city.concat(res);
+             } else {
+                 abp.notify.error("获取失败");
+             }
+         });
+                }
+
+            }
+            vm.address.init();
+
+            vm.time = {
+                now:new Date(Date.now()),
+                today: function () {
+                    var left = format( -1);
+                    vm.table.filter.start = left;
+                    vm.table.filter.end = vm.time.now;
+                    vm.init();
+                    },
+                yesterday: function () {
+                    var left = format( -1);
+                    vm.table.filter.start = left;
+                    vm.table.filter.end = vm.time.now;
+                    vm.init();
+                },
+                less7: function () {
+                    var left = format( -7);
+                    vm.table.filter.start = left;
+                    vm.table.filter.end = vm.time.now;
+                    vm.init();
+                },
+                less30: function () {
+                    var left = format( -30);
+                    vm.table.filter.start = left;
+                    vm.table.filter.end = vm.time.now;
+                    vm.init();
+                },
+            }
+            function format( AddDayCount) { 
+                var dd = new Date(Date.now());
+                dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期 
+                return dd;
+            } 
+            vm.cate = {
+                a: [], b: [], c: [],
+                init: function () {
+                    dataFactory.action("api/category/getAllByPid?pid=0", "", null, {})
+                 .then(function (res) {
+                     if (res.success) {
+                         vm.cate.a = res.result;
+                     } else {
+                         abp.notify.error(res.error);
+                     }
+                 });
+                },
+                change: function (type) {
+                    var pid = type === 1 ? vm.table.filter.category1 : vm.table.filter.category2;
+                    dataFactory.action("api/category/getAllByPid?pid=" + pid, "", null, {})
+            .then(function (res) {
+                if (res.success) {
+                    if (type === 1) {
+                        vm.cate.b = res.result;
+                    } else {
+                        vm.cate.c = res.result;
+                    }
+                } else {
+                    abp.notify.error(res.error);
+                }
+            });
+                }
+            }
+            vm.cate.init();
             //获取用户数据集，并且添加配置项
             vm.init = function () {
                 vm.table.filter.pageNum = vm.table.pageConfig.currentPage;
                 vm.table.filter.pageSize = vm.table.pageConfig.itemsPerPage;
-                dataFactory.action("api/integral/list", "", null, vm.table.filter)
+                dataFactory.action("api/order/scanorder", "", null, vm.table.filter)
                     .then(function (res) {
                         if (res.success) {
                             vm.table.pageConfig.totalItems = res.total;
@@ -43,37 +130,7 @@
                         }
                     });
             };
-            // vm.init();
-            vm.add = function () {
-                $state.go("integralmodify");
-            }
-            vm.edit = function (row) {
-                $state.go("integralmodify", { id: row.id });
-            }
-            vm.delete = function (row) {
-                abp.message.confirm(
-                    '删除将导致数据无法显示', //确认提示
-                    '确定要删除么?', //确认提示（可选参数）
-                    function (isConfirmed) {
-                        if (isConfirmed) {
-                            //...delete user 点击确认后执行
-                            //api/resource/delete
-                            dataFactory.action("api/integral/delete", "", null, { list: [row.id] })
-                                .then(function (res) {
-                                    abp.notify.success("删除成功");
-                                    vm.init();
-                                });
-                        }
-                    });
-
-            }
-            vm.update = function (row, type) {
-                dataFactory.action("api/integral/updateStatus", "", null, { list: [row.id], status: type })
-                    .then(function (res) {
-                        abp.notify.success("成功");
-                        vm.init();
-                    });
-            }
+           
             vm.init();
         }
         ]);
