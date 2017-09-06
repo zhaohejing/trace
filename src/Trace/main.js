@@ -707,7 +707,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
         .state("purchasescan",
         {
             url: "/purchasescan/index.html",
-            templateUrl: "views/statistical/purchaserecords/index.html",
+            templateUrl: "views/statistical/purchasescan/index.html",
             data: { pageTitle: '购买记录-扫描' },
             resolve: {
                 deps: [
