@@ -117,7 +117,7 @@
                vm.init = function () {
                    vm.table.filter.pageNum = vm.table.pageConfig.currentPage;
                    vm.table.filter.pageSize = vm.table.pageConfig.itemsPerPage;
-                   dataFactory.action("api/order/scanorder", "", null, vm.table.filter)
+                   dataFactory.action("api/order/recordorder", "", null, vm.table.filter)
                        .then(function (res) {
                            if (res.success) {
                                vm.table.pageConfig.totalItems = res.total;
