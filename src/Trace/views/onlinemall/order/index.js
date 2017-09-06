@@ -17,7 +17,7 @@
                   //页面属性
                   vm.table = {
                       rows: [], //数据集
-                      filter: { pageNum: 1, pageSize: 10, state: null }, //条件搜索
+                      filter: { pageNum: 1, pageSize: 10, status: null }, //条件搜索
                       pageConfig: { //分页配置
                           currentPage: 1, //当前页
                           itemsPerPage: 10, //页容量

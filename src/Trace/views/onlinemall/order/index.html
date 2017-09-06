@@ -25,7 +25,7 @@
                     <div class="form-group form-md-line-input">
                         <label class="col-md-4 control-label">状态</label>
                         <div class="col-md-8">
-                            <select ng-model="vm.table.filter.state"
+                            <select ng-model="vm.table.filter.status"
                                     class="form-control edited" ui-validate="'$value>0'"
                                     ng-class="{'edited':vm.model.type>0}" ng-options="m.id as m.name for m in vm.filter.states"></select>
                             <div class="form-control-focus"> </div>
@@ -53,7 +53,6 @@
                 <thead>
                     <tr>
                         <th>单号</th>
-                        <th>订单名称</th>
                         <th>数量</th>
                         <th>价格</th>
                         <th>运费</th>
@@ -66,11 +65,9 @@
                 <tbody>
                     <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.table.rows">
                         <td>{{row.order_num}}</td>
-                        <td>{{row.order_name}}</td>
                         <td>{{row.order_count}}</td>
                         <td>{{row.product_cost}}</td>
                         <td>{{row.courier_cost}}</td>
-                        
                         <td>{{row.receiver}}</td>
                         <td>{{row.phone}}</td>
                         <td>{{row.order_state==0?'未兑换':(row.courier_order==null?'未发货':'已发货')}}</td>
