@@ -5,28 +5,23 @@
 
                 <li>
                     <i class="fa fa-hand-o-right"></i>
-                    <a href="#">积分商城管理</a>
+                    <a href="#">统计管理</a>
                 </li>
             </ul>
         </div>
         <div class="col-xs-4 right">
             <ul class="page-breadcrumb" style="float: right">
                 <li>
-                    <button class="btn btn-sm blue" ng-click="vm.add()"><i class="fa fa-plus"></i> 添加</button>
-                </li>
-                <li>
                     <button class="btn btn-sm blue" ng-click="vm.export()"><i class="fa fa-plus"></i> 导出</button>
                 </li>
             </ul>
         </div>
-
-
     </div>
     <div class="portlet light bordered">
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-xs-2">
                 <div class="form-group form-md-line-input">
-                    <label class="col-md-4 control-label">状态</label>
+                    <label class="col-md-4 control-label">类别</label>
                     <div class="col-md-8">
                         <select ng-model="vm.table.filter.status"
                                 class="form-control edited" ui-validate="'$value>0'"
@@ -35,41 +30,75 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-3">
+          
+            <div class="col-xs-2">
                 <div class="form-group form-md-line-input">
-                    <label class="col-md-4 control-label">类型</label>
+                    <label class="col-md-4 control-label">地区</label>
                     <div class="col-md-8">
-                        <select ng-model="vm.table.filter.cate" class="form-control edited" ui-validate="'$value>0'"
-                                ng-class="{'edited':vm.table.filter.cate>0}" ng-options="m.id as m.name for m in vm.filter.cates"></select>
+                        <select ng-model="vm.table.filter.status"
+                                class="form-control edited" ui-validate="'$value>0'"
+                                ng-class="{'edited':vm.table.filter.status>0}" ng-options="m.id as m.name for m in vm.filter.states"></select>
                         <div class="form-control-focus"> </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-5">
+            <div class="col-xs-2">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-4 control-label">景区</label>
+                    <div class="col-md-8">
+                        <select ng-model="vm.table.filter.status"
+                                class="form-control edited" ui-validate="'$value>0'"
+                                ng-class="{'edited':vm.table.filter.status>0}" ng-options="m.id as m.name for m in vm.filter.states"></select>
+                        <div class="form-control-focus"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-4 control-label">省</label>
+                    <div class="col-md-8">
+                        <select ng-model="vm.table.filter.status"
+                                class="form-control edited" ui-validate="'$value>0'"
+                                ng-class="{'edited':vm.table.filter.status>0}" ng-options="m.id as m.name for m in vm.filter.states"></select>
+                        <div class="form-control-focus"> </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-xs-2">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-4 control-label">市</label>
+                    <div class="col-md-8">
+                        <select ng-model="vm.table.filter.status"
+                                class="form-control edited" ui-validate="'$value>0'"
+                                ng-class="{'edited':vm.table.filter.status>0}" ng-options="m.id as m.name for m in vm.filter.states"></select>
+                        <div class="form-control-focus"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
                 <div class="form-group form-md-line-input has-info">
                     <div class="input-group input-group-sm">
-                        <div class="input-group-control">
-                            <input type="text" class="form-control input-sm" placeholder="按条件搜索" ng-model="vm.table.filter.name">
-                        </div>
+                      
                         <span class="input-group-btn btn-right">
                             <button ng-click="vm.init()" class="btn green-haze" type="button">查询</button>
                         </span>
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="row">
             <table st-table="vm.table.rows" class="table table-striped">
                 <thead>
                     <tr>
-                        <th st-sort="a">攻略名称</th>
-                        <th>创建时间</th>
-                        <th>兑换积分</th>
-                        <th>库存</th>
-                        <th>类型</th>
-                        <th>状态</th>
-                        <th>操作</th>
+                        <th st-sort="a">销售数量</th>
+                        <th>销售额</th>
+                        <th>运费</th>
+                        <th>购买人数</th>
+                        <th>类别</th>
+                        <th>地区</th>
+                        <th>景区</th>
+                        <th>省</th>
+                        <th>市</th>
                     </tr>
                 </thead>
                 <tbody>
