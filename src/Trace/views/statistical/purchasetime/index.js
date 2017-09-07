@@ -22,6 +22,17 @@
                     totalItems: 0 //总数据
                 }
             }
+            vm.export = function () {
+                var url = abp.baseUrl + "down/orders";
+                if (vm.table.filter.start) {
+                    url += "?start=" + vm.table.filter.start;
+                }
+                if (vm.table.filter.end) {
+                    url += "&end=" + vm.table.filter.end;
+                }
+                window.location.href = url;
+                abp.notify.success("导出成功");
+            }
             vm.address = {
                 url: "sys/positions?id=",
                 prov: [{ id: null, name: "全部" }], city: [{ id: null, name: "全部" }],

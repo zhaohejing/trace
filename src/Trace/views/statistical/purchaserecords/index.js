@@ -15,7 +15,10 @@
                //页面属性
                vm.table = {
                    rows: [], //数据集
-                   filter: { pageNum: 1, pageSize: 10, prov: null, city: null, category1: null, category2: null, category3: null, start: null, end: null }, //条件搜索
+                   filter: {
+                       pageNum: 1, pageSize: 10, prov: null, city: null, category1: null,
+                       category2: null, category3: null, start: null, end: null
+                   }, //条件搜索
                    pageConfig: { //分页配置
                        currentPage: 1, //当前页
                        itemsPerPage: 10, //页容量
@@ -51,7 +54,18 @@
 
                }
                vm.address.init();
-
+             
+               vm.export = function () {
+                   var url = abp.baseUrl + "down/orders";
+                   if (vm.table.filter.start) {
+                       url += "?start=" + vm.table.filter.start;
+                   }
+                   if (vm.table.filter.end) {
+                       url += "&end=" + vm.table.filter.end;
+                   }
+                   window.location.href = url;
+                   abp.notify.success("导出成功");
+               }
                vm.time = {
                    now: new Date(Date.now()),
                    today: function () {
@@ -130,7 +144,7 @@
                            }
                        });
                };
-           
+
                vm.init();
            }
         ]);
