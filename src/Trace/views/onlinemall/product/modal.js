@@ -8,7 +8,7 @@
             var vm = this;
             vm.row = model;
             vm.count = 0;
-            vm.url = "/product/createCode";
+            vm.url = "/down/createCode";
             vm.save = function () {
                 vm.url =abp.baseUrl+ vm.url + "?product_id=" + vm.row.id + "&numbers=" + vm.count;
                 window.open(vm.url);
