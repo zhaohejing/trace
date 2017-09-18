@@ -90,7 +90,7 @@
                         <td>{{row.designation}}</td>
                         <td>{{row.status==0?'未发布':'已发布'}}</td>
                         <td>
-                            <a href="#" ng-if="row.status==0" ng-click="vm.edit(row)" >
+                            <a href="#"  ng-click="vm.edit(row)" >
                                 修改
                             </a>
                             <a href="#" ng-if="row.status==0" ng-click="vm.public(row)">
