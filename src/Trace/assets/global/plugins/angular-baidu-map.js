@@ -5,10 +5,11 @@
     app.directive('baiduMap', ['$window', function ($window) {
         return {
             restrict: 'A',
-            scope: {
-                mapReady: '&',
-                overlays: "=overlays"
-            },
+            //scope: {
+            //    mapReady: '&',
+            //    overlays: "=overlays"
+            //},
+            scope: true,
             link: function (scope, element, attrs) {
                 var dto;
 
@@ -106,7 +107,7 @@
                         if (temp) {
                             map.removeOverlay(temp);
                         }
-                        scope.overlays = getmodel(e.drawingMode, e.overlay);
+                        scope.$parent.vm.overlays = getmodel(e.drawingMode, e.overlay);
                         temp = e.overlay;
                         map.addOverlay(e.overlay);
                     };
@@ -114,7 +115,8 @@
 
                     //添加鼠标绘制工具监听事件，用于获取绘制结果
                     draw.addEventListener("overlaycomplete", overlaycomplete);
-                    scope.mapReady({ map: map, draw: draw });
+                    scope.$parent.vm.mapReady({ map: map, draw: draw });
+                  //  scope.mapReady({ map: map, draw: draw });
                 };
                 var script = document.createElement("script");
                 script.src = 'http://api.map.baidu.com/api?v=2.0&ak=' + attrs.baiduMap + '&callback=baiduMapLoaded';

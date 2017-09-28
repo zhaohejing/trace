@@ -90,15 +90,15 @@
                     });
             } else {
                 vm.cate.init(vm.trace.category1, vm.trace.category2);
-                vm.mapReady = function (map, draw) {
-                    map.enableScrollWheelZoom();
-                    map.addControl(new BMap.NavigationControl());
-                    map.addControl(new BMap.ScaleControl());
-                    map.addControl(new BMap.OverviewMapControl());
-                    map.addControl(new BMap.MapTypeControl());
+                vm.mapReady = function (map) {
+                    map.map.enableScrollWheelZoom();
+                    map.map.addControl(new BMap.NavigationControl());
+                    map.map.addControl(new BMap.ScaleControl());
+                    map.map.addControl(new BMap.OverviewMapControl());
+                    map.map.addControl(new BMap.MapTypeControl());
                     var point = new BMap.Point(116.404, 39.915);
-                    map.centerAndZoom(point, 15);
-                    vm.mapper = { map: map, draw: draw };
+                    map.map.centerAndZoom(point, 15);
+                    vm.mapper = { map: map.map, draw: map.draw };
                 };
             }
 
